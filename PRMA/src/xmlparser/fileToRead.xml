@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<company>
+	<staff id="01">
+		<firstname>Ali Cagatay</firstname>
+		<lastname>Kuru</lastname>
+		<nickname>cagataykuru</nickname>
+		<salary>100000</salary>
+	</staff>
+	<staff id="02">
+		<firstname>Ilter</firstname>
+		<lastname>Kavlak</lastname>
+		<nickname>cixboy</nickname>
+		<salary>200000</salary>
+	</staff>
+	<staff id="03">
+		<firstname>Ahmet Melih</firstname>
+		<lastname>Bercin</lastname>
+		<nickname>bercin</nickname>
+		<salary>300000</salary>
+	</staff>
+</company>
