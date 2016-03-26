@@ -7,13 +7,13 @@ import java.util.Date;
 public class Project {
 	
 	private Date projectStart;
-	private double projectDuration;
+	private Date projectDueDate;
 	private ArrayList<Task> tasks;
 	
 	//new variables will be added, just a draft
 	
-	public Project(ArrayList<Task> tasks, double projectDuration, Date projectStart){
-		this.setProjectDuration(projectDuration);
+	public Project(ArrayList<Task> tasks, Date projectDueDate, Date projectStart){
+		this.setProjectDueDate(projectDueDate);
 		this.setProjectStart(projectStart);
 		Collections.copy(this.tasks, tasks);
 	}
@@ -26,20 +26,20 @@ public class Project {
 		this.projectStart = projectStart;
 	}
 
-	public double getProjectDuration() {
-		return projectDuration;
-	}
-
-	public void setProjectDuration(double projectDuration) {
-		this.projectDuration = projectDuration;
-	}
-
 	public ArrayList<Task> getTasks() {
 		return tasks;
 	}
 
 	public void setTasks(ArrayList<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+	public Date getProjectDueDate() {
+		return projectDueDate;
+	}
+
+	public void setProjectDueDate(Date projectDueDate) {
+		this.projectDueDate = projectDueDate;
 	}
 	
 	
