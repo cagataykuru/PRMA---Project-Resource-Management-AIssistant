@@ -2,22 +2,20 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
-
 
 public class Employee {
-	private boolean Workhaolism;
+	private boolean Workaholism;
 	private ArrayList<Ability> abilities;
 	private double DepreciationLevel;
 	private Schedule mySchedule;
 	
 	public Employee(ArrayList<Ability> abilities, boolean Workhaolism, double DepreciationLevel){
-		this.Workhaolism = Workhaolism;
+		this.setWorkaholism(Workhaolism);
 		Collections.copy(this.abilities, abilities);
 		this.DepreciationLevel = DepreciationLevel;
 	}
 	public Employee(ArrayList<Ability> abilities, boolean Workhaolism){
-		this.Workhaolism = Workhaolism;
+		this.setWorkaholism(Workhaolism);
 		Collections.copy(this.abilities, abilities);
 	}
 	
@@ -69,13 +67,19 @@ public class Employee {
 		}
 	}
 	
-	public boolean addTask(Date startDate, int realTaskTime, String taskName){
-		return mySchedule.addTask(startDate, realTaskTime, taskName);
+	public boolean addTask(Task task){		//Yeniden task oluþturmaya gerek yok
+		return mySchedule.addTask(task);
 	}
 	public Task iterateOverSchedule(){
 		return mySchedule.iterateOverSchedule();
 	}
 	public void resetIterator(){
 		mySchedule.resetIterator();
+	}
+	public boolean isWorkaholism() {
+		return Workaholism;
+	}
+	public void setWorkaholism(boolean workaholism) {
+		Workaholism = workaholism;
 	}
 }

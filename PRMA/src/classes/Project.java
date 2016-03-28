@@ -9,12 +9,14 @@ public class Project {
 	private Date projectStart;
 	private Date projectDueDate;
 	private ArrayList<Task> tasks;
+	private Double priority;	//emin deðilim typeýndan
 	
 	//new variables will be added, just a draft
 	
-	public Project(ArrayList<Task> tasks, Date projectDueDate, Date projectStart){
+	public Project(ArrayList<Task> tasks, Date projectDueDate, Date projectStart, Double priority){
 		this.setProjectDueDate(projectDueDate);
 		this.setProjectStart(projectStart);
+		this.priority = priority;
 		Collections.copy(this.tasks, tasks);
 	}
 
@@ -41,6 +43,12 @@ public class Project {
 	public void setProjectDueDate(Date projectDueDate) {
 		this.projectDueDate = projectDueDate;
 	}
-	
-	
+
+	public Double getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Double priority) {
+		this.priority = priority;
+	}
 }
