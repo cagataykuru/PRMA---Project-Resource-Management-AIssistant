@@ -14,8 +14,7 @@ public class Schedule {
 		index = 0;
 	}
 	
-	public boolean addTask(Date startDate, int realTaskTime, String taskName){
-		Task newTask = new Task(realTaskTime, startDate);
+	public boolean addTask(Task newTask){
 		mySchedule.add(newTask);
 		Collections.sort(mySchedule, new Comparator<Task>() {
 	        @Override
