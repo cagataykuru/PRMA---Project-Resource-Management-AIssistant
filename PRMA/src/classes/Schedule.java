@@ -3,6 +3,7 @@ package classes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 public class Schedule {
 	private ArrayList<Task> mySchedule;
@@ -36,5 +37,12 @@ public class Schedule {
 	
 	public void resetIterator(){
 		index = 0;
+	}
+	public boolean isFullAt(Date check){
+		for(int i=0; i<mySchedule.size();i++){
+			if(mySchedule.get(i).getTaskStart().compareTo(check)==0)
+				return true;
+		}
+		return false;
 	}
 }

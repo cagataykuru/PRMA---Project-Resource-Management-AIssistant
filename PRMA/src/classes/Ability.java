@@ -1,7 +1,12 @@
 package classes;
 
+
 public class Ability {
-	public String name;
+	public enum Type {
+	    A, B, C, D,
+	    E, F, G 
+	}
+	public Type name;
 	public double level;
 }
 

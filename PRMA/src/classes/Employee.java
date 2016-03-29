@@ -19,7 +19,7 @@ public class Employee {
 		Collections.copy(this.abilities, abilities);
 	}
 	
-	public boolean decreaseAbility(String name, double amount){
+	public boolean decreaseAbility(Ability.Type name, double amount){
 		int indexx = -1;
 		for(int i = 0; i<abilities.size(); i++){
 			if(abilities.get(i).name==name)
@@ -32,7 +32,7 @@ public class Employee {
 		}
 		return true;
 	}
-	public boolean increaseAbility(String name, double amount){
+	public boolean increaseAbility(Ability.Type name, double amount){
 		int indexx = -1;
 		for(int i = 0; i<abilities.size(); i++){
 			if(abilities.get(i).name==name)
@@ -54,7 +54,7 @@ public class Employee {
 		return DepreciationLevel;
 	}
 	
-	public double getAbility(String name){
+	public double getAbility(Ability.Type name){
 		int indexx = -1;
 		for(int i = 0; i<abilities.size(); i++){
 			if(abilities.get(i).name==name)
@@ -67,7 +67,7 @@ public class Employee {
 		}
 	}
 	
-	public boolean addTask(Task task){		//Yeniden task oluþturmaya gerek yok
+	public boolean addTask(Task task){		//Yeniden task oluï¿½turmaya gerek yok
 		return mySchedule.addTask(task);
 	}
 	public Task iterateOverSchedule(){
@@ -81,5 +81,8 @@ public class Employee {
 	}
 	public void setWorkaholism(boolean workaholism) {
 		Workaholism = workaholism;
+	}
+	public Schedule getSchedule(){
+		return mySchedule;
 	}
 }
