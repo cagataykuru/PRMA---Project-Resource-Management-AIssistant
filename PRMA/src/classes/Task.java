@@ -18,9 +18,13 @@ public class Task {
 	}
 	
 	public void calculateMinKnowledge(){
-		//buraya da bir hesaplama metodu düþünelim, gereken abilityler ile olur.
+		//buraya da bir hesaplama metodu dï¿½ï¿½ï¿½nelim, gereken abilityler ile olur.
 		
-		//neededAbilities listinden eleman seçip katsayýlarla çarpmaca.
+		//neededAbilities listinden eleman seï¿½ip katsayï¿½larla ï¿½arpmaca.
+	}
+	
+	public Date getDueDate(){
+		return belongsTo.getProjectDueDate();
 	}
 	
 	void setTaskDuration(double duration){
@@ -55,6 +59,14 @@ public class Task {
 
 	public Double getMinKnowledge() {
 		return minKnowledge;
+	}
+	
+	public Project getProject() {
+		return belongsTo;
+	}
+	
+	public double getImportance() {
+		return belongsTo.getPriority();
 	}
 
 	public void setMinKnowledge(Double minKnowledge) {

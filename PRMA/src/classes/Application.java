@@ -14,7 +14,31 @@ public class Application {
 		System.out.println("hello world");
 	}
 	
-	public ArrayList<EmployeeSortingObject> findBestMatches (int C, Task currentTask, Date inputTime){
+	public ArrayList<TaskSortingObject> sortTasks (ArrayList<Task> tasks, int a, Date now){//Creates task queue
+		
+		ArrayList<TaskSortingObject> queue = new ArrayList<TaskSortingObject>();
+		for(int i = 0; i<tasks.size();i++){
+			Task currentTask = tasks.get(i);
+				
+			double taskImportance = a*(currentTask.getImportance())+(1-a)*(48*(60 * 60 * 1000)/(currentTask.getDueDate().getTime()-now.getTime()));
+				
+			TaskSortingObject newSortingObject = new TaskSortingObject();
+			newSortingObject.importance = taskImportance;
+			newSortingObject.task = currentTask;
+			
+			queue.add(newSortingObject);
+		}
+		Collections.sort(queue, new Comparator<TaskSortingObject>() {
+	        @Override
+	        public int compare(TaskSortingObject first, TaskSortingObject second)
+	        {
+	            return  Double.compare(first.importance, second.importance);
+	        }
+	    });
+		return queue;
+	}
+	
+	public ArrayList<EmployeeSortingObject> findBestMatches (int C, Task currentTask, Date inputTime){//Creates best match queue
 		
 		int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
 		
@@ -46,7 +70,7 @@ public class Application {
 		return queue;
 	}
 	
-	public ArrayList<EmployeeSortingObject> findBestMatchesWithWorkhaolism (int C, Task currentTask, Date inputTime){
+	public ArrayList<EmployeeSortingObject> findBestMatchesWithWorkhaolism (int C, Task currentTask, Date inputTime){//Creates best match queue with workhaolism
 		
 		int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
 		
