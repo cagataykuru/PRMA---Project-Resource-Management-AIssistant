@@ -13,12 +13,12 @@ public class main {
 		PuzzleState shuffledState;
 		PuzzleState iterState;
 		ArrayList<PuzzleState> nextStates = new ArrayList<PuzzleState>();
-		int w = 20;
+		int w = 4;
 		int iterCount = 0;
 		int currentDepth = 0;
 		boolean inExtList = false;
 		
-		shuffledState = initialState.shuffle(100);
+		shuffledState = initialState.shuffle(1000);
 		//shuffledState = initialState;
 		
 		//System.out.println(initialState.toString());
@@ -31,21 +31,24 @@ public class main {
 		
 		do{
 			//System.out.println("here");
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
+			//try {
+				//Thread.sleep(1);
+			//} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				//e.printStackTrace();
+			//}
 			int loopCount = agenda.size();
 			for(int i = 0;i<loopCount; i++){
-				//System.out.println("Extended list********");
+				System.out.println("Extended list:"+ extendedList.size());
 				for(int j = 0; j < extendedList.size(); j++){
-					System.out.println("Extended list no: "+j+"\n"+extendedList.get(j).toString());
+					//System.out.println("Extended list no: "+j+"\n"+extendedList.get(j).toString());
+					
 					for(int o = 0; o < agenda.size(); o++){
-					if(agenda.get(o).get(agenda.get(o).size() - 1).equals(extendedList.get(j)))
-						inExtList = true;
-						agenda.remove(o);
+						if(agenda.get(o).get(agenda.get(o).size() - 1).equals(extendedList.get(j))){
+							//inExtList = true;
+							agenda.remove(o);
+							o--;
+						}
 					}
 				}
 				//System.out.println("Extended list end********");
@@ -53,7 +56,7 @@ public class main {
 				{
 					System.out.println("ifin içi");
 					ArrayList<PuzzleState> currentPath = agenda.get(0);
-					System.out.println("Su an baktýgý: \n"+currentPath.toString());
+					System.out.println("Su an baktýgý: \n"+currentPath.get(currentPath.size()-1).toString());
 					if(currentPath.get(currentPath.size()-1).equals(initialState))
 						break;
 					agenda.remove(0);
@@ -73,8 +76,14 @@ public class main {
 						System.out.println(possibleNextStates.get(0).toString());
 						
 						possibleNextStates.remove(0);
-
-						agenda.add(newPath);
+						boolean addTrue = true;
+						for(int o = 0; o < extendedList.size(); o++){
+							if(newPath.get(newPath.size() - 1).equals(extendedList.get(o))){
+								addTrue=false;
+							}
+						}
+						if(addTrue)
+							agenda.add(newPath);
 					}
 					if(!currentPath.get(currentPath.size()-1).equals(initialState)){
 						extendedList.add(currentPath.get(currentPath.size()-1));
@@ -105,7 +114,8 @@ public class main {
 			System.out.println(agenda.size());
 			
 		} while(!agenda.get(0).get(agenda.get(0).size()-1).equals(initialState));
-		for(int i = 0; i<agenda.get(0).size(); i++)
-			System.out.println(agenda.get(0).get(i).toString()+"*****\n");
+		//for(int i = 0; i<agenda.get(0).size(); i++)
+			//System.out.println(agenda.get(0).get(i).toString()+"*****\n");
+		System.out.println("Path size: "+agenda.get(0).size());
 	}
 }
