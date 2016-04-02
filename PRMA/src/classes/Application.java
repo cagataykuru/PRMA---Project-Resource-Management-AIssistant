@@ -57,32 +57,52 @@ public class Application {
 					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
 						
 						Calendar cal = Calendar.getInstance(); // creates calendar
+						cal.setTime(now);
 						if(now.getDay()==5){//Jump to monday
-							cal.setTime(now); // sets calendar time/date
-						    
-						    
-						    cal.add(Calendar.DAY_OF_MONTH, 2); // adds one hour
+						    cal.add(Calendar.DAY_OF_MONTH, 2); // jumps to monday
+						    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+						    now = cal.getTime(); //now
+						}else if(now.getHours()>=17){//Jump to next day
+						    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+						    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+						    now = cal.getTime(); //now
+						}else{//Add one hour
+						    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
 						    now = cal.getTime(); //now++
+						    sortedTasks.add(0, currentSortingObject);
+						    continue;
 						}
-					    cal.setTime(now); // sets calendar time/date
-					    
-					    
-					    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
-					    now = cal.getTime(); //now++
-					    
-					    sortedTasks.add(0, currentSortingObject);
-					    continue;
 					}else{
 						//Burdan sonrasına devam edilecek
 						
+						
+						double realTaskTime = 0;
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+							Employee currentEmployee = bestMatchList.get(0).employee;
+							double abilityUnder = 0;
+							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
+								abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+							}
+							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
+							
+							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
+						}
+						
+						realTaskTime /= iteration;
+						
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+							Employee currentEmployee = bestMatchList.get(0).employee;
+							
+							
+							//currentEmployee.
+						}
 					}
 				}
 			}
 		}
-		
-		
-		
 	}
+		
+		
 	
 	public static ArrayList<TaskSortingObject> sortTasks (ArrayList<Task> tasks, double a, Date now){//Creates task queue
 		
