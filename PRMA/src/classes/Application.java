@@ -15,6 +15,8 @@ public class Application {
 	public static ArrayList<Employee> employees;
 	public static ArrayList<Project> projects;
 	
+	public static int iteration = 0;
+	
 	public static void main(String [] args){
 		System.out.println("hello world");
 		//Buraya xmlden okumalar gelcek
@@ -30,7 +32,7 @@ public class Application {
 		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd GGG hh:mm aaa", Locale.ENGLISH);
 		Date now = new Date();
 		try {
-			now = format.parse(args[0]);
+			now = format.parse(args[0]);//Burada parametre alacak date'i yukarıdaki formattaki gibi.
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,29 +41,46 @@ public class Application {
 		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);
 		int treshHold = 10;
 		int iteration = 0;
-		while(!sortedTasks.isEmpty()){
-			if(iteration<treshHold){//Without workhaolism
-				TaskSortingObject currentSortingObject = sortedTasks.get(0);
-				Task currentTask = currentSortingObject.task;//Get the first one from the list
-				
-				sortedTasks.remove(0);//Delete first one
-				
-				ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
-				
-				if(bestMatchList.size()==0){
-					Calendar cal = Calendar.getInstance(); // creates calendar
-				    cal.setTime(now); // sets calendar time/date
-				    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
-				    now = cal.getTime(); //now++
-				    
-				    sortedTasks.add(0, currentSortingObject);
-				    continue;
-				}else{
-					iteration++;
-					//Burdan sonrasına devam edilecek
+		
+		boolean continued = true;
+		
+		while(continued){
+			while(!sortedTasks.isEmpty()){//Scheduling starts here
+				if(iteration<treshHold){//Without workhaolism
+					TaskSortingObject currentSortingObject = sortedTasks.get(0);
+					Task currentTask = currentSortingObject.task;//Get the first one from the list
+					
+					sortedTasks.remove(0);//Delete first one
+					
+					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
+					
+					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
+						
+						Calendar cal = Calendar.getInstance(); // creates calendar
+						if(now.getDay()==5){//Jump to monday
+							cal.setTime(now); // sets calendar time/date
+						    
+						    
+						    cal.add(Calendar.DAY_OF_MONTH, 2); // adds one hour
+						    now = cal.getTime(); //now++
+						}
+					    cal.setTime(now); // sets calendar time/date
+					    
+					    
+					    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+					    now = cal.getTime(); //now++
+					    
+					    sortedTasks.add(0, currentSortingObject);
+					    continue;
+					}else{
+						//Burdan sonrasına devam edilecek
+						
+					}
 				}
 			}
 		}
+		
+		
 		
 	}
 	
