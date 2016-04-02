@@ -34,10 +34,10 @@ public class Task {
 		taskStart = start;
 	}
 	
-	double getTaskDuration(){
+	public double getTaskDuration(){
 		return taskDuration;
 	}
-	Date getTaskStart(){
+	public Date getTaskStart(){
 		return taskStart;
 	}
 
