@@ -38,7 +38,7 @@ public class Schedule {
 	public void resetIterator(){
 		index = 0;
 	}
-	public boolean isFullAt(Date check){
+	public boolean isFullAt(Date check){//surayı değiştiricez
 		for(int i=0; i<mySchedule.size();i++){
 			if(mySchedule.get(i).getTaskStart().compareTo(check)==0)
 				return true;

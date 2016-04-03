@@ -44,59 +44,43 @@ public class Application {
 		
 		boolean continued = true;
 		
-		while(continued){
-			while(!sortedTasks.isEmpty()){//Scheduling starts here
-				if(iteration<treshHold){//Without workhaolism
-					TaskSortingObject currentSortingObject = sortedTasks.get(0);
-					Task currentTask = currentSortingObject.task;//Get the first one from the list
+		while(!sortedTasks.isEmpty()){//Scheduling starts here
+			if(iteration<treshHold){//Without workhaolism
+				TaskSortingObject currentSortingObject = sortedTasks.get(0);
+				Task currentTask = currentSortingObject.task;//Get the first one from the list
 					
-					sortedTasks.remove(0);//Delete first one
+				sortedTasks.remove(0);//Delete first one
+				
+				ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
+				
+				if(bestMatchList.size()==0){//Time'ı arttırma kısmı
 					
-					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
-					
-					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
+					now = getNextWorkHour(now);
+					    sortedTasks.add(0, currentSortingObject);
+					    continue;
 						
-						Calendar cal = Calendar.getInstance(); // creates calendar
-						cal.setTime(now);
-						if(now.getDay()==5){//Jump to monday
-						    cal.add(Calendar.DAY_OF_MONTH, 2); // jumps to monday
-						    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
-						    now = cal.getTime(); //now
-						}else if(now.getHours()>=17){//Jump to next day
-						    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
-						    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
-						    now = cal.getTime(); //now
-						}else{//Add one hour
-						    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
-						    now = cal.getTime(); //now++
-						    sortedTasks.add(0, currentSortingObject);
-						    continue;
+				}else{
+					//Burdan sonrasına devam edilecek
+						
+						
+					double realTaskTime = 0;
+					for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+						Employee currentEmployee = bestMatchList.get(0).employee;
+						double abilityUnder = 0;
+						for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
+							abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 						}
-					}else{
-						//Burdan sonrasına devam edilecek
-						
-						
-						double realTaskTime = 0;
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
-							Employee currentEmployee = bestMatchList.get(0).employee;
-							double abilityUnder = 0;
-							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-								abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
-							}
-							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
-							
-							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
-						}
-						
-						realTaskTime /= iteration;
-						
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
-							Employee currentEmployee = bestMatchList.get(0).employee;
-							
-							
-							//currentEmployee.
-						}
+						int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
+						realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
 					}
+					realTaskTime /= iteration;
+					Task taskToAdd = new Task(currentTask.getTaskDuration(), currentTask.getTaskStart(), currentTask.getBelongsTo());
+					taskToAdd.setTaskStart(now);
+					for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+						Employee currentEmployee = bestMatchList.get(i).employee;
+						int taskTime = (int) Math.ceil(realTaskTime);
+						
+						currentEmployee.addTask(taskToAdd);						}
 				}
 			}
 		}
@@ -191,4 +175,21 @@ public class Application {
 	    });
 		return queue;
 	}
+	public static Date getNextWorkHour(Date now){
+		Calendar cal = Calendar.getInstance(); // creates calendar
+		cal.setTime(now);
+		if(now.getDay()==5){//Jump to monday
+		    cal.add(Calendar.DAY_OF_MONTH, 2); // jumps to monday
+		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+		    return cal.getTime(); //now
+		}else if(now.getHours()>=17){//Jump to next day
+		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+		    return cal.getTime(); //now
+		}else{//Add one hour
+		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+		    return cal.getTime(); //now++
+		}
+	}
+
 }
