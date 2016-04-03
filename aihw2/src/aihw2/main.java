@@ -9,28 +9,30 @@ public class main {
 		
 		//ArrayList<Boolean> successList = new ArrayList<Boolean>();
 		
-		int successNumber = 0;
-		int failureNumber = 0;
+		int successNumber1 = 0;
+		int failureNumber1 = 0;
+		int successNumber2 = 0;
+		int failureNumber2 = 0;
+		int successNumber3 = 0;
+		int failureNumber3 = 0;
+		int successNumber4 = 0;
+		int failureNumber4 = 0;
 		for(int y = 0; y<1000; y++){
 			System.out.println(y);
 			
-		
-			
 			PuzzleState initialState = new PuzzleState(1, 2, 3, 4, 5, 6, 7, 8, -1, 0);
 			PuzzleState shuffledState;
-			
 			shuffledState = initialState.shuffle(20);
-			
+			for(int w = 1; w<5; w++){
 
-			
-			
-			
-			PuzzleState iterState;
-			ArrayList<PuzzleState> nextStates = new ArrayList<PuzzleState>();
-			
-			for(int w=1; w<5; w++){
-			
-				//int w = 4;
+				
+				
+				
+				PuzzleState iterState;
+				ArrayList<PuzzleState> nextStates = new ArrayList<PuzzleState>();
+				
+				
+				//int w = 1;
 				ArrayList<ArrayList<PuzzleState>> agenda = new ArrayList<ArrayList<PuzzleState>>();
 				ArrayList<PuzzleState> extendedList = new ArrayList<PuzzleState>();
 				ArrayList<PuzzleState> initial = new ArrayList<PuzzleState>();
@@ -59,11 +61,18 @@ public class main {
 							}
 						}
 						if(agenda.isEmpty()){
-							failureNumber++;
+							if(w==1)
+								failureNumber1++;
+							else if(w==2)
+								failureNumber2++;
+							else if(w==3)
+								failureNumber3++;
+							else if(w==4)
+								failureNumber4++;
 							failureModeOn = true;
-							break;
+							//break;
 						}
-						if(!inExtList)
+						if(!failureModeOn&&!inExtList)
 						{
 							//System.out.println("ifin içi");
 							ArrayList<PuzzleState> currentPath = agenda.get(0);
@@ -113,7 +122,7 @@ public class main {
 						}
 					}); 
 					
-					for(int i = 0; i < agenda.size(); i ++)
+					//for(int i = 0; i < agenda.size(); i ++)
 
 					while(agenda.size()>w){
 						agenda.remove(w);
@@ -122,16 +131,46 @@ public class main {
 					//for(int i = 0; i < agenda.size(); i ++)
 						//System.out.println( i + ") Second Heuristics: " + agenda.get(i).get(agenda.get(i).size() - 1).getStaticValue() + "\n\n");
 					//System.out.println(agenda.size());
+					if(agenda.isEmpty()){
+						if(w==1)
+							failureNumber1++;
+						else if(w==2)
+							failureNumber2++;
+						else if(w==3)
+							failureNumber3++;
+						else if(w==4)
+							failureNumber4++;
+						failureModeOn = true;
+						//break;
+					}
 						
 				} while(!failureModeOn&&!agenda.get(0).get(agenda.get(0).size()-1).equals(initialState));
-					if(!agenda.isEmpty())
-						successNumber++;
+					if(!agenda.isEmpty()){
+						if(w==1)
+							successNumber1++;
+						else if(w==2)
+							successNumber2++;
+						else if(w==3)
+							successNumber3++;
+						else if(w==4)
+							successNumber4++;
+					}
+
 			}
-			//for(int i = 0; i<agenda.get(0).size(); i++)
-				//System.out.println(agenda.get(0).get(i).toString()+"*****\n");
-			//System.out.println("Path size: "+agenda.get(0).size());
-			System.out.println("Successes: " + successNumber);
-			System.out.println("Failures: " + failureNumber);
 		}
+		
+		System.out.println("Successes with w1:  is " + successNumber1);
+		System.out.println("Failures with w1: is " + failureNumber1);
+		System.out.println("Successes with w2:  is " + successNumber2);
+		System.out.println("Failures with w2: is " + failureNumber2);
+		System.out.println("Successes with w3: is " + successNumber3);
+		System.out.println("Failures with w3:  is " + failureNumber3);
+		System.out.println("Successes with w4: is " + successNumber4);
+		System.out.println("Failures with w4:  is " + failureNumber4);
+		//for(int i = 0; i<agenda.get(0).size(); i++)
+			//System.out.println(agenda.get(0).get(i).toString()+"*****\n");
+		//System.out.println("Path size: "+agenda.get(0).size());
+		
+		
 	}
 }
