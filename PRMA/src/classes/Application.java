@@ -74,7 +74,7 @@ public class Application {
 						realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
 					}
 					realTaskTime /= iteration;
-					Task taskToAdd = new Task(currentTask.getTaskDuration(), currentTask.getTaskStart(), currentTask.getBelongsTo());
+					Task taskToAdd = new Task(currentTask.getTaskDuration(), now, currentTask.getBelongsTo());
 					taskToAdd.setTaskStart(now);
 					for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
 						Employee currentEmployee = bestMatchList.get(i).employee;

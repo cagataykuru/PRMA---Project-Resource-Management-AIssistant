@@ -17,12 +17,40 @@ public class main {
 		int failureNumber3 = 0;
 		int successNumber4 = 0;
 		int failureNumber4 = 0;
-		for(int y = 0; y<1000; y++){
+		
+		ArrayList<PuzzleState> puzzleStates = new ArrayList<PuzzleState>();
+		PuzzleState initialState = new PuzzleState(1, 2, 3, 4, 5, 6, 7, 8, -1, 0);
+		
+		
+		for(int n = 0; n<1000; n++){
+			int iterator = 1;
+			PuzzleState stateToAdd = initialState;
+			boolean enterTheLoop = true;
+
+			
+			while(enterTheLoop){
+				stateToAdd = stateToAdd.shuffle(iterator);
+				iterator++;
+				enterTheLoop = false;
+				for(int i = 0;i<puzzleStates.size();i++){
+					if(stateToAdd.equals(puzzleStates.get(i))){
+						enterTheLoop = true;
+						i=puzzleStates.size();
+					}
+				}
+				//System.out.println("here");
+			}
+			puzzleStates.add(stateToAdd);
+			//System.out.println(stateToAdd.toString());
+		}
+		
+ 		for(int y = 0; y<1000; y++){
 			System.out.println(y);
 			
-			PuzzleState initialState = new PuzzleState(1, 2, 3, 4, 5, 6, 7, 8, -1, 0);
+			
 			PuzzleState shuffledState;
-			shuffledState = initialState.shuffle(20);
+			//shuffledState = initialState.shuffle(20);
+			shuffledState = puzzleStates.get(y);
 			for(int w = 1; w<5; w++){
 
 				
@@ -61,14 +89,14 @@ public class main {
 							}
 						}
 						if(agenda.isEmpty()){
-							if(w==1)
+							/*if(w==1)
 								failureNumber1++;
 							else if(w==2)
 								failureNumber2++;
 							else if(w==3)
 								failureNumber3++;
 							else if(w==4)
-								failureNumber4++;
+								failureNumber4++;*/
 							failureModeOn = true;
 							//break;
 						}
@@ -171,6 +199,6 @@ public class main {
 			//System.out.println(agenda.get(0).get(i).toString()+"*****\n");
 		//System.out.println("Path size: "+agenda.get(0).size());
 		
-		
+		System.out.println(puzzleStates.size());
 	}
 }

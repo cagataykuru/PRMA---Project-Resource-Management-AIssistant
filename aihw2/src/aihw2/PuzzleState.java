@@ -43,8 +43,9 @@ public class PuzzleState {
 			PuzzleState newState2 = new PuzzleState(stateInfo.get(1).get(0), stateInfo.get(0).get(1), stateInfo.get(0).get(2), 
 					   stateInfo.get(0).get(0), stateInfo.get(1).get(1), stateInfo.get(1).get(2), 
 					   stateInfo.get(2).get(0), stateInfo.get(2).get(1), stateInfo.get(2).get(2), depth + 1);
-			nextStates.add(newState1);
+			
 			nextStates.add(newState2);
+			nextStates.add(newState1);
 		}else if(stateInfo.get(0).get(1)==-1){//If upper middle
 			PuzzleState newState1 = new PuzzleState(stateInfo.get(0).get(1), stateInfo.get(0).get(0), stateInfo.get(0).get(2), 
 					   stateInfo.get(1).get(0), stateInfo.get(1).get(1), stateInfo.get(1).get(2), 
