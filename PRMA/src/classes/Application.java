@@ -33,56 +33,82 @@ public class Application {
 		Date now = new Date();
 		try {
 			now = format.parse(args[0]);//Burada parametre alacak date'i yukarıdaki formattaki gibi.
-		} catch (ParseException e) {
+		} catch (ParseException e) {//Şu anki tarih girilecek
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);
+		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);//Sorts tasks
+		ArrayList<Task> assignedTasks = new ArrayList<Task>();
 		int treshHold = 10;
 		int iteration = 0;
 		
 		boolean continued = true;
-		
-		while(!sortedTasks.isEmpty()){//Scheduling starts here
-			if(iteration<treshHold){//Without workhaolism
-				TaskSortingObject currentSortingObject = sortedTasks.get(0);
-				Task currentTask = currentSortingObject.task;//Get the first one from the list
+		while(continued){
+			while(!sortedTasks.isEmpty()){//Scheduling starts here
+				if(iteration<treshHold){//Without workhaolism
+					TaskSortingObject currentSortingObject = sortedTasks.get(0);
+					Task currentTask = currentSortingObject.task;//Get the first one from the list
+						
+					sortedTasks.remove(0);//Delete first one
 					
-				sortedTasks.remove(0);//Delete first one
-				
-				ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
-				
-				if(bestMatchList.size()==0){//Time'ı arttırma kısmı
+					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
-					now = getNextWorkHour(now);
-					    sortedTasks.add(0, currentSortingObject);
-					    continue;
+					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
 						
-				}else{
-					//Burdan sonrasına devam edilecek
-						
-						
-					double realTaskTime = 0;
-					for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
-						Employee currentEmployee = bestMatchList.get(0).employee;
-						double abilityUnder = 0;
-						for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-							abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+						now = getNextWorkHour(now);
+						    sortedTasks.add(0, currentSortingObject);
+						    continue;
+							
+					}else{
+							
+						double realTaskTime = 0;
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+							Employee currentEmployee = bestMatchList.get(0).employee;
+							double abilityUnder = 0;
+							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
+								abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+							}
+							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
+							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
 						}
-						int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
-						realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
+						realTaskTime /= iteration;
+						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
+						//taskToAdd.setTaskStart(now);
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+							Employee currentEmployee = bestMatchList.get(i).employee;
+							//int taskTime = (int) Math.ceil(realTaskTime);
+							currentEmployee.addTask(taskToAdd);						
+						}
+						currentTask.setTaskStart(now);
+						currentTask.setTaskDuration(realTaskTime);
+						assignedTasks.add(currentTask);
 					}
-					realTaskTime /= iteration;
-					Task taskToAdd = new Task(currentTask.getTaskDuration(), now, currentTask.getBelongsTo());
-					taskToAdd.setTaskStart(now);
-					for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
-						Employee currentEmployee = bestMatchList.get(i).employee;
-						int taskTime = (int) Math.ceil(realTaskTime);
-						
-						currentEmployee.addTask(taskToAdd);						}
+				}else{//With workhaolism
+					
+					
 				}
 			}
+			//Burada tüm projeler zamanında bitiyor mu onu kontrol et
+			continued = false;
+			for(int i=0; i<projects.size();i++){
+				Project currentProject = projects.get(i);
+				boolean projectCompletedInTime = false;
+				for(int k=0;k<currentProject.getTasks().size();k++){
+					boolean taskCompletedInTime = false;
+					for(int e = 0; e<assignedTasks.size(); e++){
+						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName())
+							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())<=0)
+								taskCompletedInTime = true;
+					}
+					projectCompletedInTime = taskCompletedInTime;
+				}
+				if(!projectCompletedInTime){
+					continued = true;
+					i = projects.size();
+				}
+			}
+			//Tüm projelerin zamanında bitişi kontrolü sonu
 		}
 	}
 		
