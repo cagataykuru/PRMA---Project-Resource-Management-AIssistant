@@ -40,8 +40,12 @@ public class Schedule {
 	}
 	public boolean isFullAt(Date check){//surayı değiştiricez
 		for(int i=0; i<mySchedule.size();i++){
-			if(mySchedule.get(i).getTaskStart().compareTo(check)==0)
+			if(mySchedule.get(i).getTaskStart().compareTo(check) == 0)
 				return true;
+			else if(mySchedule.get(i).getTaskStart().compareTo(check) == -1){
+				if(mySchedule.get(i).getTaskEndDate().compareTo(check)>0&&mySchedule.get(i).getTaskStart().compareTo(check)<0)
+					return true;
+			}
 		}
 		return false;
 	}

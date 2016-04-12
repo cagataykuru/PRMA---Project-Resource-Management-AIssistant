@@ -103,17 +103,37 @@ public class Task {
 			for(int i = 0; i<this.taskDuration; i++){
 				taskEnding = getNextWorkHour(taskEnding);
 			}
+		}else{
+			for(int i = 0; i<this.taskDuration; i++){
+				taskEnding = getNextHour(taskEnding);
+			}
 		}
 		return taskEnding;
 	}
 	public static Date getNextWorkHour(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar
 		cal.setTime(now);
-		if(now.getDay()==5){//Jump to monday
-		    cal.add(Calendar.DAY_OF_MONTH, 2); // jumps to monday
+		if(now.getDay()==5&&now.getHours()>=17){//Jump to monday
+		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday
 		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
 		    return cal.getTime(); //now
 		}else if(now.getHours()>=17){//Jump to next day
+		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+		    return cal.getTime(); //now
+		}else{//Add one hour
+		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+		    return cal.getTime(); //now++
+		}
+	}
+	public static Date getNextHour(Date now){
+		Calendar cal = Calendar.getInstance(); // creates calendar
+		cal.setTime(now);
+		if(now.getDay()==5){//Jump to monday
+		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday
+		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+		    return cal.getTime(); //now
+		}else if(now.getHours()>=20){//Jump to next day
 		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
 		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
 		    return cal.getTime(); //now

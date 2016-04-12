@@ -20,10 +20,10 @@ public class Application {
 	public static void main(String [] args){
 		System.out.println("hello world");
 		//Buraya xmlden okumalar gelcek
-		
+		ArrayList<Task> tasks = new ArrayList<Task>();
 		//Xml okumalar sonu
 		
-		ArrayList<Task> tasks = new ArrayList<Task>();
+		
 		
 		for(int i=0;i<projects.size(); i++){
 			tasks.addAll(projects.get(i).getTasks());
@@ -45,6 +45,7 @@ public class Application {
 		
 		boolean continued = true;
 		while(continued){
+			iteration++;
 			while(!sortedTasks.isEmpty()){//Scheduling starts here
 				if(iteration<treshHold){//Without workhaolism
 					TaskSortingObject currentSortingObject = sortedTasks.get(0);
@@ -70,23 +71,61 @@ public class Application {
 								abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 							}
 							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
-							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
+							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(10.0/currentEmployee.getDepreciationLevel());
 						}
 						realTaskTime /= iteration;
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						//taskToAdd.setTaskStart(now);
 						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
-							Employee currentEmployee = bestMatchList.get(i).employee;
+							Employee currentEmployee = bestMatchList.get(0).employee;
+							bestMatchList.remove(0);
 							//int taskTime = (int) Math.ceil(realTaskTime);
-							currentEmployee.addTask(taskToAdd);						
+							currentEmployee.addTask(taskToAdd);	
+							
+						}
+						//currentTask.setTaskStart(now);
+						//currentTask.setTaskDuration(realTaskTime);
+						assignedTasks.add(currentTask);
+					}
+				}else{//With workhaolism
+					TaskSortingObject currentSortingObject = sortedTasks.get(0);
+					Task currentTask = currentSortingObject.task;//Get the first one from the list
+						
+					sortedTasks.remove(0);//Delete first one
+					
+					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
+					
+					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
+						
+						now = getNextWorkHour(now);
+						sortedTasks.add(0, currentSortingObject);
+						continue;
+							
+					}else{
+						double realTaskTime = 0;
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+							Employee currentEmployee = bestMatchList.get(0).employee;
+							double abilityUnder = 0;
+							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
+								abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+							}
+							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
+							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(10.0/currentEmployee.getDepreciationLevel());
+						}
+						realTaskTime /= iteration;
+						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
+						//taskToAdd.setTaskStart(now);
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
+							Employee currentEmployee = bestMatchList.get(0).employee;
+							bestMatchList.remove(0);
+							//int taskTime = (int) Math.ceil(realTaskTime);
+							currentEmployee.addTask(taskToAdd);	
+							
 						}
 						currentTask.setTaskStart(now);
 						currentTask.setTaskDuration(realTaskTime);
 						assignedTasks.add(currentTask);
 					}
-				}else{//With workhaolism
-					
-					
 				}
 			}
 			//Burada tüm projeler zamanında bitiyor mu onu kontrol et
@@ -95,13 +134,14 @@ public class Application {
 				Project currentProject = projects.get(i);
 				boolean projectCompletedInTime = false;
 				for(int k=0;k<currentProject.getTasks().size();k++){
-					boolean taskCompletedInTime = false;
 					for(int e = 0; e<assignedTasks.size(); e++){
 						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName())
-							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())<=0)
-								taskCompletedInTime = true;
+							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())>0){
+								projectCompletedInTime = false;
+								e=assignedTasks.size();
+								k = currentProject.getTasks().size();
+							}
 					}
-					projectCompletedInTime = taskCompletedInTime;
 				}
 				if(!projectCompletedInTime){
 					continued = true;
@@ -151,7 +191,7 @@ public class Application {
 					abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 				}
 				
-				double employeeRealTaskTime = (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
+				double employeeRealTaskTime = (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(10.0/currentEmployee.getDepreciationLevel());
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;
@@ -164,7 +204,7 @@ public class Application {
 	        @Override
 	        public int compare(EmployeeSortingObject first, EmployeeSortingObject second)
 	        {
-	            return  Double.compare(first.score, second.score);
+	            return  Double.compare(second.score, first.score);
 	        }
 	    });
 		return queue;
@@ -183,7 +223,7 @@ public class Application {
 					abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 				}
 				
-				double employeeRealTaskTime = (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(currentEmployee.getDepreciationLevel()/10.0);
+				double employeeRealTaskTime = (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(10.0/currentEmployee.getDepreciationLevel());
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;
@@ -196,7 +236,7 @@ public class Application {
 	        @Override
 	        public int compare(EmployeeSortingObject first, EmployeeSortingObject second)
 	        {
-	            return  Double.compare(first.score, second.score);
+	            return  Double.compare(second.score, first.score);
 	        }
 	    });
 		return queue;
@@ -204,11 +244,27 @@ public class Application {
 	public static Date getNextWorkHour(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar
 		cal.setTime(now);
-		if(now.getDay()==5){//Jump to monday
-		    cal.add(Calendar.DAY_OF_MONTH, 2); // jumps to monday
+		if(now.getDay()==5&&now.getHours()>=17){//Jump to monday
+		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday
 		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
 		    return cal.getTime(); //now
 		}else if(now.getHours()>=17){//Jump to next day
+		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+		    return cal.getTime(); //now
+		}else{//Add one hour
+		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+		    return cal.getTime(); //now++
+		}
+	}
+	public static Date getNextHour(Date now){
+		Calendar cal = Calendar.getInstance(); // creates calendar
+		cal.setTime(now);
+		if(now.getDay()==5){//Jump to monday
+		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday
+		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
+		    return cal.getTime(); //now
+		}else if(now.getHours()>=20){//Jump to next day
 		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
 		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
 		    return cal.getTime(); //now
