@@ -92,12 +92,15 @@ public class Application {
 					Task currentTask = currentSortingObject.task;//Get the first one from the list
 						
 					sortedTasks.remove(0);//Delete first one
-					
-					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
+					ArrayList<EmployeeSortingObject> bestMatchList;
+					if(workhaolismTime(now))
+						bestMatchList = findBestMatchesWithWorkhaolism(0, currentTask, now);//Get best match list with respect to current task
+					else
+						bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
 					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
 						
-						now = getNextWorkHour(now);
+						now = getNextHour(now);
 						sortedTasks.add(0, currentSortingObject);
 						continue;
 							
@@ -273,5 +276,12 @@ public class Application {
 		    return cal.getTime(); //now++
 		}
 	}
-
+	public static boolean workhaolismTime(Date now){
+		Calendar cal = Calendar.getInstance(); // creates calendar
+		cal.setTime(now);
+		if(now.getHours()>=17){
+		    return true;
+		}else
+			return false;
+	}
 }
