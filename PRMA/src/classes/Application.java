@@ -23,11 +23,11 @@ public class Application {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		//Xml okumalar sonu
 		
-		
-		
 		for(int i=0;i<projects.size(); i++){
 			tasks.addAll(projects.get(i).getTasks());
 		}
+		
+		
 		
 		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd GGG hh:mm aaa", Locale.ENGLISH);
 		Date now = new Date();
@@ -65,7 +65,7 @@ public class Application {
 							
 						double realTaskTime = 0;
 						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){
-							Employee currentEmployee = bestMatchList.get(0).employee;
+							Employee currentEmployee = bestMatchList.get(i).employee;
 							double abilityUnder = 0;
 							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 								abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
@@ -80,7 +80,14 @@ public class Application {
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 							//int taskTime = (int) Math.ceil(realTaskTime);
-							currentEmployee.addTask(taskToAdd);	
+							int index = -1;
+							for(int j = 0;j<employees.size();j++){
+								if(employees.get(j).getId() == currentEmployee.getId()){
+									index = j;
+									j = employees.size();
+								}
+							}
+							employees.get(index).addTask(taskToAdd);	
 							
 						}
 						//currentTask.setTaskStart(now);
@@ -122,7 +129,14 @@ public class Application {
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 							//int taskTime = (int) Math.ceil(realTaskTime);
-							currentEmployee.addTask(taskToAdd);	
+							int index = -1;
+							for(int j = 0;j<employees.size();j++){
+								if(employees.get(j).getId() == currentEmployee.getId()){
+									index = j;
+									j = employees.size();
+								}
+							}
+							employees.get(index).addTask(taskToAdd);	
 							
 						}
 						currentTask.setTaskStart(now);
@@ -138,17 +152,26 @@ public class Application {
 				boolean projectCompletedInTime = false;
 				for(int k=0;k<currentProject.getTasks().size();k++){
 					for(int e = 0; e<assignedTasks.size(); e++){
-						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName())
+						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName()){
 							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())>0){
 								projectCompletedInTime = false;
-								e=assignedTasks.size();
+								e = assignedTasks.size();
 								k = currentProject.getTasks().size();
 							}
+						}
 					}
 				}
-				if(!projectCompletedInTime){
+				if(!projectCompletedInTime){//Tüm projeler bitmiyorsa
 					continued = true;
 					i = projects.size();
+					for(int y=0; y<assignedTasks.size();y++){//Atanmış tüm taskları emplooyelerin schedulelarından sil
+						for(int e = 0; e<employees.size();e++){
+							if(employees.get(e).mySchedule.get(employees.get(e).mySchedule.size()-1).getTaskName().compareTo(assignedTasks.get(y).getTaskName())==0){
+								employees.get(e).removeTask();
+								assignedTasks.remove(assignedTasks.size()-1);
+							}
+						}
+					}
 				}
 			}
 			//Tüm projelerin zamanında bitişi kontrolü sonu
@@ -188,7 +211,7 @@ public class Application {
 		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
-			if(!currentEmployee.getSchedule().isFullAt(inputTime)){
+			if(!currentEmployee.isFullAt(inputTime)){
 				int abilityUnder = 0;
 				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 					abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
@@ -220,7 +243,7 @@ public class Application {
 		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
-			if(currentEmployee.isWorkaholism()&&!currentEmployee.getSchedule().isFullAt(inputTime)){
+			if(currentEmployee.isWorkaholism()&&!currentEmployee.isFullAt(inputTime)){
 				int abilityUnder = 0;
 				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 					abilityUnder += currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);

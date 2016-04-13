@@ -8,7 +8,20 @@ public class PuzzleState {
 	public ArrayList<PuzzleState> children;
 	public int depth;
 	public int heuristicValue;
+	public ArrayList<String> strings;
 	public PuzzleState(int first, int second, int third, int fourth, int fifth, int sixth, int seventh, int eighth, int ninth, int depthParam){
+		strings = new ArrayList<String>();
+		
+		strings.add(first+"");
+		strings.add(second+"");
+		strings.add(third+"");
+		strings.add(fourth+"");
+		strings.add(fifth+"");
+		strings.add(sixth+"");
+		strings.add(seventh+"");
+		strings.add(eighth+"");
+		strings.add(ninth+"");
+		
 		stateInfo = new ArrayList<ArrayList<Integer>>();
 		
 		ArrayList<Integer> firstRow = new ArrayList<Integer>();
@@ -190,7 +203,8 @@ public class PuzzleState {
 		String str;
 		str = stateInfo.get(0).get(0) + "\t" + stateInfo.get(0).get(1) + "\t" + stateInfo.get(0).get(2) + "\n"
 			+ stateInfo.get(1).get(0) + "\t" + stateInfo.get(1).get(1) + "\t" + stateInfo.get(1).get(2) + "\n"
-			+ stateInfo.get(2).get(0) + "\t" + stateInfo.get(2).get(1) + "\t" + stateInfo.get(2).get(2) + "\n";
+			+ stateInfo.get(2).get(0) + "\t" + stateInfo.get(2).get(1) + "\t" + stateInfo.get(2).get(2) + "\n"
+			+ strings.get(0)+" "+strings.get(1)+" "+strings.get(2)+" "+strings.get(3)+" "+strings.get(4)+" "+strings.get(5)+" "+strings.get(6)+" "+strings.get(7)+" "+strings.get(8);
 		return str;
 	}
 	public boolean equals(PuzzleState p){

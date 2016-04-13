@@ -6,10 +6,23 @@ import java.util.Comparator;
 
 public class main {
 	public static void main(String [] args){
+		ArrayList <PuzzleState> denemeList = new ArrayList<PuzzleState>();
+		PuzzleState initialState = new PuzzleState(1, 2, 3, 4, 5, 6, 7, 8, -1, 0);
+		denemeList.add(initialState);
+		PuzzleState newState;
+		newState = initialState;
+		initialState = initialState.shuffle(1);
+		
+		
+		
+		
+		System.out.println(initialState);
+		System.out.println(newState);
+		System.out.println(denemeList.get(0));
 		
 		//ArrayList<Boolean> successList = new ArrayList<Boolean>();
 		
-		int successNumber1 = 0;
+		/*int successNumber1 = 0;
 		int failureNumber1 = 0;
 		int successNumber2 = 0;
 		int failureNumber2 = 0;
@@ -89,14 +102,7 @@ public class main {
 							}
 						}
 						if(agenda.isEmpty()){
-							/*if(w==1)
-								failureNumber1++;
-							else if(w==2)
-								failureNumber2++;
-							else if(w==3)
-								failureNumber3++;
-							else if(w==4)
-								failureNumber4++;*/
+
 							failureModeOn = true;
 							//break;
 						}
@@ -199,6 +205,6 @@ public class main {
 			//System.out.println(agenda.get(0).get(i).toString()+"*****\n");
 		//System.out.println("Path size: "+agenda.get(0).size());
 		
-		System.out.println(puzzleStates.size());
+		System.out.println(puzzleStates.size());*/
 	}
 }

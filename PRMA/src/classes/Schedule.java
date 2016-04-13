@@ -16,14 +16,18 @@ public class Schedule {
 	
 	public boolean addTask(Task newTask){
 		mySchedule.add(newTask);
-		Collections.sort(mySchedule, new Comparator<Task>() {
+		/*Collections.sort(mySchedule, new Comparator<Task>() {
 	        @Override
 	        public int compare(Task first, Task second)
 	        {
 	            return  first.getTaskStart().compareTo(second.getTaskStart());
 	        }
-	    });
+	    });*///Çünkü zaten en son eklenen task en sonda olacak listenin
 		return true;
+	}
+	
+	public void removeTask(){
+		mySchedule.remove(mySchedule.size()-1);
 	}
 	
 	public Task iterateOverSchedule(){
