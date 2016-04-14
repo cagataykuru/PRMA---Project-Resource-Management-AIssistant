@@ -1,12 +1,123 @@
 package aihw2;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class main {
 	public static void main(String [] args){
-		ArrayList <PuzzleState> denemeList = new ArrayList<PuzzleState>();
+		
+		//ByteArrayOutputStream bos = new ByteArrayOutputStrea
+		
+		
+		ArrayList<String> cityNames = new ArrayList<String>();
+		
+		cityNames.add("Konya"); 
+		cityNames.add("Adıyaman"); 
+		cityNames.add("Afyon"); 
+		cityNames.add("Ağrı"); 
+		cityNames.add("Amasya"); 
+		cityNames.add("Ankara"); 
+		cityNames.add("Antalya"); 
+		cityNames.add("Artvin"); 
+		cityNames.add("Aydın"); 
+		cityNames.add("Balıkesir"); 
+		cityNames.add("Bilecik"); 
+		cityNames.add("Bingöl"); 
+		cityNames.add("Bitlis"); 
+		cityNames.add("Bolu"); 
+		cityNames.add("Burdur"); 
+		cityNames.add("Bursa"); 
+		cityNames.add("Çanakkale"); 
+		cityNames.add("Çankırı"); 
+		cityNames.add("Çorum"); 
+		cityNames.add("Denizli"); 
+		cityNames.add("Diyarbakır"); 
+		cityNames.add("Edirne"); 
+		cityNames.add("Elazığ"); 
+		cityNames.add("Erzincan"); 
+		cityNames.add("Erzurum"); 
+		cityNames.add("Eskişehir"); 
+		cityNames.add("Gaziantep"); 
+		cityNames.add("Giresun"); 
+		cityNames.add("Gümüşhane"); 
+		cityNames.add("Hakkari"); 
+		cityNames.add("Hatay"); 
+		cityNames.add("Isparta"); 
+		cityNames.add("Mersin"); 
+		cityNames.add("İstanbul"); 
+		cityNames.add("İzmir"); 
+		cityNames.add("Kars"); 
+		cityNames.add("Kastamonu"); 
+		cityNames.add("Kayseri"); 
+		cityNames.add("Kırklareli"); 
+		cityNames.add("Kırşehir"); 
+		cityNames.add("Kocaeli"); 
+		cityNames.add("Adana"); 
+		cityNames.add("Kütahya"); 
+		cityNames.add("Malatya"); 
+		cityNames.add("Manisa"); 
+		cityNames.add("Kahramanmaraş"); 
+		cityNames.add("Mardin"); 
+		cityNames.add("Muğla"); 
+		cityNames.add("Muş"); 
+		cityNames.add("Nevşehir"); 
+		cityNames.add("Niğde"); 
+		cityNames.add("Ordu"); 
+		cityNames.add("Rize"); 
+		cityNames.add("Sakarya"); 
+		cityNames.add("Samsun"); 
+		cityNames.add("Siirt"); 
+		cityNames.add("Sinop"); 
+		cityNames.add("Sivas"); 
+		cityNames.add("Tekirdağ"); 
+		cityNames.add("Tokat"); 
+		cityNames.add("Trabzon"); 
+		cityNames.add("Tunceli"); 
+		cityNames.add("Şanlıurfa"); 
+		cityNames.add("Uşak"); 
+		cityNames.add("Van"); 
+		cityNames.add("Yozgat"); 
+		cityNames.add("Zonguldak"); 
+		cityNames.add("Aksaray"); 
+		cityNames.add("Bayburt"); 
+		cityNames.add("Karaman"); 
+		cityNames.add("Kırıkkale"); 
+		cityNames.add("Batman"); 
+		cityNames.add("Şırnak"); 
+		cityNames.add("Bartın"); 
+		cityNames.add("Ardahan"); 
+		cityNames.add("Iğdır"); 
+		cityNames.add("Yalova"); 
+		cityNames.add("Karabük"); 
+		cityNames.add("Kilis"); 
+		cityNames.add("Osmaniye"); 
+		cityNames.add("Düzce");
+		
+		//Burada cityleri sırayla ekle cityNames arrayine
+		
+		ArrayList<String> pathCities = new ArrayList<String>();
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		for(int i=0;i<82;i++){
+			//String readValue = scanner.nextLine();
+			//readValue = readValue.trim();
+			//int readValueInt = Integer.parseInt(readValue);
+			int readValueInt = scanner.nextInt();
+			readValueInt--;
+			System.out.println(readValueInt);
+			pathCities.add(cityNames.get(readValueInt));
+		}
+		
+		for(int i = 0;i<pathCities.size(); i++){
+			System.out.println(pathCities.get(i));
+		}
+		
+		/*ArrayList <PuzzleState> denemeList = new ArrayList<PuzzleState>();
 		PuzzleState initialState = new PuzzleState(1, 2, 3, 4, 5, 6, 7, 8, -1, 0);
 		denemeList.add(initialState);
 		PuzzleState newState;
@@ -18,7 +129,7 @@ public class main {
 		
 		System.out.println(initialState);
 		System.out.println(newState);
-		System.out.println(denemeList.get(0));
+		System.out.println(denemeList.get(0));*/
 		
 		//ArrayList<Boolean> successList = new ArrayList<Boolean>();
 		

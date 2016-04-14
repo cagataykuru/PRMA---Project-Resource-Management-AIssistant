@@ -72,6 +72,8 @@ public class Employee {
 	
 	public void changeDepreciationLevel(double amount){
 		DepreciationLevel += amount;
+		if(DepreciationLevel<0)
+			DepreciationLevel = 0;
 	}
 	
 	public double getDepreciationLevel(){
@@ -99,6 +101,10 @@ public class Employee {
 		for(int i=0;i<abilities.size();i++){
 			this.decreaseAbility(abilities.get(i).name, task.getTaskDuration()/100000);//Bu katsayı değişebilir
 		}
+		Date taskEnd = task.getTaskEndDate();
+		int depreciationDecrease = taskEnd.getHours()%17;
+		
+		this.changeDepreciationLevel(17-depreciationDecrease);
 		//return mySchedule.addTask(task);
 		mySchedule.add(task);
 	}
@@ -111,6 +117,10 @@ public class Employee {
 		for(int i=0;i<abilities.size();i++){
 			this.increaseAbility(abilities.get(i).name, mySchedule.get(mySchedule.size()-1).getTaskDuration()/100000);//Bu katsayı değişebilir
 		}
+		Date taskEnd = mySchedule.get(mySchedule.size()-1).getTaskEndDate();
+		int depreciationDecrease = taskEnd.getHours()%17;
+		
+		this.changeDepreciationLevel(17-depreciationDecrease);
 	}
 	/*public Task iterateOverSchedule(){
 		return mySchedule.iterateOverSchedule();
