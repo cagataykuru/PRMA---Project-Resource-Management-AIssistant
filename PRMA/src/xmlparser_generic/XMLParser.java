@@ -53,6 +53,7 @@ public class XMLParser {
 			Document doc = docBuilder.newDocument();
 			
 			//initiate task attributes.
+			Element taskName = doc.createElement("name");
 			Element taskDuration = doc.createElement("duration");
 			Element taskStartDate = doc.createElement("startDate");
 			Element abilitiesNeeded = doc.createElement("abilities");
@@ -72,6 +73,9 @@ public class XMLParser {
 			for(Task eachTask: allTasks){
 				//task elements
 				Element task = doc.createElement("task");
+				
+				taskDuration.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskName())));
+				task.appendChild(taskName);
 				
 				taskDuration.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskDuration())));
 				task.appendChild(taskDuration);
@@ -96,7 +100,7 @@ public class XMLParser {
 			projectPriority.appendChild(doc.createTextNode(String.valueOf(prj.getPriority())));
 			project.appendChild(projectPriority);
 			
-			Element projectStartDate = doc.createElement("startDate");
+			Element projectStartDate = doc.createElement("projectStartDate");
 			projectStartDate.appendChild(doc.createTextNode(formatter.format(prj.getProjectStart())));
 			project.appendChild(projectStartDate);
 			
