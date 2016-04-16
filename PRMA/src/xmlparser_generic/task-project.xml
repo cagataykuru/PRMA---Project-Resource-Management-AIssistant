@@ -1,0 +1,184 @@
+<project id = 1>
+	<tasks>
+		<task id = 1>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 2>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 3>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>project önceliği</priority>
+	<projectStartDate>başlangıç tarihi projenin</projectStartDate>
+	<dueDate>project duedate</dueDate>
+</project>
+<project id = 2>
+	<tasks>
+		<task id = 1>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 2>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 3>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>project önceliği</priority>
+	<projectStartDate>başlangıç tarihi projenin</projectStartDate>
+	<dueDate>project duedate</dueDate>
+</project>
+<project id = 3>
+	<tasks>
+		<task id = 1>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 2>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 3>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>project önceliği</priority>
+	<projectStartDate>başlangıç tarihi projenin</projectStartDate>
+	<dueDate>project duedate</dueDate>
+</project>
+<project id = 4>
+	<tasks>
+		<task id = 1>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 2>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+		<task id = 3>
+			<name>task adı, yeni eklendi</name>
+			<duration>buraya duration gelir</duration>
+			<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
+			<startDate>başlama tarihi</startDate>
+			<abilities>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+				<ability>ability ismi</ability>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>project önceliği</priority>
+	<projectStartDate>başlangıç tarihi projenin</projectStartDate>
+	<dueDate>project duedate</dueDate>
+</project>
