@@ -1,0 +1,2421 @@
+<project id=1>
+	<tasks>
+		<task id=1>
+			<name>Task 1</name>
+			<duration>8.374708</duration>
+			<knowledge>2.5375404</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>4</B>
+				<C>2</C>
+				<D>3</D>
+				<E>9</E>
+				<F>3</F>
+				<G>10</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=2>
+			<name>Task 2</name>
+			<duration>6.785947</duration>
+			<knowledge>4.246955</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>10</B>
+				<C>6</C>
+				<D>2</D>
+				<E>2</E>
+				<F>1</F>
+				<G>3</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=3>
+			<name>Task 3</name>
+			<duration>13.991234</duration>
+			<knowledge>2.8389559</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>0</B>
+				<C>3</C>
+				<D>7</D>
+				<E>2</E>
+				<F>8</F>
+				<G>9</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=4>
+			<name>Task 4</name>
+			<duration>12.576504</duration>
+			<knowledge>4.4511557</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>7</B>
+				<C>0</C>
+				<D>10</D>
+				<E>10</E>
+				<F>6</F>
+				<G>10</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=5>
+			<name>Task 5</name>
+			<duration>6.9573774</duration>
+			<knowledge>2.6221426</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>1</B>
+				<C>1</C>
+				<D>6</D>
+				<E>8</E>
+				<F>0</F>
+				<G>7</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=6>
+			<name>Task 6</name>
+			<duration>2.1879127</duration>
+			<knowledge>9.396114</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>4</B>
+				<C>3</C>
+				<D>5</D>
+				<E>7</E>
+				<F>2</F>
+				<G>2</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=7>
+			<name>Task 7</name>
+			<duration>5.9167657</duration>
+			<knowledge>1.3781147</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>3</B>
+				<C>5</C>
+				<D>9</D>
+				<E>8</E>
+				<F>9</F>
+				<G>5</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=8>
+			<name>Task 8</name>
+			<duration>3.5836573</duration>
+			<knowledge>7.04877</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>2</B>
+				<C>2</C>
+				<D>4</D>
+				<E>9</E>
+				<F>8</F>
+				<G>10</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=9>
+			<name>Task 9</name>
+			<duration>10.036799</duration>
+			<knowledge>4.994835</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>7</B>
+				<C>1</C>
+				<D>5</D>
+				<E>6</E>
+				<F>0</F>
+				<G>0</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=10>
+			<name>Task 10</name>
+			<duration>13.028797</duration>
+			<knowledge>9.568867</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>10</B>
+				<C>6</C>
+				<D>1</D>
+				<E>7</E>
+				<F>1</F>
+				<G>6</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=11>
+			<name>Task 11</name>
+			<duration>9.309485</duration>
+			<knowledge>5.0869217</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>7</B>
+				<C>1</C>
+				<D>10</D>
+				<E>5</E>
+				<F>7</F>
+				<G>5</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=12>
+			<name>Task 12</name>
+			<duration>14.93216</duration>
+			<knowledge>4.5266423</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>5</B>
+				<C>3</C>
+				<D>4</D>
+				<E>1</E>
+				<F>6</F>
+				<G>9</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=13>
+			<name>Task 13</name>
+			<duration>5.758578</duration>
+			<knowledge>1.8088287</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>3</B>
+				<C>7</C>
+				<D>6</D>
+				<E>7</E>
+				<F>8</F>
+				<G>6</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=14>
+			<name>Task 14</name>
+			<duration>1.3333646</duration>
+			<knowledge>6.061341</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>2</B>
+				<C>5</C>
+				<D>2</D>
+				<E>2</E>
+				<F>7</F>
+				<G>5</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=15>
+			<name>Task 15</name>
+			<duration>7.9225607</duration>
+			<knowledge>5.1734233</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>6</B>
+				<C>5</C>
+				<D>8</D>
+				<E>5</E>
+				<F>0</F>
+				<G>10</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=16>
+			<name>Task 16</name>
+			<duration>11.544581</duration>
+			<knowledge>7.5464883</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>6</B>
+				<C>7</C>
+				<D>1</D>
+				<E>0</E>
+				<F>7</F>
+				<G>0</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=17>
+			<name>Task 17</name>
+			<duration>2.7616582</duration>
+			<knowledge>1.3841267</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>7</B>
+				<C>3</C>
+				<D>8</D>
+				<E>10</E>
+				<F>6</F>
+				<G>3</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=18>
+			<name>Task 18</name>
+			<duration>10.398236</duration>
+			<knowledge>2.4465828</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>0</B>
+				<C>1</C>
+				<D>6</D>
+				<E>1</E>
+				<F>4</F>
+				<G>2</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=19>
+			<name>Task 19</name>
+			<duration>7.8771825</duration>
+			<knowledge>7.253665</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>0</B>
+				<C>8</C>
+				<D>9</D>
+				<E>10</E>
+				<F>9</F>
+				<G>9</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=20>
+			<name>Task 20</name>
+			<duration>12.504211</duration>
+			<knowledge>4.9156566</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>0</B>
+				<C>6</C>
+				<D>9</D>
+				<E>1</E>
+				<F>0</F>
+				<G>7</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=21>
+			<name>Task 21</name>
+			<duration>6.0058546</duration>
+			<knowledge>2.423133</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>3</B>
+				<C>9</C>
+				<D>2</D>
+				<E>7</E>
+				<F>4</F>
+				<G>10</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=22>
+			<name>Task 22</name>
+			<duration>14.991049</duration>
+			<knowledge>4.3997984</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>10</B>
+				<C>9</C>
+				<D>3</D>
+				<E>10</E>
+				<F>2</F>
+				<G>1</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=23>
+			<name>Task 23</name>
+			<duration>1.877334</duration>
+			<knowledge>5.8241596</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>8</B>
+				<C>5</C>
+				<D>7</D>
+				<E>5</E>
+				<F>2</F>
+				<G>4</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=24>
+			<name>Task 24</name>
+			<duration>13.596241</duration>
+			<knowledge>3.3023112</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>4</B>
+				<C>6</C>
+				<D>2</D>
+				<E>7</E>
+				<F>7</F>
+				<G>9</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=25>
+			<name>Task 25</name>
+			<duration>2.2603784</duration>
+			<knowledge>7.922791</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>2</B>
+				<C>3</C>
+				<D>9</D>
+				<E>1</E>
+				<F>7</F>
+				<G>5</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=26>
+			<name>Task 26</name>
+			<duration>7.4759912</duration>
+			<knowledge>6.281742</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>0</B>
+				<C>7</C>
+				<D>0</D>
+				<E>3</E>
+				<F>9</F>
+				<G>4</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=27>
+			<name>Task 27</name>
+			<duration>13.276329</duration>
+			<knowledge>5.540282</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>8</B>
+				<C>1</C>
+				<D>9</D>
+				<E>9</E>
+				<F>7</F>
+				<G>5</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=28>
+			<name>Task 28</name>
+			<duration>8.613284</duration>
+			<knowledge>7.2499113</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>6</B>
+				<C>9</C>
+				<D>4</D>
+				<E>2</E>
+				<F>7</F>
+				<G>8</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=29>
+			<name>Task 29</name>
+			<duration>8.57583</duration>
+			<knowledge>8.022788</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>10</B>
+				<C>2</C>
+				<D>6</D>
+				<E>7</E>
+				<F>10</F>
+				<G>5</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=30>
+			<name>Task 30</name>
+			<duration>2.697447</duration>
+			<knowledge>4.780594</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>6</B>
+				<C>7</C>
+				<D>7</D>
+				<E>0</E>
+				<F>3</F>
+				<G>6</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=31>
+			<name>Task 31</name>
+			<duration>12.847852</duration>
+			<knowledge>7.8042703</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>1</B>
+				<C>9</C>
+				<D>0</D>
+				<E>8</E>
+				<F>6</F>
+				<G>5</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=32>
+			<name>Task 32</name>
+			<duration>14.404457</duration>
+			<knowledge>9.731267</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>5</B>
+				<C>2</C>
+				<D>3</D>
+				<E>0</E>
+				<F>2</F>
+				<G>4</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=33>
+			<name>Task 33</name>
+			<duration>13.294513</duration>
+			<knowledge>7.8154855</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>9</B>
+				<C>3</C>
+				<D>1</D>
+				<E>4</E>
+				<F>7</F>
+				<G>0</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=34>
+			<name>Task 34</name>
+			<duration>5.295255</duration>
+			<knowledge>7.112817</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>5</B>
+				<C>0</C>
+				<D>7</D>
+				<E>0</E>
+				<F>2</F>
+				<G>1</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=35>
+			<name>Task 35</name>
+			<duration>13.440388</duration>
+			<knowledge>1.0932958</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>0</B>
+				<C>8</C>
+				<D>2</D>
+				<E>9</E>
+				<F>6</F>
+				<G>10</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=36>
+			<name>Task 36</name>
+			<duration>4.33273</duration>
+			<knowledge>9.94825</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>2</B>
+				<C>7</C>
+				<D>8</D>
+				<E>2</E>
+				<F>5</F>
+				<G>8</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=37>
+			<name>Task 37</name>
+			<duration>9.073876</duration>
+			<knowledge>1.4606249</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>9</B>
+				<C>8</C>
+				<D>6</D>
+				<E>8</E>
+				<F>3</F>
+				<G>7</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=38>
+			<name>Task 38</name>
+			<duration>3.1544151</duration>
+			<knowledge>5.264985</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>0</B>
+				<C>6</C>
+				<D>0</D>
+				<E>6</E>
+				<F>4</F>
+				<G>0</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=39>
+			<name>Task 39</name>
+			<duration>10.707602</duration>
+			<knowledge>3.4160545</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>5</B>
+				<C>8</C>
+				<D>3</D>
+				<E>1</E>
+				<F>9</F>
+				<G>4</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=40>
+			<name>Task 40</name>
+			<duration>6.67833</duration>
+			<knowledge>3.8303125</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>1</B>
+				<C>3</C>
+				<D>1</D>
+				<E>8</E>
+				<F>2</F>
+				<G>1</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=41>
+			<name>Task 41</name>
+			<duration>7.0052853</duration>
+			<knowledge>8.796494</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>1</B>
+				<C>6</C>
+				<D>10</D>
+				<E>9</E>
+				<F>0</F>
+				<G>7</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=42>
+			<name>Task 42</name>
+			<duration>9.908849</duration>
+			<knowledge>4.521228</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>7</B>
+				<C>1</C>
+				<D>6</D>
+				<E>4</E>
+				<F>6</F>
+				<G>10</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=43>
+			<name>Task 43</name>
+			<duration>3.8084197</duration>
+			<knowledge>6.275592</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>2</B>
+				<C>6</C>
+				<D>0</D>
+				<E>6</E>
+				<F>1</F>
+				<G>0</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=44>
+			<name>Task 44</name>
+			<duration>12.586542</duration>
+			<knowledge>1.7132986</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>3</B>
+				<C>3</C>
+				<D>10</D>
+				<E>9</E>
+				<F>10</F>
+				<G>10</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=45>
+			<name>Task 45</name>
+			<duration>8.205265</duration>
+			<knowledge>4.0191107</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>0</B>
+				<C>9</C>
+				<D>1</D>
+				<E>4</E>
+				<F>10</F>
+				<G>6</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=46>
+			<name>Task 46</name>
+			<duration>7.823147</duration>
+			<knowledge>1.0648955</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>1</B>
+				<C>9</C>
+				<D>4</D>
+				<E>8</E>
+				<F>10</F>
+				<G>5</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=47>
+			<name>Task 47</name>
+			<duration>12.359216</duration>
+			<knowledge>8.536596</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>0</B>
+				<C>0</C>
+				<D>2</D>
+				<E>9</E>
+				<F>8</F>
+				<G>5</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=48>
+			<name>Task 48</name>
+			<duration>2.4062614</duration>
+			<knowledge>2.9895864</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>0</B>
+				<C>4</C>
+				<D>1</D>
+				<E>9</E>
+				<F>1</F>
+				<G>9</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=49>
+			<name>Task 49</name>
+			<duration>2.2387767</duration>
+			<knowledge>1.9121249</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>8</B>
+				<C>2</C>
+				<D>9</D>
+				<E>4</E>
+				<F>6</F>
+				<G>9</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=50>
+			<name>Task 50</name>
+			<duration>11.967985</duration>
+			<knowledge>1.768248</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>10</B>
+				<C>7</C>
+				<D>6</D>
+				<E>5</E>
+				<F>3</F>
+				<G>9</G>
+				<H>7</H>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>1</priority>
+	<projectStartDate> </projectStartDate>
+	<dueDate> </dueDate>
+</project>
+<project id=2>
+	<tasks>
+		<task id=1>
+			<name>Task 1</name>
+			<duration>8.996672</duration>
+			<knowledge>8.647133</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>4</B>
+				<C>4</C>
+				<D>4</D>
+				<E>8</E>
+				<F>0</F>
+				<G>0</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=2>
+			<name>Task 2</name>
+			<duration>1.7012335</duration>
+			<knowledge>3.1114302</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>4</B>
+				<C>9</C>
+				<D>1</D>
+				<E>8</E>
+				<F>10</F>
+				<G>8</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=3>
+			<name>Task 3</name>
+			<duration>6.403998</duration>
+			<knowledge>6.5525174</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>0</B>
+				<C>2</C>
+				<D>6</D>
+				<E>9</E>
+				<F>10</F>
+				<G>6</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=4>
+			<name>Task 4</name>
+			<duration>1.3842386</duration>
+			<knowledge>4.390416</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>4</B>
+				<C>3</C>
+				<D>10</D>
+				<E>0</E>
+				<F>0</F>
+				<G>0</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=5>
+			<name>Task 5</name>
+			<duration>10.67359</duration>
+			<knowledge>5.7478037</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>8</B>
+				<C>0</C>
+				<D>0</D>
+				<E>3</E>
+				<F>0</F>
+				<G>3</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=6>
+			<name>Task 6</name>
+			<duration>4.8389378</duration>
+			<knowledge>2.2014375</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>1</B>
+				<C>3</C>
+				<D>9</D>
+				<E>9</E>
+				<F>4</F>
+				<G>4</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=7>
+			<name>Task 7</name>
+			<duration>12.265519</duration>
+			<knowledge>4.3908095</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>1</B>
+				<C>3</C>
+				<D>8</D>
+				<E>0</E>
+				<F>1</F>
+				<G>10</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=8>
+			<name>Task 8</name>
+			<duration>4.8975983</duration>
+			<knowledge>1.2915701</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>0</B>
+				<C>6</C>
+				<D>4</D>
+				<E>6</E>
+				<F>3</F>
+				<G>2</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=9>
+			<name>Task 9</name>
+			<duration>12.261063</duration>
+			<knowledge>6.315604</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>8</B>
+				<C>2</C>
+				<D>2</D>
+				<E>8</E>
+				<F>0</F>
+				<G>5</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=10>
+			<name>Task 10</name>
+			<duration>8.872644</duration>
+			<knowledge>4.677447</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>3</B>
+				<C>4</C>
+				<D>1</D>
+				<E>2</E>
+				<F>6</F>
+				<G>6</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=11>
+			<name>Task 11</name>
+			<duration>11.867773</duration>
+			<knowledge>6.109373</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>4</B>
+				<C>2</C>
+				<D>1</D>
+				<E>2</E>
+				<F>1</F>
+				<G>3</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=12>
+			<name>Task 12</name>
+			<duration>4.399769</duration>
+			<knowledge>3.4401836</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>4</B>
+				<C>2</C>
+				<D>3</D>
+				<E>4</E>
+				<F>2</F>
+				<G>3</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=13>
+			<name>Task 13</name>
+			<duration>5.1690984</duration>
+			<knowledge>4.1351986</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>2</B>
+				<C>8</C>
+				<D>5</D>
+				<E>9</E>
+				<F>8</F>
+				<G>8</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=14>
+			<name>Task 14</name>
+			<duration>9.430189</duration>
+			<knowledge>1.7336174</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>9</B>
+				<C>5</C>
+				<D>1</D>
+				<E>5</E>
+				<F>10</F>
+				<G>7</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=15>
+			<name>Task 15</name>
+			<duration>13.79294</duration>
+			<knowledge>2.6985738</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>10</B>
+				<C>5</C>
+				<D>10</D>
+				<E>7</E>
+				<F>3</F>
+				<G>0</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=16>
+			<name>Task 16</name>
+			<duration>4.7541757</duration>
+			<knowledge>1.9404737</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>1</B>
+				<C>2</C>
+				<D>4</D>
+				<E>0</E>
+				<F>6</F>
+				<G>3</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=17>
+			<name>Task 17</name>
+			<duration>13.5239935</duration>
+			<knowledge>5.567155</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>2</B>
+				<C>9</C>
+				<D>7</D>
+				<E>10</E>
+				<F>1</F>
+				<G>0</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=18>
+			<name>Task 18</name>
+			<duration>9.5085945</duration>
+			<knowledge>3.2353933</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>2</B>
+				<C>10</C>
+				<D>1</D>
+				<E>6</E>
+				<F>3</F>
+				<G>4</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=19>
+			<name>Task 19</name>
+			<duration>10.647514</duration>
+			<knowledge>5.7578573</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>1</B>
+				<C>1</C>
+				<D>3</D>
+				<E>10</E>
+				<F>7</F>
+				<G>10</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=20>
+			<name>Task 20</name>
+			<duration>13.01335</duration>
+			<knowledge>6.5385485</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>7</B>
+				<C>9</C>
+				<D>9</D>
+				<E>3</E>
+				<F>2</F>
+				<G>7</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=21>
+			<name>Task 21</name>
+			<duration>6.95436</duration>
+			<knowledge>4.2906427</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>6</B>
+				<C>8</C>
+				<D>4</D>
+				<E>8</E>
+				<F>10</F>
+				<G>7</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=22>
+			<name>Task 22</name>
+			<duration>13.446675</duration>
+			<knowledge>8.5830555</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>3</B>
+				<C>0</C>
+				<D>6</D>
+				<E>2</E>
+				<F>5</F>
+				<G>2</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=23>
+			<name>Task 23</name>
+			<duration>14.669086</duration>
+			<knowledge>1.1275208</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>8</B>
+				<C>7</C>
+				<D>0</D>
+				<E>6</E>
+				<F>4</F>
+				<G>8</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=24>
+			<name>Task 24</name>
+			<duration>10.352005</duration>
+			<knowledge>5.578476</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>0</B>
+				<C>5</C>
+				<D>7</D>
+				<E>7</E>
+				<F>6</F>
+				<G>10</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=25>
+			<name>Task 25</name>
+			<duration>6.2389426</duration>
+			<knowledge>8.937382</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>8</B>
+				<C>5</C>
+				<D>8</D>
+				<E>9</E>
+				<F>9</F>
+				<G>7</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=26>
+			<name>Task 26</name>
+			<duration>13.908338</duration>
+			<knowledge>7.376894</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>5</B>
+				<C>5</C>
+				<D>5</D>
+				<E>10</E>
+				<F>2</F>
+				<G>6</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=27>
+			<name>Task 27</name>
+			<duration>4.9399</duration>
+			<knowledge>8.586794</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>3</B>
+				<C>4</C>
+				<D>9</D>
+				<E>5</E>
+				<F>4</F>
+				<G>1</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=28>
+			<name>Task 28</name>
+			<duration>14.024074</duration>
+			<knowledge>4.6734457</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>6</B>
+				<C>10</C>
+				<D>2</D>
+				<E>1</E>
+				<F>0</F>
+				<G>2</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=29>
+			<name>Task 29</name>
+			<duration>5.958005</duration>
+			<knowledge>1.3041244</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>0</B>
+				<C>6</C>
+				<D>0</D>
+				<E>6</E>
+				<F>9</F>
+				<G>2</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=30>
+			<name>Task 30</name>
+			<duration>3.4573336</duration>
+			<knowledge>5.276619</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>1</B>
+				<C>1</C>
+				<D>9</D>
+				<E>2</E>
+				<F>5</F>
+				<G>6</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=31>
+			<name>Task 31</name>
+			<duration>6.176069</duration>
+			<knowledge>5.5149956</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>2</B>
+				<C>6</C>
+				<D>6</D>
+				<E>8</E>
+				<F>5</F>
+				<G>7</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=32>
+			<name>Task 32</name>
+			<duration>13.743807</duration>
+			<knowledge>6.9323883</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>8</B>
+				<C>8</C>
+				<D>2</D>
+				<E>10</E>
+				<F>4</F>
+				<G>10</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=33>
+			<name>Task 33</name>
+			<duration>2.8662426</duration>
+			<knowledge>6.132715</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>0</B>
+				<C>3</C>
+				<D>2</D>
+				<E>6</E>
+				<F>4</F>
+				<G>6</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=34>
+			<name>Task 34</name>
+			<duration>12.239737</duration>
+			<knowledge>2.2884328</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>7</B>
+				<C>10</C>
+				<D>3</D>
+				<E>6</E>
+				<F>9</F>
+				<G>9</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=35>
+			<name>Task 35</name>
+			<duration>5.231342</duration>
+			<knowledge>3.1048973</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>2</B>
+				<C>6</C>
+				<D>2</D>
+				<E>6</E>
+				<F>3</F>
+				<G>3</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=36>
+			<name>Task 36</name>
+			<duration>5.1703057</duration>
+			<knowledge>2.9388561</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>1</B>
+				<C>7</C>
+				<D>0</D>
+				<E>3</E>
+				<F>2</F>
+				<G>7</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=37>
+			<name>Task 37</name>
+			<duration>3.968848</duration>
+			<knowledge>7.7797832</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>7</B>
+				<C>6</C>
+				<D>5</D>
+				<E>5</E>
+				<F>5</F>
+				<G>1</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=38>
+			<name>Task 38</name>
+			<duration>5.413523</duration>
+			<knowledge>7.8352633</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>8</B>
+				<C>0</C>
+				<D>10</D>
+				<E>9</E>
+				<F>2</F>
+				<G>7</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=39>
+			<name>Task 39</name>
+			<duration>9.311676</duration>
+			<knowledge>7.9410806</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>6</B>
+				<C>8</C>
+				<D>10</D>
+				<E>0</E>
+				<F>10</F>
+				<G>7</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=40>
+			<name>Task 40</name>
+			<duration>6.64167</duration>
+			<knowledge>5.816672</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>2</B>
+				<C>1</C>
+				<D>8</D>
+				<E>9</E>
+				<F>7</F>
+				<G>2</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=41>
+			<name>Task 41</name>
+			<duration>4.2335243</duration>
+			<knowledge>9.46237</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>8</B>
+				<C>10</C>
+				<D>5</D>
+				<E>1</E>
+				<F>10</F>
+				<G>1</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=42>
+			<name>Task 42</name>
+			<duration>8.275108</duration>
+			<knowledge>1.3689792</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>10</B>
+				<C>3</C>
+				<D>0</D>
+				<E>0</E>
+				<F>7</F>
+				<G>10</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=43>
+			<name>Task 43</name>
+			<duration>5.4418283</duration>
+			<knowledge>2.5109317</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>8</B>
+				<C>5</C>
+				<D>3</D>
+				<E>6</E>
+				<F>8</F>
+				<G>3</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=44>
+			<name>Task 44</name>
+			<duration>9.959247</duration>
+			<knowledge>3.6357875</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>10</B>
+				<C>7</C>
+				<D>5</D>
+				<E>10</E>
+				<F>6</F>
+				<G>6</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=45>
+			<name>Task 45</name>
+			<duration>10.509938</duration>
+			<knowledge>9.16132</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>4</B>
+				<C>3</C>
+				<D>6</D>
+				<E>4</E>
+				<F>5</F>
+				<G>0</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=46>
+			<name>Task 46</name>
+			<duration>5.530807</duration>
+			<knowledge>3.967979</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>8</B>
+				<C>8</C>
+				<D>6</D>
+				<E>4</E>
+				<F>5</F>
+				<G>5</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=47>
+			<name>Task 47</name>
+			<duration>7.9575715</duration>
+			<knowledge>4.502079</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>2</B>
+				<C>4</C>
+				<D>8</D>
+				<E>1</E>
+				<F>2</F>
+				<G>8</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=48>
+			<name>Task 48</name>
+			<duration>1.8642296</duration>
+			<knowledge>2.1120095</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>1</B>
+				<C>3</C>
+				<D>3</D>
+				<E>6</E>
+				<F>2</F>
+				<G>3</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=49>
+			<name>Task 49</name>
+			<duration>7.5542254</duration>
+			<knowledge>6.6910024</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>4</B>
+				<C>2</C>
+				<D>2</D>
+				<E>6</E>
+				<F>2</F>
+				<G>8</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=50>
+			<name>Task 50</name>
+			<duration>7.846678</duration>
+			<knowledge>8.329359</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>10</B>
+				<C>2</C>
+				<D>2</D>
+				<E>5</E>
+				<F>1</F>
+				<G>2</G>
+				<H>2</H>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>2</priority>
+	<projectStartDate> </projectStartDate>
+	<dueDate> </dueDate>
+</project>
+<project id=3>
+	<tasks>
+		<task id=1>
+			<name>Task 1</name>
+			<duration>1.7170933</duration>
+			<knowledge>4.5574336</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>3</B>
+				<C>7</C>
+				<D>10</D>
+				<E>6</E>
+				<F>6</F>
+				<G>8</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=2>
+			<name>Task 2</name>
+			<duration>9.878211</duration>
+			<knowledge>6.0356627</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>0</B>
+				<C>3</C>
+				<D>6</D>
+				<E>4</E>
+				<F>10</F>
+				<G>7</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=3>
+			<name>Task 3</name>
+			<duration>14.069901</duration>
+			<knowledge>8.901947</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>0</B>
+				<C>4</C>
+				<D>7</D>
+				<E>0</E>
+				<F>1</F>
+				<G>1</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=4>
+			<name>Task 4</name>
+			<duration>1.6833025</duration>
+			<knowledge>5.8119445</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>8</B>
+				<C>2</C>
+				<D>1</D>
+				<E>10</E>
+				<F>5</F>
+				<G>2</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=5>
+			<name>Task 5</name>
+			<duration>13.332533</duration>
+			<knowledge>8.507645</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>2</B>
+				<C>3</C>
+				<D>5</D>
+				<E>5</E>
+				<F>9</F>
+				<G>3</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=6>
+			<name>Task 6</name>
+			<duration>8.396027</duration>
+			<knowledge>8.126994</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>7</B>
+				<C>4</C>
+				<D>10</D>
+				<E>9</E>
+				<F>7</F>
+				<G>10</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=7>
+			<name>Task 7</name>
+			<duration>11.377625</duration>
+			<knowledge>3.4722462</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>5</B>
+				<C>9</C>
+				<D>1</D>
+				<E>8</E>
+				<F>7</F>
+				<G>6</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=8>
+			<name>Task 8</name>
+			<duration>13.482565</duration>
+			<knowledge>3.7147856</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>4</B>
+				<C>0</C>
+				<D>4</D>
+				<E>0</E>
+				<F>2</F>
+				<G>9</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=9>
+			<name>Task 9</name>
+			<duration>7.0175366</duration>
+			<knowledge>1.9806623</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>2</B>
+				<C>3</C>
+				<D>6</D>
+				<E>0</E>
+				<F>1</F>
+				<G>1</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=10>
+			<name>Task 10</name>
+			<duration>14.323562</duration>
+			<knowledge>9.060032</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>8</B>
+				<C>5</C>
+				<D>5</D>
+				<E>8</E>
+				<F>2</F>
+				<G>2</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=11>
+			<name>Task 11</name>
+			<duration>14.71502</duration>
+			<knowledge>8.264048</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>8</B>
+				<C>5</C>
+				<D>0</D>
+				<E>0</E>
+				<F>6</F>
+				<G>10</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=12>
+			<name>Task 12</name>
+			<duration>14.52155</duration>
+			<knowledge>3.7852857</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>7</A>
+				<B>8</B>
+				<C>10</C>
+				<D>5</D>
+				<E>2</E>
+				<F>3</F>
+				<G>8</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=13>
+			<name>Task 13</name>
+			<duration>3.6291614</duration>
+			<knowledge>5.699215</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>8</B>
+				<C>0</C>
+				<D>10</D>
+				<E>8</E>
+				<F>8</F>
+				<G>7</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=14>
+			<name>Task 14</name>
+			<duration>14.144997</duration>
+			<knowledge>7.221837</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>5</B>
+				<C>9</C>
+				<D>7</D>
+				<E>1</E>
+				<F>8</F>
+				<G>9</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=15>
+			<name>Task 15</name>
+			<duration>7.2438354</duration>
+			<knowledge>5.773277</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>6</B>
+				<C>0</C>
+				<D>10</D>
+				<E>8</E>
+				<F>9</F>
+				<G>9</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=16>
+			<name>Task 16</name>
+			<duration>10.184259</duration>
+			<knowledge>9.041955</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>9</B>
+				<C>2</C>
+				<D>0</D>
+				<E>3</E>
+				<F>5</F>
+				<G>6</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=17>
+			<name>Task 17</name>
+			<duration>3.152329</duration>
+			<knowledge>4.719426</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>0</B>
+				<C>4</C>
+				<D>6</D>
+				<E>9</E>
+				<F>0</F>
+				<G>5</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=18>
+			<name>Task 18</name>
+			<duration>2.0832214</duration>
+			<knowledge>5.3805084</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>6</B>
+				<C>10</C>
+				<D>0</D>
+				<E>2</E>
+				<F>10</F>
+				<G>0</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=19>
+			<name>Task 19</name>
+			<duration>11.6054945</duration>
+			<knowledge>1.7836771</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>9</B>
+				<C>5</C>
+				<D>3</D>
+				<E>2</E>
+				<F>2</F>
+				<G>5</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=20>
+			<name>Task 20</name>
+			<duration>3.0248218</duration>
+			<knowledge>6.3688545</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>1</B>
+				<C>6</C>
+				<D>10</D>
+				<E>1</E>
+				<F>2</F>
+				<G>4</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=21>
+			<name>Task 21</name>
+			<duration>4.232503</duration>
+			<knowledge>7.337393</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>2</B>
+				<C>0</C>
+				<D>5</D>
+				<E>2</E>
+				<F>4</F>
+				<G>0</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=22>
+			<name>Task 22</name>
+			<duration>5.9840035</duration>
+			<knowledge>5.8230133</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>1</B>
+				<C>10</C>
+				<D>6</D>
+				<E>10</E>
+				<F>7</F>
+				<G>3</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=23>
+			<name>Task 23</name>
+			<duration>7.3171806</duration>
+			<knowledge>1.9505517</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>1</B>
+				<C>1</C>
+				<D>8</D>
+				<E>9</E>
+				<F>1</F>
+				<G>10</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=24>
+			<name>Task 24</name>
+			<duration>14.806508</duration>
+			<knowledge>4.992106</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>5</B>
+				<C>8</C>
+				<D>7</D>
+				<E>9</E>
+				<F>4</F>
+				<G>0</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=25>
+			<name>Task 25</name>
+			<duration>13.407153</duration>
+			<knowledge>1.3954445</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>3</B>
+				<C>10</C>
+				<D>2</D>
+				<E>5</E>
+				<F>10</F>
+				<G>0</G>
+				<H>2</H>
+			</abilities>
+		</task>
+		<task id=26>
+			<name>Task 26</name>
+			<duration>3.708727</duration>
+			<knowledge>2.6928463</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>0</A>
+				<B>2</B>
+				<C>0</C>
+				<D>5</D>
+				<E>4</E>
+				<F>1</F>
+				<G>5</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=27>
+			<name>Task 27</name>
+			<duration>10.439307</duration>
+			<knowledge>8.685089</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>7</B>
+				<C>10</C>
+				<D>3</D>
+				<E>10</E>
+				<F>0</F>
+				<G>1</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=28>
+			<name>Task 28</name>
+			<duration>10.698824</duration>
+			<knowledge>1.8834285</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>5</B>
+				<C>8</C>
+				<D>5</D>
+				<E>4</E>
+				<F>5</F>
+				<G>1</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=29>
+			<name>Task 29</name>
+			<duration>3.4190083</duration>
+			<knowledge>8.255953</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>2</A>
+				<B>10</B>
+				<C>9</C>
+				<D>2</D>
+				<E>0</E>
+				<F>5</F>
+				<G>8</G>
+				<H>10</H>
+			</abilities>
+		</task>
+		<task id=30>
+			<name>Task 30</name>
+			<duration>4.162382</duration>
+			<knowledge>4.2077374</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>7</B>
+				<C>4</C>
+				<D>0</D>
+				<E>0</E>
+				<F>4</F>
+				<G>8</G>
+				<H>7</H>
+			</abilities>
+		</task>
+		<task id=31>
+			<name>Task 31</name>
+			<duration>6.771412</duration>
+			<knowledge>6.3869014</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>6</A>
+				<B>9</B>
+				<C>2</C>
+				<D>9</D>
+				<E>7</E>
+				<F>10</F>
+				<G>10</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=32>
+			<name>Task 32</name>
+			<duration>13.000563</duration>
+			<knowledge>4.351462</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>7</B>
+				<C>6</C>
+				<D>9</D>
+				<E>3</E>
+				<F>10</F>
+				<G>9</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=33>
+			<name>Task 33</name>
+			<duration>6.4140043</duration>
+			<knowledge>5.777903</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>3</A>
+				<B>9</B>
+				<C>8</C>
+				<D>10</D>
+				<E>10</E>
+				<F>10</F>
+				<G>4</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=34>
+			<name>Task 34</name>
+			<duration>9.612731</duration>
+			<knowledge>2.1690445</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>3</B>
+				<C>0</C>
+				<D>5</D>
+				<E>10</E>
+				<F>1</F>
+				<G>1</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=35>
+			<name>Task 35</name>
+			<duration>7.3471403</duration>
+			<knowledge>9.780427</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>9</B>
+				<C>6</C>
+				<D>10</D>
+				<E>6</E>
+				<F>2</F>
+				<G>8</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=36>
+			<name>Task 36</name>
+			<duration>4.129717</duration>
+			<knowledge>4.578738</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>0</B>
+				<C>6</C>
+				<D>9</D>
+				<E>4</E>
+				<F>2</F>
+				<G>1</G>
+				<H>0</H>
+			</abilities>
+		</task>
+		<task id=37>
+			<name>Task 37</name>
+			<duration>3.9342844</duration>
+			<knowledge>1.2301153</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>4</B>
+				<C>7</C>
+				<D>0</D>
+				<E>2</E>
+				<F>9</F>
+				<G>7</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=38>
+			<name>Task 38</name>
+			<duration>7.673398</duration>
+			<knowledge>1.6871862</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>7</B>
+				<C>2</C>
+				<D>9</D>
+				<E>8</E>
+				<F>0</F>
+				<G>8</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=39>
+			<name>Task 39</name>
+			<duration>7.2001944</duration>
+			<knowledge>3.8501067</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>1</B>
+				<C>7</C>
+				<D>10</D>
+				<E>3</E>
+				<F>5</F>
+				<G>9</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=40>
+			<name>Task 40</name>
+			<duration>3.1817038</duration>
+			<knowledge>6.6404467</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>0</B>
+				<C>10</C>
+				<D>4</D>
+				<E>10</E>
+				<F>5</F>
+				<G>5</G>
+				<H>5</H>
+			</abilities>
+		</task>
+		<task id=41>
+			<name>Task 41</name>
+			<duration>3.4114947</duration>
+			<knowledge>3.2048578</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>5</B>
+				<C>5</C>
+				<D>6</D>
+				<E>6</E>
+				<F>9</F>
+				<G>1</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=42>
+			<name>Task 42</name>
+			<duration>8.227919</duration>
+			<knowledge>1.3414083</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>9</A>
+				<B>6</B>
+				<C>9</C>
+				<D>3</D>
+				<E>6</E>
+				<F>5</F>
+				<G>6</G>
+				<H>4</H>
+			</abilities>
+		</task>
+		<task id=43>
+			<name>Task 43</name>
+			<duration>7.2617855</duration>
+			<knowledge>3.639731</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>1</B>
+				<C>10</C>
+				<D>5</D>
+				<E>9</E>
+				<F>10</F>
+				<G>10</G>
+				<H>1</H>
+			</abilities>
+		</task>
+		<task id=44>
+			<name>Task 44</name>
+			<duration>3.105397</duration>
+			<knowledge>7.6007338</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>2</B>
+				<C>1</C>
+				<D>5</D>
+				<E>6</E>
+				<F>5</F>
+				<G>0</G>
+				<H>9</H>
+			</abilities>
+		</task>
+		<task id=45>
+			<name>Task 45</name>
+			<duration>10.348068</duration>
+			<knowledge>3.2567382</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>9</B>
+				<C>2</C>
+				<D>8</D>
+				<E>8</E>
+				<F>9</F>
+				<G>3</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=46>
+			<name>Task 46</name>
+			<duration>2.6635904</duration>
+			<knowledge>1.0673664</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>10</A>
+				<B>4</B>
+				<C>9</C>
+				<D>5</D>
+				<E>3</E>
+				<F>8</F>
+				<G>4</G>
+				<H>8</H>
+			</abilities>
+		</task>
+		<task id=47>
+			<name>Task 47</name>
+			<duration>6.8262873</duration>
+			<knowledge>4.983139</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>5</A>
+				<B>8</B>
+				<C>2</C>
+				<D>9</D>
+				<E>0</E>
+				<F>6</F>
+				<G>0</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=48>
+			<name>Task 48</name>
+			<duration>6.482018</duration>
+			<knowledge>4.6230965</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>4</A>
+				<B>4</B>
+				<C>3</C>
+				<D>9</D>
+				<E>3</E>
+				<F>8</F>
+				<G>3</G>
+				<H>3</H>
+			</abilities>
+		</task>
+		<task id=49>
+			<name>Task 49</name>
+			<duration>8.544102</duration>
+			<knowledge>1.1841401</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>8</A>
+				<B>8</B>
+				<C>10</C>
+				<D>0</D>
+				<E>8</E>
+				<F>0</F>
+				<G>0</G>
+				<H>6</H>
+			</abilities>
+		</task>
+		<task id=50>
+			<name>Task 50</name>
+			<duration>14.063252</duration>
+			<knowledge>9.922459</knowledge>
+			<startDate> </startDate>
+			<abilities>
+				<A>1</A>
+				<B>9</B>
+				<C>2</C>
+				<D>6</D>
+				<E>7</E>
+				<F>2</F>
+				<G>3</G>
+				<H>4</H>
+			</abilities>
+		</task>
+	</tasks>
+	<priority>3</priority>
+	<projectStartDate> </projectStartDate>
+	<dueDate> </dueDate>
+</project>
