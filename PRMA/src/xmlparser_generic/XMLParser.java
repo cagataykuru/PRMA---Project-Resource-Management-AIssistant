@@ -20,10 +20,13 @@ import javax.xml.transform.stream.StreamResult;
 //import org.w3c.dom.Attr; IF YOU WANT ATTRIBUTES............
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class XMLParser {
 	
 	private static String directory,fullPathProject;
+	private static int taskIdCount = 0;
 	
 	
 	public XMLParser(String directory){
@@ -53,13 +56,12 @@ public class XMLParser {
 			Document doc = docBuilder.newDocument();
 			
 			//initiate task attributes.
+			Element taskid = doc.createElement("id");
 			Element taskName = doc.createElement("name");
 			Element taskDuration = doc.createElement("duration");
 			Element taskStartDate = doc.createElement("startDate");
 			Element abilitiesNeeded = doc.createElement("abilities");
 			Element ability = doc.createElement("ability");
-			// needed prereq Attr taskDuration = doc.createAttribute("id");
-			Element minKnowledge = doc.createElement("knowledge");
 			Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
 			// root elements
@@ -74,14 +76,14 @@ public class XMLParser {
 				//task elements
 				Element task = doc.createElement("task");
 				
-				taskDuration.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskName())));
+				taskid.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskName())));
+				task.appendChild(taskid);
+				
+				taskName.appendChild(doc.createTextNode(String.valueOf(getTaskIdCount())));
 				task.appendChild(taskName);
 				
 				taskDuration.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskDuration())));
 				task.appendChild(taskDuration);
-				
-				minKnowledge.appendChild(doc.createTextNode(String.valueOf(eachTask.getMinKnowledge())));
-				task.appendChild(minKnowledge);
 				
 				taskStartDate.appendChild(doc.createTextNode(formatter.format(eachTask.getTaskStart())));
 				task.appendChild(taskStartDate);
@@ -94,6 +96,7 @@ public class XMLParser {
 					abilitiesNeeded.appendChild(doc.createTextNode(s));
 				}
 				tasks.appendChild(task);
+				setTaskIdCount(getTaskIdCount()+1);
 			}
 			
 			Element projectPriority = doc.createElement("priority");
@@ -125,6 +128,58 @@ public class XMLParser {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void ReadProjectXml(String fileName, Project prj) throws TransformerException{
+		fullPathProject = directory.concat("/");
+		fullPathProject = directory.concat(fileName);
+		
+		try {
+
+			File fXmlFile = new File(fullPathProject);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXmlFile);
+								
+			doc.getDocumentElement().normalize();
+					
+			NodeList nList = doc.getElementsByTagName("project");
+					
+			System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+
+				Node nNode = nList.item(temp);
+						
+				System.out.println("\nCurrent Element " + temp + " :" + nNode.getNodeName());
+						
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					
+					NodeList tasklist = doc.getElementsByTagName("task");
+					
+					for(int i = 0; i < tasklist.getLength(); i++){
+						
+						Node task = tasklist.item(i);
+						System.out.println("\nCurrent Sub Element " + i +  " of Element " + temp + task.getNodeName());
+						
+						Element eElement = (Element) task;
+
+						System.out.println("Task id : " + eElement.getElementsByTagName("id").item(0).getTextContent());
+						System.out.println("Task Name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
+						System.out.println("Task Duration : " + eElement.getElementsByTagName("duration").item(0).getTextContent());
+						System.out.println("StartDate : " + eElement.getElementsByTagName("startDate").item(0).getTextContent());				
+						
+					}
+					
+					
+
+				}
+			}
+		    } catch (Exception e) {
+			e.printStackTrace();
+		    }
+		
+	}
 
 	public String getDirectory() {
 		return directory;
@@ -132,6 +187,14 @@ public class XMLParser {
 
 	public String getFullPath() {
 		return fullPathProject;
+	}
+
+	public static int getTaskIdCount() {
+		return taskIdCount;
+	}
+
+	public static void setTaskIdCount(int taskIdCount) {
+		XMLParser.taskIdCount = taskIdCount;
 	}
 
 	

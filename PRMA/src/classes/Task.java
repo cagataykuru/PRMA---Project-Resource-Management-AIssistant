@@ -5,12 +5,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Task {
+	private int id;
 	private double taskDuration;
 	private Date taskStart;
 	private ArrayList<Task> prerequisites;
 	private ArrayList<Ability> neededAbilities;
 	private Project belongsTo;
-	private Double minKnowledge;
 	private String taskName;
 	private boolean workhaolism;
 	
@@ -33,13 +33,7 @@ public class Task {
 	public void setTaskName(String taskName){
 		this.taskName = taskName;
 	}
-	
-	public void calculateMinKnowledge(){
-		//buraya da bir hesaplama metodu d���nelim, gereken abilityler ile olur.
-		
-		//neededAbilities listinden eleman se�ip katsay�larla �arpmaca.
-	}
-	
+
 	public Date getDueDate(){
 		return belongsTo.getProjectDueDate();
 	}
@@ -74,9 +68,6 @@ public class Task {
 		this.belongsTo = belongsTo;
 	}
 
-	public Double getMinKnowledge() {
-		return minKnowledge;
-	}
 	
 	public Project getProject() {
 		return belongsTo;
@@ -84,10 +75,6 @@ public class Task {
 	
 	public double getImportance() {
 		return belongsTo.getPriority();
-	}
-
-	public void setMinKnowledge(Double minKnowledge) {
-		this.minKnowledge = minKnowledge;
 	}
 
 	public ArrayList<Ability> getNeededAbilities() {
@@ -141,5 +128,13 @@ public class Task {
 		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
 		    return cal.getTime(); //now++
 		}
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

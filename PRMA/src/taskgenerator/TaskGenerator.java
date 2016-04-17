@@ -16,11 +16,10 @@ public class TaskGenerator {
 			writer.println("\t<tasks>");
 			for(int i = 0; i < 50; i++)
 			{
-				
 				writer.println("\t\t<task id=" + (i + 1) + ">");
 				writer.println("\t\t\t<name>" + "Task " + (i + 1) + "</name>");
 				writer.println("\t\t\t<duration>" + ((randomGenerator.nextFloat() * 14) + 1) + "</duration>");
-				writer.println("\t\t\t<knowledge>" + ((randomGenerator.nextFloat() * 9) + 1) + "</knowledge>");
+				//writer.println("\t\t\t<knowledge>" + ((randomGenerator.nextFloat() * 9) + 1) + "</knowledge>");
 				writer.println("\t\t\t<startDate> </startDate>");
 				writer.println("\t\t\t<abilities>\n\t\t\t\t"
 								+	"<A>" + randomGenerator.nextInt(11) + "</A>\n\t\t\t\t"

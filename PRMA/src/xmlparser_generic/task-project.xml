@@ -1,7 +1,8 @@
-<projects>
-	<project id = 1>
+<projects>	
+	<project>
 		<tasks>
-			<task id = 1>
+			<task>
+				<id>0</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -14,7 +15,8 @@
 					<ability>ability ismi</ability>
 				</abilities>
 			</task>
-			<task id = 2>
+			<task>
+				<id>1</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -27,7 +29,8 @@
 					<ability>ability ismi</ability>
 				</abilities>
 			</task>
-			<task id = 3>
+			<task>
+				<id>2</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -45,9 +48,10 @@
 		<projectStartDate>başlangıç tarihi projenin</projectStartDate>
 		<dueDate>project duedate</dueDate>
 	</project>
-	<project id = 2>
+	<project>
 		<tasks>
-			<task id = 1>
+			<task>
+				<id>3</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -60,7 +64,8 @@
 					<ability>ability ismi</ability>
 				</abilities>
 			</task>
-			<task id = 2>
+			<task>
+				<id>4</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -73,7 +78,8 @@
 					<ability>ability ismi</ability>
 				</abilities>
 			</task>
-			<task id = 3>
+			<task>
+				<id>5</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -91,9 +97,10 @@
 		<projectStartDate>başlangıç tarihi projenin</projectStartDate>
 		<dueDate>project duedate</dueDate>
 	</project>
-	<project id = 3>
+	<project>
 		<tasks>
-			<task id = 1>
+			<task>
+				<id>6</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -106,7 +113,8 @@
 					<ability>ability ismi</ability>
 				</abilities>
 			</task>
-			<task id = 2>
+			<task>
+				<id>7</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
@@ -119,53 +127,8 @@
 					<ability>ability ismi</ability>
 				</abilities>
 			</task>
-			<task id = 3>
-				<name>task adı, yeni eklendi</name>
-				<duration>buraya duration gelir</duration>
-				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
-				<startDate>başlama tarihi</startDate>
-				<abilities>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-				</abilities>
-			</task>
-		</tasks>
-		<priority>project önceliği</priority>
-		<projectStartDate>başlangıç tarihi projenin</projectStartDate>
-		<dueDate>project duedate</dueDate>
-	</project>
-	<project id = 4>
-		<tasks>
-			<task id = 1>
-				<name>task adı, yeni eklendi</name>
-				<duration>buraya duration gelir</duration>
-				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
-				<startDate>başlama tarihi</startDate>
-				<abilities>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-				</abilities>
-			</task>
-			<task id = 2>
-				<name>task adı, yeni eklendi</name>
-				<duration>buraya duration gelir</duration>
-				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>
-				<startDate>başlama tarihi</startDate>
-				<abilities>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-					<ability>ability ismi</ability>
-				</abilities>
-			</task>
-			<task id = 3>
+			<task>
+				<id>8</id>
 				<name>task adı, yeni eklendi</name>
 				<duration>buraya duration gelir</duration>
 				<knowledge>gereken min knowledge - int değer salla şimdilik</knowledge>

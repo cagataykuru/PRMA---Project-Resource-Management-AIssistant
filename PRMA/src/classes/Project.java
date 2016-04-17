@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 
 public class Project {
-	
+	private int id;
 	private Date projectStart;
 	private Date projectDueDate;
 	private ArrayList<Task> tasks;
@@ -50,5 +50,13 @@ public class Project {
 
 	public void setPriority(Double priority) {
 		this.priority = priority;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
