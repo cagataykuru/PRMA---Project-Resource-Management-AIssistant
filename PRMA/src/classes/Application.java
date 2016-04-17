@@ -28,12 +28,11 @@ public class Application {
 		}
 		
 		
-		
 		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd GGG hh:mm aaa", Locale.ENGLISH);
 		Date now = new Date();
 		try {
-			now = format.parse(args[0]);//Burada parametre alacak date'i yukarıdaki formattaki gibi.
-		} catch (ParseException e) {//Şu anki tarih girilecek
+			now = format.parse(args[0]);//Burada parametre alacak date'i yukarÄ±daki formattaki gibi.
+		} catch (ParseException e) {//Å�u anki tarih girilecek
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -55,7 +54,7 @@ public class Application {
 					
 					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
-					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
+					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
 						
 						now = getNextWorkHour(now);
 						sortedTasks.add(0, currentSortingObject);
@@ -75,7 +74,7 @@ public class Application {
 						realTaskTime /= iteration;
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Taskı employeeye ata
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 							//int taskTime = (int) Math.ceil(realTaskTime);
@@ -90,7 +89,7 @@ public class Application {
 							
 						}
 						
-						assignedTasks.add(currentTask);//Eklenmiş taskı assignedTasks'a koy
+						assignedTasks.add(currentTask);//EklenmiÅŸ taskÄ± assignedTasks'a koy
 					}
 				}else{//With workhaolism
 					TaskSortingObject currentSortingObject = sortedTasks.get(0);
@@ -104,7 +103,7 @@ public class Application {
 					else
 						bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
-					if(bestMatchList.size()==0){//Time'ı arttırma kısmı
+					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
 						
 						now = getNextHour(now);
 						sortedTasks.add(0, currentSortingObject);
@@ -144,7 +143,7 @@ public class Application {
 					}
 				}
 			}
-			//Burada tüm projeler zamanında bitiyor mu onu kontrol et
+			//Burada tÃ¼m projeler zamanÄ±nda bitiyor mu onu kontrol et
 			continued = false;
 			for(int i=0; i<projects.size();i++){
 				Project currentProject = projects.get(i);
@@ -160,10 +159,10 @@ public class Application {
 						}
 					}
 				}
-				if(!projectCompletedInTime){//Tüm projeler bitmiyorsa
+				if(!projectCompletedInTime){//TÃ¼m projeler bitmiyorsa
 					continued = true;
 					i = projects.size();
-					while(!assignedTasks.isEmpty()){//Atanmış tüm taskları emplooyelerin schedulelarından sil
+					while(!assignedTasks.isEmpty()){//AtanmÄ±ÅŸ tÃ¼m tasklarÄ± emplooyelerin schedulelarÄ±ndan sil
 						for(int e = 0; e<employees.size();e++){
 							if(employees.get(e).mySchedule.get(employees.get(e).mySchedule.size()-1).getTaskName().compareTo(assignedTasks.get(assignedTasks.size()-1).getTaskName())==0){
 								employees.get(e).removeTask();
@@ -173,7 +172,7 @@ public class Application {
 					}
 				}
 			}
-			//Tüm projelerin zamanında bitişi kontrolü sonu
+			//TÃ¼m projelerin zamanÄ±nda bitiÅŸi kontrolÃ¼ sonu
 		}
 	}
 		
