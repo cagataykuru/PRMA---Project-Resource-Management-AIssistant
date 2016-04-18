@@ -60,7 +60,6 @@ public class Application {
 						sortedTasks.add(0, currentSortingObject);
 							
 					}else{
-							
 						double realTaskTime = 0;
 						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Real task time i hesapla
 							Employee currentEmployee = bestMatchList.get(i).employee;
