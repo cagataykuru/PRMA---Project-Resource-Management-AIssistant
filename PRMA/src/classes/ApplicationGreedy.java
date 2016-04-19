@@ -10,15 +10,24 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.xml.transform.TransformerException;
+
+import xmlparser_generic.XMLParser;
+
 public class ApplicationGreedy {
 	
 	public static ArrayList<Employee> employees;
 	public static ArrayList<Project> projects;
 	public static ArrayList<Task> tasks;
+	public static XMLParser parser;
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws TransformerException {
 		// TODO Auto-generated method stub
+		
+		//XML classsı çağır
+		parser = new XMLParser("src/xmlparser_generic");
+		projects = parser.ReadProjectXml("tasks.txt");
 		
 		//AI olmadığı için XML okuma işlemi de olmayacak
 		//ama sadece melihin inputları okumak için xml gerekecek
