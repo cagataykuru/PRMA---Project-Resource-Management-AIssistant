@@ -24,7 +24,7 @@ public class Project {
 		this.setProjectDueDate(projectDueDate);
 		this.setProjectStart(projectStart);
 		this.priority = priority;
-		Collections.copy(this.tasks, tasks);
+		tasks = this.tasks;
 	}
 
 	public Date getProjectStart() {
