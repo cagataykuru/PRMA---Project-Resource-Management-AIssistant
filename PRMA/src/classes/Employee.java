@@ -17,7 +17,7 @@ public class Employee {
 	public Employee(ArrayList<Ability> abilities, boolean Workhaolism, double DepreciationLevel, String name, String lastname, int id){
 		this.setWorkaholism(Workhaolism);
 		this.name = name;
-		Collections.copy(this.abilities, abilities);
+		this.abilities = abilities;
 		this.DepreciationLevel = DepreciationLevel;
 		this.lastName = lastname;
 		this.id = id;
@@ -33,6 +33,14 @@ public class Employee {
 	
 	public int getId(){
 		return id;
+	}
+	
+	public void setAbilities(ArrayList<Ability> abilities){
+		this.abilities = abilities;
+	}
+	
+	public ArrayList<Ability> getAbilities(){
+		return abilities;
 	}
 	
 	public void setLastName(String lastname){
