@@ -22,8 +22,13 @@ public class TaskGenerator {
 				writer.println("\t\t\t<task>");
 				writer.println("\t\t\t\t<task-id>"+(taskCounter)+"</task-id>");
 				taskCounter++;
+<<<<<<< HEAD
 				writer.println("\t\t\t\t<name>" + "Task " + (i + 1) + "</name>");
 				writer.println("\t\t\t\t<duration>" + ((randomGenerator.nextFloat() * 14) + 1) + "</duration>");
+=======
+				writer.println("\t\t\t<name>" + "Task " + (taskCounter) + "</name>");
+				writer.println("\t\t\t<duration>" + ((randomGenerator.nextFloat() * 14) + 1) + "</duration>");
+>>>>>>> 232224e52dc9ee6feee220fe72d113d164113dae
 				//writer.println("\t\t\t<knowledge>" + ((randomGenerator.nextFloat() * 9) + 1) + "</knowledge>");
 				writer.println("\t\t\t\t<startDate> </startDate>");
 				writer.println("\t\t\t\t<belongsToProjectWithId>" +(j+1) +  "</belongsToProjectWithId>");

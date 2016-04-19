@@ -98,6 +98,7 @@ public class XMLParser {
 				tasks.appendChild(task);
 				setTaskIdCount(getTaskIdCount()+1);
 			}
+
 			
 			Element projectPriority = doc.createElement("priority");
 			projectPriority.appendChild(doc.createTextNode(String.valueOf(prj.getPriority())));
@@ -146,22 +147,18 @@ public class XMLParser {
 					
 			NodeList nList = doc.getElementsByTagName("project");
 					
-			System.out.println("----------------------------");
-
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
 				Node projectNode = nList.item(temp);
 				Element element = (Element) projectNode;
 				String prjid = element.getElementsByTagName("project-id").item(0).getTextContent();
 				int projectId = Integer.parseInt(prjid);
-				String prjPriority = element.getElementsByTagName("duration").item(0).getTextContent();
+				String prjPriority = element.getElementsByTagName("priority").item(0).getTextContent();
 				double projectPriority = Double.parseDouble(prjPriority);
 				ArrayList<Task> tasks = new ArrayList<Task>();
 				
 				Project project = new Project(projectId, tasks, projectPriority);
-						
-				System.out.println("\nCurrent Element " + temp + " :" + projectNode.getNodeName());
-						
+												
 				if (projectNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					NodeList tasklist = doc.getElementsByTagName("task");
@@ -170,13 +167,69 @@ public class XMLParser {
 						
 						Node task = tasklist.item(i);
 						Element eElement = (Element) task;
-						System.out.println("\nCurrent Sub Element " + i +  " of Element " + temp + task.getNodeName());
 						
 						if(eElement.getElementsByTagName("belongsToProjectWithId").item(0).getTextContent().equalsIgnoreCase(String.valueOf(temp))){
-							String taskid = eElement.getElementsByTagName("id").item(0).getTextContent();
+							String taskid = eElement.getElementsByTagName("task-id").item(0).getTextContent();
 							String taskDuration = eElement.getElementsByTagName("duration").item(0).getTextContent();
 							String taskName = eElement.getElementsByTagName("name").item(0).getTextContent();
+							
+							ArrayList<Ability> abilities = new ArrayList<Ability>();
+							
+							
+							String As = element.getElementsByTagName("A").item(0).getTextContent();
+							String Bs = element.getElementsByTagName("B").item(0).getTextContent();
+							String Cs = element.getElementsByTagName("C").item(0).getTextContent();
+							String Ds = element.getElementsByTagName("D").item(0).getTextContent();
+							String Es = element.getElementsByTagName("E").item(0).getTextContent();
+							String Fs = element.getElementsByTagName("F").item(0).getTextContent();
+							String Gs = element.getElementsByTagName("G").item(0).getTextContent();
+							String Hs = element.getElementsByTagName("H").item(0).getTextContent();
+							
+							double Ax = Double.parseDouble(As);
+							double Bx = Double.parseDouble(Bs);
+							double Cx = Double.parseDouble(Cs);
+							double Dx = Double.parseDouble(Ds);
+							double Ex = Double.parseDouble(Es);
+							double Fx = Double.parseDouble(Fs);
+							double Gx = Double.parseDouble(Gs);
+							double Hx = Double.parseDouble(Hs);
+							
+							Ability A = new Ability("A", Ax);
+							abilities.add(A);
+							
+							Ability B = new Ability("B", Bx);
+							abilities.add(B);
+							
+							Ability C = new Ability("C", Cx);
+							abilities.add(C);
+							
+							Ability D = new Ability("D", Dx);
+							abilities.add(D);
+							
+							Ability E = new Ability("E", Ex);
+							abilities.add(E);
+							
+							Ability F = new Ability("F", Fx);
+							abilities.add(F);
+							
+							Ability G = new Ability("G", Gx);
+							abilities.add(G);
+							
+							Ability H = new Ability("H", Hx);
+							abilities.add(H);
+							
+							/*
+							int counter = 0;
+							for(Ability a: abilities){
+								if(a.level <= 0.0){
+									abilities.remove(counter);
+								}
+								counter++;
+							}
+							*/
+							
 							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName);
+							newTask.setNeededAbilities(abilities);
 							tasks.add(newTask);
 						}
 					}
@@ -209,47 +262,81 @@ public class XMLParser {
 								
 			doc.getDocumentElement().normalize();
 					
-			NodeList nList = doc.getElementsByTagName("project");
+			NodeList nList = doc.getElementsByTagName("employee");
 					
 			System.out.println("----------------------------");
-
+			
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
-				Node projectNode = nList.item(temp);
-				Element element = (Element) projectNode;
-				String prjid = element.getElementsByTagName("project-id").item(0).getTextContent();
-				int projectId = Integer.parseInt(prjid);
-				String prjPriority = element.getElementsByTagName("duration").item(0).getTextContent();
-				double projectPriority = Double.parseDouble(prjPriority);
-				ArrayList<Task> tasks = new ArrayList<Task>();
+				Node employeeNode = nList.item(temp);
 				
-				Project project = new Project(projectId, tasks, projectPriority);
-						
-				System.out.println("\nCurrent Element " + temp + " :" + projectNode.getNodeName());
-						
-				if (projectNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					NodeList tasklist = doc.getElementsByTagName("task");
-					
-					for(int i = 0; i < tasklist.getLength(); i++){
-						
-						Node task = tasklist.item(i);
-						Element eElement = (Element) task;
-						System.out.println("\nCurrent Sub Element " + i +  " of Element " + temp + task.getNodeName());
-						
-						if(eElement.getElementsByTagName("belongsToProjectWithId").item(0).getTextContent().equalsIgnoreCase(String.valueOf(temp))){
-							String taskid = eElement.getElementsByTagName("id").item(0).getTextContent();
-							String taskDuration = eElement.getElementsByTagName("duration").item(0).getTextContent();
-							String taskName = eElement.getElementsByTagName("name").item(0).getTextContent();
-							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName);
-							tasks.add(newTask);
-						}
-					}
-					
+				Element element = (Element) employeeNode;
+				
+				String empid = element.getElementsByTagName("employee-id").item(0).getTextContent();
+				int empId = Integer.parseInt(empid);
+				
+				String empWorkaholism = element.getElementsByTagName("workaholism").item(0).getTextContent();
+				boolean workaholism = Boolean.getBoolean(empWorkaholism);
+				
+				String name = element.getElementsByTagName("firstname").item(0).getTextContent();
+				String lname = element.getElementsByTagName("lastname").item(0).getTextContent();
+				
+				String empDepreciation = element.getElementsByTagName("depreciation").item(0).getTextContent();
+				double depreciation = Double.parseDouble(empDepreciation);
+				
+				ArrayList<Ability> abilities = new ArrayList<Ability>();
+				
+				
+				String As = element.getElementsByTagName("A").item(0).getTextContent();
+				String Bs = element.getElementsByTagName("B").item(0).getTextContent();
+				String Cs = element.getElementsByTagName("C").item(0).getTextContent();
+				String Ds = element.getElementsByTagName("D").item(0).getTextContent();
+				String Es = element.getElementsByTagName("E").item(0).getTextContent();
+				String Fs = element.getElementsByTagName("F").item(0).getTextContent();
+				String Gs = element.getElementsByTagName("G").item(0).getTextContent();
+				String Hs = element.getElementsByTagName("H").item(0).getTextContent();
+				
+				double Ax = Double.parseDouble(As);
+				double Bx = Double.parseDouble(Bs);
+				double Cx = Double.parseDouble(Cs);
+				double Dx = Double.parseDouble(Ds);
+				double Ex = Double.parseDouble(Es);
+				double Fx = Double.parseDouble(Fs);
+				double Gx = Double.parseDouble(Gs);
+				double Hx = Double.parseDouble(Hs);
+				
+				Ability A = new Ability("A", Ax);
+				abilities.add(A);
+				System.out.println(A.level);
+				
+				Ability B = new Ability("B", Bx);
+				abilities.add(B);
+				System.out.println(B.level);
+				
+				Ability C = new Ability("C", Cx);
+				abilities.add(C);
+				System.out.println(C.level);
+				
+				Ability D = new Ability("D", Dx);
+				abilities.add(D);
+				System.out.println(D.level);
+				
+				Ability E = new Ability("E", Ex);
+				abilities.add(E);
+				
+				Ability F = new Ability("F", Fx);
+				abilities.add(F);
+				
+				Ability G = new Ability("G", Gx);
+				abilities.add(G);
+				
+				Ability H = new Ability("H", Hx);
+				abilities.add(H);
+				
+				Employee employee = new Employee(abilities, workaholism, depreciation, name, lname, empId);
+				employees.add(employee);
 				}
-				project.setTasks(tasks);
-				//employees.add(project);
-			}
+			
 		    } catch (Exception e) {
 			e.printStackTrace();
 		    }
@@ -272,9 +359,5 @@ public class XMLParser {
 	public static void setTaskIdCount(int taskIdCount) {
 		XMLParser.taskIdCount = taskIdCount;
 	}
-
-	
-	
-	
 
 }

@@ -47,11 +47,8 @@ public class ApplicationGreedy {
 		}
 		
 		ArrayList<Task> assignedTasks = new ArrayList<Task>();
-		int iteration = 1;
-		
-		boolean continued = true;
-		while(continued){
-			while(!tasks.isEmpty()){
+			
+		while(!tasks.isEmpty()){
 					Task currentTask = tasks.get(0);
 					tasks.remove(0);
 					
@@ -63,7 +60,6 @@ public class ApplicationGreedy {
 					}else{
 						//Modify et
 						double taskTime = currentTask.getTaskDuration();
-						taskTime /= iteration;
 						Task taskToAdd = new Task(taskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
 						for(int i = 0;i<matchList.size(); i++){					//Assign task to the employee
@@ -82,39 +78,7 @@ public class ApplicationGreedy {
 						assignedTasks.add(currentTask);
 					}		
 			}
-			continued = false;
-			for(int i=0; i<projects.size();i++){
-				Project currentProject = projects.get(i);
-				boolean projectCompletedInTime = true;
-				for(int k=0;k<currentProject.getTasks().size();k++){
-					for(int e = 0; e<assignedTasks.size(); e++){
-						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName()){
-							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())>0){
-								projectCompletedInTime = false;
-								e = assignedTasks.size();
-								k = currentProject.getTasks().size();
-							}
-						}
-					}
-				}
-				if(!projectCompletedInTime){//TÃ¼m projeler bitmiyorsa
-					continued = true;
-					i = projects.size();
-					while(!assignedTasks.isEmpty()){
-						for(int e = 0; e<employees.size();e++){
-							if(employees.get(e).mySchedule.get(employees.get(e).mySchedule.size()-1).getTaskName().compareTo(assignedTasks.get(assignedTasks.size()-1).getTaskName())==0){
-								employees.get(e).removeTask();
-								assignedTasks.remove(assignedTasks.size()-1);
-							}
-						}
-					}
-				}
-			}
-			iteration++;
-	}
-		
-		
-	}
+	}		
 	
 	//There is no AI so it just basically finds matches with first matching abilities.
 	public static ArrayList<Employee> findMatches (Task currentTask, Date inputTime){
@@ -125,7 +89,6 @@ public class ApplicationGreedy {
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
 			if(!currentEmployee.isFullAt(inputTime)){
-				
 				//currentEmployee.getAbility(currentTask.getNeededAbilities().get(0).name);
 				for(int j = 0; j<neededAbilities.size(); j++){
 					if(currentEmployee.getAbility(currentTask.getNeededAbilities().get(j).name)>0){
