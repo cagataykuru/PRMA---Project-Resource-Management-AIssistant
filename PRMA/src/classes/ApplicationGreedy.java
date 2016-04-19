@@ -125,7 +125,6 @@ public class ApplicationGreedy {
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
 			if(!currentEmployee.isFullAt(inputTime)){
-				
 				//currentEmployee.getAbility(currentTask.getNeededAbilities().get(0).name);
 				for(int j = 0; j<neededAbilities.size(); j++){
 					if(currentEmployee.getAbility(currentTask.getNeededAbilities().get(j).name)>0){
