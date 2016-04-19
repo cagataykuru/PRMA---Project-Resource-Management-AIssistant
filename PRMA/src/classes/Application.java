@@ -69,14 +69,25 @@ public class Application {
 						double realTaskTime = 0;
 						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Real task time i hesapla
 							Employee currentEmployee = bestMatchList.get(i).employee;
-							double abilityUnder = 0;
+							double abilityDivided = 0;
+							//double abilityUnder = 0;
 							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-								abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+								double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+								double abilityOver = currentTask.getNeededAbilities().get(k).level;
+								abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
 							}
-							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
-							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+							abilityDivided /= currentTask.getNeededAbilities().size();
+							
+							//int abilityOver = 0;
+							/*for(int p=0;p<currentTask.getNeededAbilities().size();p++){
+								abilityOver += currentTask.getNeededAbilities().get(p).level;
+							}*/
+							
+							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
+							realTaskTime += abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
 						}
 						realTaskTime /= iteration;
+						realTaskTime /= Math.sqrt(iteration);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
 						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
@@ -116,16 +127,27 @@ public class Application {
 							
 					}else{
 						double realTaskTime = 0;
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Real task time hesaplama
-							Employee currentEmployee = bestMatchList.get(0).employee;
-							double abilityUnder = 0;
+						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Real task time i hesapla
+							Employee currentEmployee = bestMatchList.get(i).employee;
+							double abilityDivided = 0;
+							//double abilityUnder = 0;
 							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-								abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+								double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+								double abilityOver = currentTask.getNeededAbilities().get(k).level;
+								abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
 							}
-							int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
-							realTaskTime += (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+							abilityDivided /= currentTask.getNeededAbilities().size();
+							
+							//int abilityOver = 0;
+							/*for(int p=0;p<currentTask.getNeededAbilities().size();p++){
+								abilityOver += currentTask.getNeededAbilities().get(p).level;
+							}*/
+							
+							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
+							realTaskTime += abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
 						}
 						realTaskTime /= iteration;
+						realTaskTime /= Math.sqrt(iteration);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						taskToAdd.setWorkhaolism(workhaolismNow);
 						
@@ -209,18 +231,28 @@ public class Application {
 	
 	public static ArrayList<EmployeeSortingObject> findBestMatches (int C, Task currentTask, Date inputTime){//Creates best match queue
 		
-		int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
+		//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
 		
 		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
 			if(!currentEmployee.isFullAt(inputTime)){
-				int abilityUnder = 0;
+				
+				double abilityDivided = 0;
+				
+				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
+					double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+					double abilityOver = currentTask.getNeededAbilities().get(k).level;
+					abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
+				}
+				abilityDivided /= currentTask.getNeededAbilities().size();
+				
+				/*int abilityUnder = 0;
 				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
-				}
+				}*/
 				
-				double employeeRealTaskTime = (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;
@@ -241,18 +273,28 @@ public class Application {
 	
 	public static ArrayList<EmployeeSortingObject> findBestMatchesWithWorkhaolism (int C, Task currentTask, Date inputTime){//Creates best match queue with workhaolism
 		
-		int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
+		//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
 		
 		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
 			if(currentEmployee.isWorkaholism()&&!currentEmployee.isFullAt(inputTime)){
+				
+				double abilityDivided = 0;
+				//double abilityUnder = 0;
+				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
+					double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
+					double abilityOver = currentTask.getNeededAbilities().get(k).level;
+					abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
+				}
+				abilityDivided /= currentTask.getNeededAbilities().size();
+				
 				int abilityUnder = 0;
 				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 				}
 				
-				double employeeRealTaskTime = (abilityOver/abilityUnder)*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;
