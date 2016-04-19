@@ -8,27 +8,24 @@ import java.util.Random;
 public class TaskGenerator {
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		PrintWriter writer = new PrintWriter("tasks.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("src/xmlparser_generic/tasks.xml", "UTF-8");
 		Random randomGenerator = new Random();
 		int taskCounter = 1;
 		writer.println("<projects>");
-		for(int j = 0 ; j < 3; j++)
+		for(int j = 0 ; j < 2; j++)
 		{
 			writer.println("\t<project>");
 			writer.println("\t\t<project-id>" + (j + 1) + "</project-id>");
 			writer.println("\t\t<tasks>");
-			for(int i = 0; i < 50; i++)
+			for(int i = 0; i < 20; i++)
 			{
 				writer.println("\t\t\t<task>");
 				writer.println("\t\t\t\t<task-id>"+(taskCounter)+"</task-id>");
 				taskCounter++;
-<<<<<<< HEAD
 				writer.println("\t\t\t\t<name>" + "Task " + (i + 1) + "</name>");
 				writer.println("\t\t\t\t<duration>" + ((randomGenerator.nextFloat() * 14) + 1) + "</duration>");
-=======
 				writer.println("\t\t\t<name>" + "Task " + (taskCounter) + "</name>");
 				writer.println("\t\t\t<duration>" + ((randomGenerator.nextFloat() * 14) + 1) + "</duration>");
->>>>>>> 232224e52dc9ee6feee220fe72d113d164113dae
 				//writer.println("\t\t\t<knowledge>" + ((randomGenerator.nextFloat() * 9) + 1) + "</knowledge>");
 				writer.println("\t\t\t\t<startDate> </startDate>");
 				writer.println("\t\t\t\t<belongsToProjectWithId>" +(j+1) +  "</belongsToProjectWithId>");
@@ -46,8 +43,16 @@ public class TaskGenerator {
 			}
 			writer.println("\t\t</tasks>");
 			writer.println("\t\t<priority>" + (j + 1) + "</priority>");
-			writer.println("\t\t<projectStartDate> </projectStartDate>");
-			writer.println("\t\t<dueDate> </dueDate>");
+			writer.println("\t\t<projectStartDate></projectStartDate>");
+			
+			String date1 = "2017-04-19 09:00:00.0";
+			String date2 = "2016-11-19 09:00:00.0";
+			
+			if(j == 0)
+				writer.println("\t\t<dueDate>" + date1 + "</dueDate>");
+			else
+				writer.println("\t\t<dueDate>" + date2 + "</dueDate>");
+			
 			writer.println("\t</project>");
 		}
 		writer.println("</projects>");

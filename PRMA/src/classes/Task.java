@@ -9,7 +9,7 @@ public class Task {
 	private double taskDuration;
 	private Date taskStart;
 	private ArrayList<Task> prerequisites;
-	private ArrayList<Ability> neededAbilities;
+	private ArrayList<Ability> neededAbilities = new ArrayList<Ability>();
 	private Project belongsTo;
 	private String taskName;
 	private boolean workhaolism;
@@ -106,6 +106,7 @@ public class Task {
 	}
 	public static Date getNextWorkHour(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar
+		//System.out.println(now);
 		cal.setTime(now);
 		if(now.getDay()==5&&now.getHours()>=17){//Jump to monday
 		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday

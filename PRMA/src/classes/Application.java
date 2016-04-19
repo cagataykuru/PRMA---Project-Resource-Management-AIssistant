@@ -25,8 +25,11 @@ public class Application {
 	public static void main(String [] args) throws TransformerException{
 		
 		//XML classsı çağır
-		parser = new XMLParser("src/xmlparser_generic");
-		projects = parser.ReadProjectXml("tasks.txt");
+		parser = new XMLParser("src/xmlparser_generic/");
+		projects = parser.ReadProjectXml("tasks.xml");
+		
+		//XML classsı çağır
+		employees = parser.ReadEmployeeXml("employee-ability.xml");
 		
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		for(int i=0;i<projects.size(); i++){
@@ -34,14 +37,19 @@ public class Application {
 		}
 		
 		
-		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd GGG hh:mm aaa", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd hh:mm", Locale.ENGLISH);
 		Date now = new Date();
+		
+		System.out.println(now);
+		
+		/*
 		try {
 			now = format.parse(args[0]);//Burada parametre alacak date'i yukarÄ±daki formattaki gibi.
 		} catch (ParseException e) {//Å�u anki tarih girilecek
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 		
 		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);//Sorts tasks
 		ArrayList<Task> assignedTasks = new ArrayList<Task>();
@@ -105,7 +113,7 @@ public class Application {
 							
 						}
 						
-						assignedTasks.add(currentTask);//EklenmiÅŸ taskÄ± assignedTasks'a koy
+						assignedTasks.add(taskToAdd);//EklenmiÅŸ taskÄ± assignedTasks'a koy
 					}
 				}else{//With workhaolism
 					TaskSortingObject currentSortingObject = sortedTasks.get(0);
@@ -165,8 +173,8 @@ public class Application {
 							employees.get(index).addTask(taskToAdd);	
 							
 						}
-						
-						assignedTasks.add(currentTask);
+						System.out.println("taskToAdd: "+taskToAdd.getTaskStart());
+						assignedTasks.add(taskToAdd);
 					}
 				}
 			}
@@ -178,6 +186,7 @@ public class Application {
 				for(int k=0;k<currentProject.getTasks().size();k++){
 					for(int e = 0; e<assignedTasks.size(); e++){
 						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName()){
+							System.out.println("here");
 							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())>0){
 								projectCompletedInTime = false;
 								e = assignedTasks.size();

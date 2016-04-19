@@ -7,6 +7,7 @@ import java.io.File;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -155,9 +156,14 @@ public class XMLParser {
 				int projectId = Integer.parseInt(prjid);
 				String prjPriority = element.getElementsByTagName("priority").item(0).getTextContent();
 				double projectPriority = Double.parseDouble(prjPriority);
+				
+				String prjduedate = element.getElementsByTagName("dueDate").item(0).getTextContent();
+				Date dueDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(prjduedate);
+				
 				ArrayList<Task> tasks = new ArrayList<Task>();
 				
 				Project project = new Project(projectId, tasks, projectPriority);
+				project.setProjectDueDate(dueDate);
 												
 				if (projectNode.getNodeType() == Node.ELEMENT_NODE) {
 
@@ -307,19 +313,15 @@ public class XMLParser {
 				
 				Ability A = new Ability("A", Ax);
 				abilities.add(A);
-				System.out.println(A.level);
 				
 				Ability B = new Ability("B", Bx);
 				abilities.add(B);
-				System.out.println(B.level);
 				
 				Ability C = new Ability("C", Cx);
 				abilities.add(C);
-				System.out.println(C.level);
 				
 				Ability D = new Ability("D", Dx);
 				abilities.add(D);
-				System.out.println(D.level);
 				
 				Ability E = new Ability("E", Ex);
 				abilities.add(E);

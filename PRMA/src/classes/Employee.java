@@ -21,6 +21,7 @@ public class Employee {
 		this.DepreciationLevel = DepreciationLevel;
 		this.lastName = lastname;
 		this.id = id;
+		mySchedule = new ArrayList<Task>();
 	}
 	/*public Employee(ArrayList<Ability> abilities, boolean Workhaolism){
 		this.setWorkaholism(Workhaolism);
