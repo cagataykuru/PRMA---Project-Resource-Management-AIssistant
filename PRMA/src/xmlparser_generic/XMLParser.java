@@ -148,37 +148,43 @@ public class XMLParser {
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
-				Node nNode = nList.item(temp);
+				Node projectNode = nList.item(temp);
+				Element element = (Element) projectNode;
+				String prjid = element.getElementsByTagName("project-id").item(0).getTextContent();
+				int projectId = Integer.parseInt(prjid);
+				String prjPriority = element.getElementsByTagName("duration").item(0).getTextContent();
+				double projectPriority = Double.parseDouble(prjPriority);
+				ArrayList<Task> tasks = new ArrayList<Task>();
+				
+				Project project = new Project(projectId, tasks, projectPriority);
 						
-				System.out.println("\nCurrent Element " + temp + " :" + nNode.getNodeName());
+				System.out.println("\nCurrent Element " + temp + " :" + projectNode.getNodeName());
 						
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				if (projectNode.getNodeType() == Node.ELEMENT_NODE) {
 
-					
 					NodeList tasklist = doc.getElementsByTagName("task");
 					
 					for(int i = 0; i < tasklist.getLength(); i++){
 						
 						Node task = tasklist.item(i);
+						Element eElement = (Element) task;
 						System.out.println("\nCurrent Sub Element " + i +  " of Element " + temp + task.getNodeName());
 						
-						Element eElement = (Element) task;
-
-						System.out.println("Task id : " + eElement.getElementsByTagName("id").item(0).getTextContent());
-						System.out.println("Task Name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
-						System.out.println("Task Duration : " + eElement.getElementsByTagName("duration").item(0).getTextContent());
-						System.out.println("StartDate : " + eElement.getElementsByTagName("startDate").item(0).getTextContent());				
-						
+						if(eElement.getElementsByTagName("belongsToProjectWithId").item(0).getTextContent().equalsIgnoreCase(String.valueOf(temp))){
+							String taskid = eElement.getElementsByTagName("id").item(0).getTextContent();
+							String taskDuration = eElement.getElementsByTagName("duration").item(0).getTextContent();
+							String taskName = eElement.getElementsByTagName("name").item(0).getTextContent();
+							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName);
+							tasks.add(newTask);
+						}
 					}
 					
-					
-
 				}
+				project.setTasks(tasks);
 			}
 		    } catch (Exception e) {
 			e.printStackTrace();
 		    }
-		
 	}
 
 	public String getDirectory() {

@@ -9,11 +9,18 @@ public class Project {
 	private Date projectStart;
 	private Date projectDueDate;
 	private ArrayList<Task> tasks;
-	private Double priority;	//emin deðilim typeýndan
+	private Double priority;	
+		
+	public Project(int id, ArrayList<Task> tasks, Date projectDueDate, Date projectStart, Double priority){
+		this.id = id;
+		this.setProjectDueDate(projectDueDate);
+		this.setProjectStart(projectStart);
+		this.priority = priority;
+		Collections.copy(this.tasks, tasks);
+	}
 	
-	//new variables will be added, just a draft
-	
-	public Project(ArrayList<Task> tasks, Date projectDueDate, Date projectStart, Double priority){
+	public Project(int id, ArrayList<Task> tasks,Double priority){
+		this.id = id;
 		this.setProjectDueDate(projectDueDate);
 		this.setProjectStart(projectStart);
 		this.priority = priority;

@@ -21,6 +21,13 @@ public class Task {
 		this.taskName = taskName;
 		this.workhaolism = false;
 	}
+	public Task(int id, double taskDuration,Project belongsTo, String taskName){
+		this.id = id;
+		this.taskDuration = taskDuration;
+		this.setBelongsTo(belongsTo);
+		this.taskName = taskName;
+		this.workhaolism = false;
+	}
 	
 	public void setWorkhaolism(boolean workhaolism){
 		this.workhaolism = workhaolism;

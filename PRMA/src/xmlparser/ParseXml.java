@@ -16,7 +16,7 @@ public class ParseXml {
 
     try {
 
-	File fXmlFile = new File("src/xmlparser_generic/task-project.xml");
+	File fXmlFile = new File("src/xmlparser_generic/tasks.txt");
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	Document doc = dBuilder.parse(fXmlFile);
@@ -51,7 +51,7 @@ public class ParseXml {
 				
 				Element eElement = (Element) task;
 
-				System.out.println("Task id : " + eElement.getElementsByTagName("id").item(0).getTextContent());
+				System.out.println("Task id : " + eElement.getAttribute("id"));
 				System.out.println("Task Name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
 				System.out.println("Task Duration : " + eElement.getElementsByTagName("duration").item(0).getTextContent());
 				System.out.println("StartDate : " + eElement.getElementsByTagName("startDate").item(0).getTextContent());				
