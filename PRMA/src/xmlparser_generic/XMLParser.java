@@ -129,9 +129,11 @@ public class XMLParser {
 		}
 	}
 	
-	public static void ReadProjectXml(String fileName, Project prj) throws TransformerException{
+	public ArrayList<Project> ReadProjectXml(String fileName) throws TransformerException{
 		fullPathProject = directory.concat("/");
 		fullPathProject = directory.concat(fileName);
+		
+		ArrayList <Project> projects = new ArrayList<Project>();
 		
 		try {
 
@@ -181,10 +183,78 @@ public class XMLParser {
 					
 				}
 				project.setTasks(tasks);
+				projects.add(project);
 			}
 		    } catch (Exception e) {
 			e.printStackTrace();
 		    }
+		return projects;
+		
+	}
+	
+	
+	//Bu employeeler için modify edilecek
+	public ArrayList<Employee> ReadEmployeeXml(String fileName) throws TransformerException{
+		fullPathProject = directory.concat("/");
+		fullPathProject = directory.concat(fileName);
+		
+		ArrayList <Employee> employees = new ArrayList<Employee>();
+		
+		try {
+
+			File fXmlFile = new File(fullPathProject);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXmlFile);
+								
+			doc.getDocumentElement().normalize();
+					
+			NodeList nList = doc.getElementsByTagName("project");
+					
+			System.out.println("----------------------------");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+
+				Node projectNode = nList.item(temp);
+				Element element = (Element) projectNode;
+				String prjid = element.getElementsByTagName("project-id").item(0).getTextContent();
+				int projectId = Integer.parseInt(prjid);
+				String prjPriority = element.getElementsByTagName("duration").item(0).getTextContent();
+				double projectPriority = Double.parseDouble(prjPriority);
+				ArrayList<Task> tasks = new ArrayList<Task>();
+				
+				Project project = new Project(projectId, tasks, projectPriority);
+						
+				System.out.println("\nCurrent Element " + temp + " :" + projectNode.getNodeName());
+						
+				if (projectNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					NodeList tasklist = doc.getElementsByTagName("task");
+					
+					for(int i = 0; i < tasklist.getLength(); i++){
+						
+						Node task = tasklist.item(i);
+						Element eElement = (Element) task;
+						System.out.println("\nCurrent Sub Element " + i +  " of Element " + temp + task.getNodeName());
+						
+						if(eElement.getElementsByTagName("belongsToProjectWithId").item(0).getTextContent().equalsIgnoreCase(String.valueOf(temp))){
+							String taskid = eElement.getElementsByTagName("id").item(0).getTextContent();
+							String taskDuration = eElement.getElementsByTagName("duration").item(0).getTextContent();
+							String taskName = eElement.getElementsByTagName("name").item(0).getTextContent();
+							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName);
+							tasks.add(newTask);
+						}
+					}
+					
+				}
+				project.setTasks(tasks);
+				//employees.add(project);
+			}
+		    } catch (Exception e) {
+			e.printStackTrace();
+		    }
+		return employees;
+		
 	}
 
 	public String getDirectory() {

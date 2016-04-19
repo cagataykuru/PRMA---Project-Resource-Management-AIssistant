@@ -10,18 +10,24 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.xml.transform.TransformerException;
+
+import xmlparser_generic.XMLParser;
+
 public class Application {
 	
 	public static ArrayList<Employee> employees;
 	public static ArrayList<Project> projects;
+	public static XMLParser parser;
 	
 	public static int iteration = 0;
 	
-	public static void main(String [] args){
-		System.out.println("hello world");
-		//Buraya xmlden okumalar gelcek
+	public static void main(String [] args) throws TransformerException{
 		
-		//Xml okumalar sonu
+		//XML classsı çağır
+		parser = new XMLParser("src/xmlparser_generic");
+		projects = parser.ReadProjectXml("tasks.txt");
+		
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		for(int i=0;i<projects.size(); i++){
 			tasks.addAll(projects.get(i).getTasks());
