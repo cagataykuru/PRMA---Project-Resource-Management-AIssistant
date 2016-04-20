@@ -152,8 +152,10 @@ public class XMLParser {
 
 				Node projectNode = nList.item(temp);
 				Element element = (Element) projectNode;
+				
 				String prjid = element.getElementsByTagName("project-id").item(0).getTextContent();
 				int projectId = Integer.parseInt(prjid);
+				
 				String prjPriority = element.getElementsByTagName("priority").item(0).getTextContent();
 				double projectPriority = Double.parseDouble(prjPriority);
 				
@@ -161,7 +163,7 @@ public class XMLParser {
 				Date dueDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(prjduedate);
 				
 				ArrayList<Task> tasks = new ArrayList<Task>();
-				
+				//Sorun burada olabilir
 				Project project = new Project(projectId, tasks, projectPriority);
 				project.setProjectDueDate(dueDate);
 												
@@ -174,7 +176,7 @@ public class XMLParser {
 						Node task = tasklist.item(i);
 						Element eElement = (Element) task;
 						
-						if(eElement.getElementsByTagName("belongsToProjectWithId").item(0).getTextContent().equalsIgnoreCase(String.valueOf(temp))){
+						if(eElement.getElementsByTagName("belongsToProjectWithId").item(0).getTextContent().equalsIgnoreCase(String.valueOf(prjid))){
 							String taskid = eElement.getElementsByTagName("task-id").item(0).getTextContent();
 							String taskDuration = eElement.getElementsByTagName("duration").item(0).getTextContent();
 							String taskName = eElement.getElementsByTagName("name").item(0).getTextContent();
