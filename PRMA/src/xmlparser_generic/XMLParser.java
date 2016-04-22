@@ -34,101 +34,110 @@ public class XMLParser {
 		XMLParser.directory = directory;
 	}
 	
-	public void writeToXML(String projectFileName, Project project, String EmployeeFileName){
-		try {
-			writeToProjectXML(projectFileName, project);
-		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
-	public static void writeToProjectXML(String fileName, Project prj) throws TransformerException{
+	public static void writeToProjectXML(String fileName, ArrayList<Project> allprojects) throws TransformerException, ParserConfigurationException{
 		fullPathProject = directory.concat("/");
 		fullPathProject = directory.concat(fileName);
 		
-		ArrayList<Task> allTasks = new ArrayList<Task>();
-		allTasks = prj.getTasks();
-		
 		
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-		try {
-			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			Document doc = docBuilder.newDocument();
-			
-			//initiate task attributes.
-			Element taskid = doc.createElement("id");
-			Element taskName = doc.createElement("name");
-			Element taskDuration = doc.createElement("duration");
-			Element taskStartDate = doc.createElement("startDate");
-			Element abilitiesNeeded = doc.createElement("abilities");
-			Element ability = doc.createElement("ability");
-			Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			
-			// root elements
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		Document doc = docBuilder.newDocument();
+		
+		// root element
+		Element projects = doc.createElementNS("src/xmlparser_generic/output.xml","projects");
+		doc.appendChild(projects);
+		
+		//initiate project attributes
+		Element projectid = doc.createElement("project-id");
+		Element taskstag = doc.createElement("tasks");
+		Element prioritytag = doc.createElement("priority");
+		Element prjstartdatetag = doc.createElement("projectStartDate");
+		Element prjduedatetag = doc.createElement("projectDueDate");
+		
+		//initiate task attributes.
+		Element taskid = doc.createElement("task-id");
+		Element taskName = doc.createElement("name");
+		Element taskDuration = doc.createElement("duration");
+		Element taskStartDate = doc.createElement("startDate");
+		Element abilitiesNeeded = doc.createElement("abilities");
+		Element tasksproject = doc.createElement("belongsToProjectWithId");
+		Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		
+		for(Project eachProject : allprojects){
 			Element project = doc.createElement("project");
-			doc.appendChild(project);
-
-			// all the tasks
-			Element tasks = doc.createElement("tasks");
-			project.appendChild(tasks);
+			projects.appendChild(project);
 			
-			for(Task eachTask: allTasks){
-				//task elements
-				Element task = doc.createElement("task");
-				
-				taskid.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskName())));
-				task.appendChild(taskid);
-				
-				taskName.appendChild(doc.createTextNode(String.valueOf(getTaskIdCount())));
-				task.appendChild(taskName);
-				
-				taskDuration.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskDuration())));
-				task.appendChild(taskDuration);
-				
-				taskStartDate.appendChild(doc.createTextNode(formatter.format(eachTask.getTaskStart())));
-				task.appendChild(taskStartDate);
-				
-				task.appendChild(abilitiesNeeded);
-				ArrayList<Ability> abilities = eachTask.getNeededAbilities();
-				for(Ability eachAbility: abilities){
-					//ability.appendChild(doc.createTextNode(eachAbility.name));
-					String s = "";
-					abilitiesNeeded.appendChild(doc.createTextNode(s));
-				}
-				tasks.appendChild(task);
-				setTaskIdCount(getTaskIdCount()+1);
-			}
-
+			projectid.appendChild(doc.createTextNode(String.valueOf(eachProject.getId())));
+			project.appendChild(projectid);
 			
-			Element projectPriority = doc.createElement("priority");
-			projectPriority.appendChild(doc.createTextNode(String.valueOf(prj.getPriority())));
-			project.appendChild(projectPriority);
-			
-			Element projectStartDate = doc.createElement("projectStartDate");
-			projectStartDate.appendChild(doc.createTextNode(formatter.format(prj.getProjectStart())));
-			project.appendChild(projectStartDate);
-			
-			Element projectDueDate = doc.createElement("dueDate");
-			projectDueDate.appendChild(doc.createTextNode(formatter.format(prj.getProjectDueDate())));
-			project.appendChild(projectDueDate);
-			
-
-			// write the content into xml file
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("src/xmlparser_generic/fileToWrite.xml"));
-
-
-			transformer.transform(source, result);
-
-			System.out.println("Project file is saved!");
-			
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//Burda kaldým
 		}
+		
+		
+		/*
+		Element project = doc.createElement("project");
+		projects.appendChild(project);
+
+		// all the tasks
+		Element tasks = doc.createElement("tasks");
+		project.appendChild(tasks);
+		
+		for(Task eachTask: allTasks){
+			//task elements
+			Element task = doc.createElement("task");
+			
+			taskid.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskName())));
+			task.appendChild(taskid);
+			
+			taskName.appendChild(doc.createTextNode(String.valueOf(getTaskIdCount())));
+			task.appendChild(taskName);
+			
+			taskDuration.appendChild(doc.createTextNode(String.valueOf(eachTask.getTaskDuration())));
+			task.appendChild(taskDuration);
+			
+			taskStartDate.appendChild(doc.createTextNode(formatter.format(eachTask.getTaskStart())));
+			task.appendChild(taskStartDate);
+			
+			task.appendChild(abilitiesNeeded);
+			ArrayList<Ability> abilities = eachTask.getNeededAbilities();
+			for(Ability eachAbility: abilities){
+				//ability.appendChild(doc.createTextNode(eachAbility.name));
+				String s = "";
+				abilitiesNeeded.appendChild(doc.createTextNode(s));
+			}
+			tasks.appendChild(task);
+			setTaskIdCount(getTaskIdCount()+1);
+		}
+
+		
+		Element projectPriority = doc.createElement("priority");
+		projectPriority.appendChild(doc.createTextNode(String.valueOf(prj.getPriority())));
+		project.appendChild(projectPriority);
+		
+		Element projectStartDate = doc.createElement("projectStartDate");
+		projectStartDate.appendChild(doc.createTextNode(formatter.format(prj.getProjectStart())));
+		project.appendChild(projectStartDate);
+		
+		Element projectDueDate = doc.createElement("dueDate");
+		projectDueDate.appendChild(doc.createTextNode(formatter.format(prj.getProjectDueDate())));
+		project.appendChild(projectDueDate);
+		
+
+		// write the content into xml file
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		StreamResult result = new StreamResult(new File("src/xmlparser_generic/fileToWrite.xml"));
+
+
+		transformer.transform(source, result);
+
+		System.out.println("Project file is saved!");
+		
+		*/
+		
 	}
 	
 	public ArrayList<Project> ReadProjectXml(String fileName) throws TransformerException{
