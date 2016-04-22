@@ -32,10 +32,14 @@ public class Application {
 		employees = parser.ReadEmployeeXml("employee-ability.xml");
 		
 		ArrayList<Task> tasks = new ArrayList<Task>();
+		System.out.println("Number of projects: "+projects.size());
 		for(int i=0;i<projects.size(); i++){
+			System.out.println(projects.get(i).getId());
 			tasks.addAll(projects.get(i).getTasks());
 		}
-		
+		for(int i = 0; i<tasks.size();i++){
+			System.out.println("taskName: "+tasks.get(i).getTaskName()+"taskDuration: "+tasks.get(i).getTaskDuration());
+		}
 		
 		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd hh:mm", Locale.ENGLISH);
 		Date now = new Date();
@@ -68,6 +72,10 @@ public class Application {
 					
 					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
+					/*for(int p = 0; p<bestMatchList.size();p++){
+						System.out.println("bestMatchList #"+p+": "+bestMatchList.get(p).score);
+					}*/
+					
 					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
 						
 						now = getNextWorkHour(now);
@@ -85,14 +93,15 @@ public class Application {
 								abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
 							}
 							abilityDivided /= currentTask.getNeededAbilities().size();
-							
+							//System.out.println("abilityDivided: "+abilityDivided);
 							//int abilityOver = 0;
 							/*for(int p=0;p<currentTask.getNeededAbilities().size();p++){
 								abilityOver += currentTask.getNeededAbilities().get(p).level;
 							}*/
 							
-							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
-							realTaskTime += abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());		
+							System.out.println("realTaskTimeMultiplier: "+abilityDivided*Math.sqrt((17.0/currentEmployee.getDepreciationLevel())));
+							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 						}
 						realTaskTime /= iteration;
 						realTaskTime /= Math.sqrt(iteration);
@@ -152,7 +161,7 @@ public class Application {
 							}*/
 							
 							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
-							realTaskTime += abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 						}
 						realTaskTime /= iteration;
 						realTaskTime /= Math.sqrt(iteration);
@@ -178,15 +187,24 @@ public class Application {
 					}
 				}
 			}
+			System.out.println("assignedTasks.Length: "+assignedTasks.size());
+			for(int j = 0; j<employees.size();j++){
+				employees.get(j).printSchedule();
+			}
 			//Burada tÃ¼m projeler zamanÄ±nda bitiyor mu onu kontrol et
 			continued = false;
 			for(int i=0; i<projects.size();i++){
 				Project currentProject = projects.get(i);
 				boolean projectCompletedInTime = true;
+				Date projectEndDate = new Date();
 				for(int k=0;k<currentProject.getTasks().size();k++){
+					
 					for(int e = 0; e<assignedTasks.size(); e++){
 						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName()){
-							System.out.println("here");
+							if(projectEndDate.compareTo(assignedTasks.get(e).getTaskEndDate())<0){
+								projectEndDate = assignedTasks.get(e).getTaskEndDate();
+							}
+							//System.out.println("assignedTasks.get(e).getTaskEndDate(): "+assignedTasks.get(e).getTaskEndDate()+"currentProject.getProjectDueDate()"+currentProject.getProjectDueDate());
 							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())>0){
 								projectCompletedInTime = false;
 								e = assignedTasks.size();
@@ -195,6 +213,7 @@ public class Application {
 						}
 					}
 				}
+				System.out.println("projectEndDate of "+currentProject.getId()+" is: "+projectEndDate);
 				if(!projectCompletedInTime){//TÃ¼m projeler bitmiyorsa
 					continued = true;
 					i = projects.size();
@@ -261,7 +280,7 @@ public class Application {
 					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 				}*/
 				
-				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;
@@ -274,7 +293,7 @@ public class Application {
 	        @Override
 	        public int compare(EmployeeSortingObject first, EmployeeSortingObject second)
 	        {
-	            return  Double.compare(second.score, first.score);
+	            return  Double.compare(first.score, second.score);
 	        }
 	    });
 		return queue;
@@ -303,7 +322,7 @@ public class Application {
 					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 				}
 				
-				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*(17.0/currentEmployee.getDepreciationLevel());
+				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;
@@ -316,7 +335,7 @@ public class Application {
 	        @Override
 	        public int compare(EmployeeSortingObject first, EmployeeSortingObject second)
 	        {
-	            return  Double.compare(second.score, first.score);
+	            return  Double.compare(first.score, second.score);
 	        }
 	    });
 		return queue;

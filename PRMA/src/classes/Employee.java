@@ -28,6 +28,12 @@ public class Employee {
 		Collections.copy(this.abilities, abilities);
 	}*/
 	
+	public void printSchedule(){
+		for(int i=0;i<mySchedule.size();i++){
+			System.out.println("emplooye "+this.id+" schedule "+i+"taskName: "+mySchedule.get(i).getTaskName()+": taskStart: " +mySchedule.get(i).getTaskStart()+" taskEnd: "+mySchedule.get(i).getTaskEndDate()+" taskDuration: "+mySchedule.get(i).getTaskDuration()+" taskBelongsTo: "+mySchedule.get(i).getBelongsTo().getId());
+		}
+	}
+	
 	public void setId(int id){
 		this.id = id;
 	}
