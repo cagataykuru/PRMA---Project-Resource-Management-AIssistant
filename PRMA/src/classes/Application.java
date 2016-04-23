@@ -37,17 +37,15 @@ public class Application {
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		System.out.println("Number of projects: "+projects.size());
 		for(int i=0;i<projects.size(); i++){
-			System.out.println(projects.get(i).getId());
+			//System.out.println(projects.get(i).getId());
 			tasks.addAll(projects.get(i).getTasks());
 		}
 		for(int i = 0; i<tasks.size();i++){
-			System.out.println("taskName: "+tasks.get(i).getTaskName()+"taskDuration: "+tasks.get(i).getTaskDuration());
+			//System.out.println("taskName: "+tasks.get(i).getTaskName()+"taskDuration: "+tasks.get(i).getTaskDuration());
 		}
 		
 		DateFormat format = new SimpleDateFormat("yyyyy.MMMMM.dd hh:mm", Locale.ENGLISH);
-		Date now = new Date();
 		
-		System.out.println(now);
 		
 		/*
 		try {
@@ -57,20 +55,23 @@ public class Application {
 			e.printStackTrace();
 		}
 		*/
-		
-		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.7, now);//Sorts tasks
-		for(int l = 0; l<sortedTasks.size();l++){
-			System.out.println("sortedTasks.importance: "+sortedTasks.get(l).importance);
-		}
+
 		
 		ArrayList<Task> assignedTasks = new ArrayList<Task>();
-		int treshHold = 10;
+		int treshHold = 1000;
 		int iteration = 0;
 		
 		boolean continued = true;
 		while(continued){
+			Date now = new Date();
 			iteration++;
+			System.out.println("iteration: "+iteration);
+			ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);//Sorts tasks
+			for(int l = 0; l<sortedTasks.size();l++){
+				System.out.println("sortedTasks.importance: "+sortedTasks.get(l).importance);
+			}
 			while(!sortedTasks.isEmpty()){//Scheduling starts here
+				
 				if(iteration<treshHold){//Without workhaolism
 					TaskSortingObject currentSortingObject = sortedTasks.get(0);
 					Task currentTask = currentSortingObject.task;//Get the first one from the list
@@ -112,6 +113,7 @@ public class Application {
 						}
 						realTaskTime /= iteration;
 						realTaskTime /= Math.sqrt(iteration);
+						System.out.println("realTaskTime: "+realTaskTime);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
 						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
@@ -189,12 +191,12 @@ public class Application {
 							employees.get(index).addTask(taskToAdd);	
 							
 						}
-						System.out.println("taskToAdd: "+taskToAdd.getTaskStart());
+						//System.out.println("taskToAdd: "+taskToAdd.getTaskStart());
 						assignedTasks.add(taskToAdd);
 					}
 				}
 			}
-			System.out.println("assignedTasks.Length: "+assignedTasks.size());
+			//System.out.println("assignedTasks.Length: "+assignedTasks.size());
 			for(int j = 0; j<employees.size();j++){
 				//employees.get(j).printSchedule();
 			}
@@ -205,14 +207,16 @@ public class Application {
 				boolean projectCompletedInTime = true;
 				Date projectEndDate = new Date();
 				for(int k=0;k<currentProject.getTasks().size();k++){
-					
 					for(int e = 0; e<assignedTasks.size(); e++){
-						if(currentProject.getTasks().get(k).getTaskName() == assignedTasks.get(e).getTaskName()){
+						if(currentProject.getTasks().get(k).getTaskName().compareTo(assignedTasks.get(e).getTaskName())==0){
+							//System.out.println("task name oldu");
 							if(projectEndDate.compareTo(assignedTasks.get(e).getTaskEndDate())<0){
 								projectEndDate = assignedTasks.get(e).getTaskEndDate();
 							}
 							//System.out.println("assignedTasks.get(e).getTaskEndDate(): "+assignedTasks.get(e).getTaskEndDate()+"currentProject.getProjectDueDate()"+currentProject.getProjectDueDate());
-							if(assignedTasks.get(e).getTaskEndDate().compareTo(currentProject.getProjectDueDate())>0){
+							if(projectEndDate.compareTo(currentProject.getProjectDueDate())>0){
+								//System.out.println("hereeee");
+								//System.out.println("not finished");
 								projectCompletedInTime = false;
 								e = assignedTasks.size();
 								k = currentProject.getTasks().size();
@@ -220,23 +224,31 @@ public class Application {
 						}
 					}
 				}
-				System.out.println("projectEndDate of "+currentProject.getId()+" is: "+projectEndDate);
+				System.out.println("projectEndDate of "+currentProject.getId()+" is: "+projectEndDate + "projectDueDate: "+currentProject.getProjectDueDate());
+				System.out.println("projectCompletedInTime: "+projectCompletedInTime);
 				if(!projectCompletedInTime){//TÃ¼m projeler bitmiyorsa
+					System.out.println("bastırıyor");
 					continued = true;
 					i = projects.size();
-					while(!assignedTasks.isEmpty()){//AtanmÄ±ÅŸ tÃ¼m tasklarÄ± emplooyelerin schedulelarÄ±ndan sil
+					
+					for(int e = 0; e<employees.size();e++){
+						employees.get(e).mySchedule.clear();
+					}
+					assignedTasks.clear();
+					
+					/*while(!assignedTasks.isEmpty()){//AtanmÄ±ÅŸ tÃ¼m tasklarÄ± emplooyelerin schedulelarÄ±ndan sil
 						for(int e = 0; e<employees.size();e++){
 							if(employees.get(e).mySchedule.get(employees.get(e).mySchedule.size()-1).getTaskName().compareTo(assignedTasks.get(assignedTasks.size()-1).getTaskName())==0){
 								employees.get(e).removeTask();
 								assignedTasks.remove(assignedTasks.size()-1);
 							}
 						}
-					}
+					}*/
 				}
 			}
 			//TÃ¼m projelerin zamanÄ±nda bitiÅŸi kontrolÃ¼ sonu
 		}
-		CalendarDisplay calll = new CalendarDisplay(employees);
+		//CalendarDisplay calll = new CalendarDisplay(employees);
 	}
 		
 		

@@ -20,15 +20,15 @@ public class TaskGenerator {
 			writer.println("\t<project>");
 			writer.println("\t\t<project-id>" + (j + 1) + "</project-id>");
 			writer.println("\t\t<tasks>");
-			for(int i = 0; i < 50; i++){
+			for(int i = 0; i < 10; i++){
 				priorityList.add(i + 1);
 			}
-			for(int i = 0; i < 50; i++)
+			for(int i = 0; i < 10; i++)
 			{
 				long seed = System.nanoTime();
 				Collections.shuffle(priorityList, new Random(seed));
-				int priorityOfTask = priorityList.get(49 - i);
-				priorityList.remove(49 - i);
+				int priorityOfTask = priorityList.get(9 - i);
+				priorityList.remove(9 - i);
 				writer.println("\t\t\t<task>");
 				writer.println("\t\t\t\t<task-id>"+(taskCounter)+"</task-id>");
 				writer.println("\t\t\t\t<name>" + "Task " + taskCounter + "</name>");
@@ -53,10 +53,10 @@ public class TaskGenerator {
 			writer.println("\t\t<priority>" + (j + 1) + "</priority>");
 			writer.println("\t\t<projectStartDate></projectStartDate>");
 			
-			String date1 = "2017-04-19 09:00:00.0";
+			String date1 = "2016-05-04 09:00:00.0";
 			String date2 = "2016-11-19 09:00:00.0";
 			
-			if(j == 0)
+			if(j == 2)
 				writer.println("\t\t<dueDate>" + date1 + "</dueDate>");
 			else
 				writer.println("\t\t<dueDate>" + date2 + "</dueDate>");
