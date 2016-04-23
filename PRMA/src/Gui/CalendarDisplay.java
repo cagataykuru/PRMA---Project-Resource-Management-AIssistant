@@ -81,7 +81,7 @@ public class CalendarDisplay extends JFrame {
         			if(employees.get(i).mySchedule.get(j).getTaskStart().getYear()+1900==currentYear&&employees.get(i).mySchedule.get(j).getTaskStart().getMonth()==currentMonth&&employees.get(i).mySchedule.get(j).getTaskStart().getDate()==Integer.parseInt(tblCalendar.getValueAt(row, column).toString())){
         				System.out.println("here2");
         				//System.out.println("emplooye "+this.id+" schedule "+i+"taskName: "+mySchedule.get(i).getTaskName()+": taskStart: " +mySchedule.get(i).getTaskStart()+" taskEnd: "+mySchedule.get(i).getTaskEndDate()+" taskDuration: "+mySchedule.get(i).getTaskDuration()+" taskBelongsTo: "+mySchedule.get(i).getBelongsTo().getId());
-        				resultString += "<br> employee "+employees.get(i).getId()+" taskName: "+employees.get(i).mySchedule.get(j).getTaskName()+" taskEnd: "+employees.get(i).mySchedule.get(j).getTaskEndDate()+" taskDuration: "+employees.get(i).mySchedule.get(j).getTaskDuration()+" taskBelongsTo: "+employees.get(i).mySchedule.get(j).getBelongsTo().getId();
+        				resultString += "<br> employee "+employees.get(i).getId()+", taskName: "+employees.get(i).mySchedule.get(j).getTaskName()+", taskEnd: "+employees.get(i).mySchedule.get(j).getTaskEndDate()+", taskDuration: "+String.format("%.1f",employees.get(i).mySchedule.get(j).getTaskDuration())+" hours, taskBelongsTo: "+employees.get(i).mySchedule.get(j).getBelongsTo().getId();
         			}
         		}
         	}
