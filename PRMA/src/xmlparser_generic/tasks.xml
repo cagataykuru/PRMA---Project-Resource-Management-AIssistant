@@ -1,0 +1,738 @@
+<projects>
+	<project>
+		<project-id>1</project-id>
+		<tasks>
+			<task>
+				<task-id>1</task-id>
+				<name>Task 1</name>
+				<duration>13.845576</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>6</A>
+					<B>10</B>
+					<C>6</C>
+					<D>6</D>
+					<E>3</E>
+					<F>4</F>
+					<G>6</G>
+					<H>9</H>
+				</abilities>
+				<task-priority>7</task-priority>
+			</task>
+			<task>
+				<task-id>2</task-id>
+				<name>Task 2</name>
+				<duration>12.410632</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>7</A>
+					<B>6</B>
+					<C>1</C>
+					<D>5</D>
+					<E>7</E>
+					<F>0</F>
+					<G>3</G>
+					<H>2</H>
+				</abilities>
+				<task-priority>10</task-priority>
+			</task>
+			<task>
+				<task-id>3</task-id>
+				<name>Task 3</name>
+				<duration>2.0189402</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>1</B>
+					<C>4</C>
+					<D>3</D>
+					<E>0</E>
+					<F>8</F>
+					<G>10</G>
+					<H>1</H>
+				</abilities>
+				<task-priority>17</task-priority>
+			</task>
+			<task>
+				<task-id>4</task-id>
+				<name>Task 4</name>
+				<duration>2.0110636</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>10</A>
+					<B>5</B>
+					<C>0</C>
+					<D>7</D>
+					<E>5</E>
+					<F>2</F>
+					<G>5</G>
+					<H>5</H>
+				</abilities>
+				<task-priority>20</task-priority>
+			</task>
+			<task>
+				<task-id>5</task-id>
+				<name>Task 5</name>
+				<duration>4.7251663</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>10</A>
+					<B>3</B>
+					<C>9</C>
+					<D>2</D>
+					<E>7</E>
+					<F>1</F>
+					<G>0</G>
+					<H>5</H>
+				</abilities>
+				<task-priority>9</task-priority>
+			</task>
+			<task>
+				<task-id>6</task-id>
+				<name>Task 6</name>
+				<duration>4.9792633</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>4</A>
+					<B>0</B>
+					<C>8</C>
+					<D>4</D>
+					<E>3</E>
+					<F>9</F>
+					<G>2</G>
+					<H>0</H>
+				</abilities>
+				<task-priority>11</task-priority>
+			</task>
+			<task>
+				<task-id>7</task-id>
+				<name>Task 7</name>
+				<duration>9.268009</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>6</A>
+					<B>9</B>
+					<C>6</C>
+					<D>3</D>
+					<E>0</E>
+					<F>0</F>
+					<G>7</G>
+					<H>7</H>
+				</abilities>
+				<task-priority>16</task-priority>
+			</task>
+			<task>
+				<task-id>8</task-id>
+				<name>Task 8</name>
+				<duration>5.3105516</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>0</A>
+					<B>6</B>
+					<C>0</C>
+					<D>6</D>
+					<E>2</E>
+					<F>9</F>
+					<G>4</G>
+					<H>10</H>
+				</abilities>
+				<task-priority>6</task-priority>
+			</task>
+			<task>
+				<task-id>9</task-id>
+				<name>Task 9</name>
+				<duration>14.859973</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>9</B>
+					<C>9</C>
+					<D>0</D>
+					<E>5</E>
+					<F>6</F>
+					<G>7</G>
+					<H>9</H>
+				</abilities>
+				<task-priority>15</task-priority>
+			</task>
+			<task>
+				<task-id>10</task-id>
+				<name>Task 10</name>
+				<duration>2.9927068</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>0</A>
+					<B>4</B>
+					<C>10</C>
+					<D>4</D>
+					<E>1</E>
+					<F>3</F>
+					<G>7</G>
+					<H>0</H>
+				</abilities>
+				<task-priority>3</task-priority>
+			</task>
+			<task>
+				<task-id>11</task-id>
+				<name>Task 11</name>
+				<duration>8.529501</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>8</A>
+					<B>8</B>
+					<C>4</C>
+					<D>1</D>
+					<E>7</E>
+					<F>7</F>
+					<G>9</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>4</task-priority>
+			</task>
+			<task>
+				<task-id>12</task-id>
+				<name>Task 12</name>
+				<duration>13.885454</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>3</A>
+					<B>9</B>
+					<C>5</C>
+					<D>7</D>
+					<E>5</E>
+					<F>5</F>
+					<G>9</G>
+					<H>8</H>
+				</abilities>
+				<task-priority>12</task-priority>
+			</task>
+			<task>
+				<task-id>13</task-id>
+				<name>Task 13</name>
+				<duration>13.121409</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>1</A>
+					<B>10</B>
+					<C>5</C>
+					<D>0</D>
+					<E>7</E>
+					<F>0</F>
+					<G>7</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>5</task-priority>
+			</task>
+			<task>
+				<task-id>14</task-id>
+				<name>Task 14</name>
+				<duration>3.7719827</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>4</A>
+					<B>2</B>
+					<C>2</C>
+					<D>2</D>
+					<E>2</E>
+					<F>3</F>
+					<G>10</G>
+					<H>3</H>
+				</abilities>
+				<task-priority>18</task-priority>
+			</task>
+			<task>
+				<task-id>15</task-id>
+				<name>Task 15</name>
+				<duration>10.028267</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>5</A>
+					<B>6</B>
+					<C>6</C>
+					<D>9</D>
+					<E>5</E>
+					<F>5</F>
+					<G>1</G>
+					<H>0</H>
+				</abilities>
+				<task-priority>8</task-priority>
+			</task>
+			<task>
+				<task-id>16</task-id>
+				<name>Task 16</name>
+				<duration>1.3029959</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>5</A>
+					<B>8</B>
+					<C>0</C>
+					<D>1</D>
+					<E>9</E>
+					<F>1</F>
+					<G>0</G>
+					<H>8</H>
+				</abilities>
+				<task-priority>14</task-priority>
+			</task>
+			<task>
+				<task-id>17</task-id>
+				<name>Task 17</name>
+				<duration>1.8924387</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>0</A>
+					<B>2</B>
+					<C>9</C>
+					<D>10</D>
+					<E>10</E>
+					<F>2</F>
+					<G>4</G>
+					<H>3</H>
+				</abilities>
+				<task-priority>1</task-priority>
+			</task>
+			<task>
+				<task-id>18</task-id>
+				<name>Task 18</name>
+				<duration>9.273129</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>6</A>
+					<B>3</B>
+					<C>10</C>
+					<D>2</D>
+					<E>4</E>
+					<F>7</F>
+					<G>5</G>
+					<H>5</H>
+				</abilities>
+				<task-priority>13</task-priority>
+			</task>
+			<task>
+				<task-id>19</task-id>
+				<name>Task 19</name>
+				<duration>8.987436</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>4</A>
+					<B>2</B>
+					<C>10</C>
+					<D>4</D>
+					<E>10</E>
+					<F>1</F>
+					<G>0</G>
+					<H>2</H>
+				</abilities>
+				<task-priority>19</task-priority>
+			</task>
+			<task>
+				<task-id>20</task-id>
+				<name>Task 20</name>
+				<duration>2.2791138</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>1</belongsToProjectWithId>
+				<abilities>
+					<A>8</A>
+					<B>10</B>
+					<C>7</C>
+					<D>0</D>
+					<E>6</E>
+					<F>5</F>
+					<G>9</G>
+					<H>10</H>
+				</abilities>
+				<task-priority>2</task-priority>
+			</task>
+		</tasks>
+		<priority>1</priority>
+		<projectStartDate></projectStartDate>
+		<dueDate>2017-04-19 09:00:00.0</dueDate>
+	</project>
+	<project>
+		<project-id>2</project-id>
+		<tasks>
+			<task>
+				<task-id>21</task-id>
+				<name>Task 21</name>
+				<duration>3.7484016</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>7</A>
+					<B>10</B>
+					<C>10</C>
+					<D>1</D>
+					<E>1</E>
+					<F>10</F>
+					<G>7</G>
+					<H>3</H>
+				</abilities>
+				<task-priority>9</task-priority>
+			</task>
+			<task>
+				<task-id>22</task-id>
+				<name>Task 22</name>
+				<duration>4.2895837</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>1</A>
+					<B>1</B>
+					<C>8</C>
+					<D>0</D>
+					<E>5</E>
+					<F>8</F>
+					<G>5</G>
+					<H>0</H>
+				</abilities>
+				<task-priority>18</task-priority>
+			</task>
+			<task>
+				<task-id>23</task-id>
+				<name>Task 23</name>
+				<duration>7.4948263</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>8</A>
+					<B>10</B>
+					<C>5</C>
+					<D>7</D>
+					<E>0</E>
+					<F>6</F>
+					<G>9</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>20</task-priority>
+			</task>
+			<task>
+				<task-id>24</task-id>
+				<name>Task 24</name>
+				<duration>11.177465</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>3</B>
+					<C>10</C>
+					<D>5</D>
+					<E>3</E>
+					<F>7</F>
+					<G>2</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>11</task-priority>
+			</task>
+			<task>
+				<task-id>25</task-id>
+				<name>Task 25</name>
+				<duration>14.19323</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>0</A>
+					<B>7</B>
+					<C>6</C>
+					<D>2</D>
+					<E>3</E>
+					<F>10</F>
+					<G>9</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>2</task-priority>
+			</task>
+			<task>
+				<task-id>26</task-id>
+				<name>Task 26</name>
+				<duration>6.4269457</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>10</A>
+					<B>2</B>
+					<C>10</C>
+					<D>4</D>
+					<E>4</E>
+					<F>1</F>
+					<G>10</G>
+					<H>10</H>
+				</abilities>
+				<task-priority>10</task-priority>
+			</task>
+			<task>
+				<task-id>27</task-id>
+				<name>Task 27</name>
+				<duration>3.7461834</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>6</A>
+					<B>3</B>
+					<C>6</C>
+					<D>6</D>
+					<E>8</E>
+					<F>4</F>
+					<G>2</G>
+					<H>8</H>
+				</abilities>
+				<task-priority>12</task-priority>
+			</task>
+			<task>
+				<task-id>28</task-id>
+				<name>Task 28</name>
+				<duration>3.7810006</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>2</B>
+					<C>10</C>
+					<D>3</D>
+					<E>7</E>
+					<F>3</F>
+					<G>1</G>
+					<H>9</H>
+				</abilities>
+				<task-priority>8</task-priority>
+			</task>
+			<task>
+				<task-id>29</task-id>
+				<name>Task 29</name>
+				<duration>6.3710823</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>1</B>
+					<C>10</C>
+					<D>2</D>
+					<E>6</E>
+					<F>0</F>
+					<G>5</G>
+					<H>7</H>
+				</abilities>
+				<task-priority>4</task-priority>
+			</task>
+			<task>
+				<task-id>30</task-id>
+				<name>Task 30</name>
+				<duration>1.3674792</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>6</A>
+					<B>8</B>
+					<C>10</C>
+					<D>4</D>
+					<E>10</E>
+					<F>0</F>
+					<G>9</G>
+					<H>5</H>
+				</abilities>
+				<task-priority>19</task-priority>
+			</task>
+			<task>
+				<task-id>31</task-id>
+				<name>Task 31</name>
+				<duration>8.347849</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>10</B>
+					<C>2</C>
+					<D>1</D>
+					<E>7</E>
+					<F>2</F>
+					<G>10</G>
+					<H>9</H>
+				</abilities>
+				<task-priority>16</task-priority>
+			</task>
+			<task>
+				<task-id>32</task-id>
+				<name>Task 32</name>
+				<duration>10.989894</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>7</A>
+					<B>3</B>
+					<C>5</C>
+					<D>8</D>
+					<E>6</E>
+					<F>4</F>
+					<G>1</G>
+					<H>2</H>
+				</abilities>
+				<task-priority>6</task-priority>
+			</task>
+			<task>
+				<task-id>33</task-id>
+				<name>Task 33</name>
+				<duration>7.866935</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>1</A>
+					<B>0</B>
+					<C>0</C>
+					<D>10</D>
+					<E>10</E>
+					<F>1</F>
+					<G>3</G>
+					<H>10</H>
+				</abilities>
+				<task-priority>7</task-priority>
+			</task>
+			<task>
+				<task-id>34</task-id>
+				<name>Task 34</name>
+				<duration>10.974491</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>4</A>
+					<B>4</B>
+					<C>1</C>
+					<D>8</D>
+					<E>0</E>
+					<F>3</F>
+					<G>3</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>15</task-priority>
+			</task>
+			<task>
+				<task-id>35</task-id>
+				<name>Task 35</name>
+				<duration>3.015521</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>8</A>
+					<B>8</B>
+					<C>4</C>
+					<D>1</D>
+					<E>8</E>
+					<F>9</F>
+					<G>6</G>
+					<H>0</H>
+				</abilities>
+				<task-priority>3</task-priority>
+			</task>
+			<task>
+				<task-id>36</task-id>
+				<name>Task 36</name>
+				<duration>2.0737572</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>9</A>
+					<B>7</B>
+					<C>5</C>
+					<D>10</D>
+					<E>3</E>
+					<F>3</F>
+					<G>1</G>
+					<H>6</H>
+				</abilities>
+				<task-priority>1</task-priority>
+			</task>
+			<task>
+				<task-id>37</task-id>
+				<name>Task 37</name>
+				<duration>4.9918504</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>4</A>
+					<B>7</B>
+					<C>9</C>
+					<D>5</D>
+					<E>3</E>
+					<F>4</F>
+					<G>9</G>
+					<H>8</H>
+				</abilities>
+				<task-priority>13</task-priority>
+			</task>
+			<task>
+				<task-id>38</task-id>
+				<name>Task 38</name>
+				<duration>12.004362</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>4</A>
+					<B>7</B>
+					<C>1</C>
+					<D>9</D>
+					<E>0</E>
+					<F>1</F>
+					<G>9</G>
+					<H>9</H>
+				</abilities>
+				<task-priority>17</task-priority>
+			</task>
+			<task>
+				<task-id>39</task-id>
+				<name>Task 39</name>
+				<duration>7.4703116</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>0</A>
+					<B>4</B>
+					<C>8</C>
+					<D>5</D>
+					<E>0</E>
+					<F>9</F>
+					<G>10</G>
+					<H>0</H>
+				</abilities>
+				<task-priority>5</task-priority>
+			</task>
+			<task>
+				<task-id>40</task-id>
+				<name>Task 40</name>
+				<duration>1.8968763</duration>
+				<startDate> </startDate>
+				<belongsToProjectWithId>2</belongsToProjectWithId>
+				<abilities>
+					<A>5</A>
+					<B>0</B>
+					<C>7</C>
+					<D>9</D>
+					<E>7</E>
+					<F>5</F>
+					<G>7</G>
+					<H>2</H>
+				</abilities>
+				<task-priority>14</task-priority>
+			</task>
+		</tasks>
+		<priority>2</priority>
+		<projectStartDate></projectStartDate>
+		<dueDate>2016-11-19 09:00:00.0</dueDate>
+	</project>
+</projects>
