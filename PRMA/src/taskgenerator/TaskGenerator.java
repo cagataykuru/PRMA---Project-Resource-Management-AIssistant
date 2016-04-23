@@ -15,20 +15,20 @@ public class TaskGenerator {
 		int taskCounter = 1;
 		ArrayList<Integer> priorityList = new ArrayList<Integer>();
 		writer.println("<projects>");
-		for(int j = 0 ; j < 2; j++)
+		for(int j = 0 ; j < 10; j++)
 		{
 			writer.println("\t<project>");
 			writer.println("\t\t<project-id>" + (j + 1) + "</project-id>");
 			writer.println("\t\t<tasks>");
-			for(int i = 0; i < 20; i++){
+			for(int i = 0; i < 50; i++){
 				priorityList.add(i + 1);
 			}
-			for(int i = 0; i < 20; i++)
+			for(int i = 0; i < 50; i++)
 			{
 				long seed = System.nanoTime();
 				Collections.shuffle(priorityList, new Random(seed));
-				int priorityOfTask = priorityList.get(19 - i);
-				priorityList.remove(19 - i);
+				int priorityOfTask = priorityList.get(49 - i);
+				priorityList.remove(49 - i);
 				writer.println("\t\t\t<task>");
 				writer.println("\t\t\t\t<task-id>"+(taskCounter)+"</task-id>");
 				writer.println("\t\t\t\t<name>" + "Task " + taskCounter + "</name>");

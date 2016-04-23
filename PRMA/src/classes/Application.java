@@ -247,7 +247,7 @@ public class Application {
 		for(int i = 0; i<tasks.size();i++){
 			Task currentTask = tasks.get(i);
 				
-			double taskImportance = a*(currentTask.getImportance())+(1.0-a)*(48.0*(60.0 * 60.0 * 1000.0)/(currentTask.getDueDate().getTime()-now.getTime()));
+			double taskImportance = a*(currentTask.getImportance()+currentTask.getPriority())+(1.0-a)*(48.0*(60.0 * 60.0 * 1000.0)/(currentTask.getDueDate().getTime()-now.getTime()));
 				
 			TaskSortingObject newSortingObject = new TaskSortingObject();
 			newSortingObject.importance = taskImportance;
