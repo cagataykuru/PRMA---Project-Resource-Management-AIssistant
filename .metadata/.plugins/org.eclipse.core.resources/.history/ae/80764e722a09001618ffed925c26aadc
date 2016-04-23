@@ -12,7 +12,6 @@ import java.util.Locale;
 
 import javax.xml.transform.TransformerException;
 
-import Gui.CalendarDisplay;
 import xmlparser_generic.XMLParser;
 
 public class Application {

@@ -1,0 +1,61 @@
+package Gui;
+
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.table.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class CalendarDisplay extends JFrame {
+
+	static JLabel lblMonth, lblYear;
+    static JButton btnPrev, btnNext;
+    static JTable tblCalendar;
+    static JComboBox cmbYear;
+    static JFrame frmMain;
+    static Container pane;
+    static DefaultTableModel mtblCalendar; //Table model
+    static JScrollPane stblCalendar; //The scrollpane
+    static JPanel pnlCalendar;
+    static int realYear, realMonth, realDay, currentYear, currentMonth;
+
+	
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					CalendarDisplay frame = new CalendarDisplay();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}*/
+
+	/**
+	 * Create the frame.
+	 */
+	public CalendarDisplay() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+	}
+
+}
