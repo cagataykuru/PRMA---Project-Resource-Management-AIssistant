@@ -242,12 +242,13 @@ public class XMLParser {
 									abilities.remove(a);
 								}
 							}
-							*/
+							
 							
 							Iterator<Ability> iterateabilities = abilities.iterator();
 							while(iterateabilities.hasNext()){
 								//if(iterateabilities.next())
 							}
+							*/
 					
 							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName, Integer.parseInt(taskPriority));
 							newTask.setNeededAbilities(abilities);
