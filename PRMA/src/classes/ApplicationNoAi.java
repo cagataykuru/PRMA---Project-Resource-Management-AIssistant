@@ -12,6 +12,7 @@ import java.util.Locale;
 
 import javax.xml.transform.TransformerException;
 
+import Gui.CalendarDisplay;
 import xmlparser_generic.XMLParser;
 
 public class ApplicationNoAi {
@@ -118,6 +119,7 @@ public class ApplicationNoAi {
 			}
 			System.out.println("projectEndDate of "+currentProject.getId()+" is: "+projectEndDate);
 		}
+		CalendarDisplay calll = new CalendarDisplay(employees);
 	}		
 	
 	//There is no AI so it just basically finds matches with first matching abilities.
