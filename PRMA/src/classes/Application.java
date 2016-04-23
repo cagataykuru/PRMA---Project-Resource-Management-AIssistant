@@ -56,17 +56,20 @@ public class Application {
 		}
 		*/
 
-		
+		double a = 1.1;
 		ArrayList<Task> assignedTasks = new ArrayList<Task>();
 		int treshHold = 1000;
-		int iteration = 0;
-		
+		int iteration = 1;
+		ArrayList<Integer> unfinishedProjects = new ArrayList<Integer>();
 		boolean continued = true;
 		while(continued){
+			a-=0.1;
+			if(a<0)
+				a=0;
 			Date now = new Date();
-			iteration++;
+			//iteration++;
 			System.out.println("iteration: "+iteration);
-			ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);//Sorts tasks
+			ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, a, now);//Sorts tasks
 			for(int l = 0; l<sortedTasks.size();l++){
 				System.out.println("sortedTasks.importance: "+sortedTasks.get(l).importance);
 			}
@@ -91,7 +94,19 @@ public class Application {
 							
 					}else{
 						double realTaskTime = 0;
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Real task time i hesapla
+						
+						int indexx = -1;
+						for(int ll=0;ll<unfinishedProjects.size();ll++){
+							if(unfinishedProjects.get(ll)==currentTask.getBelongsTo().getId()){
+								indexx = ll;
+							}
+						}
+						
+						int iterator = iteration;
+						if(indexx!=-1)
+							iterator = iteration+1;
+						
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Real task time i hesapla
 							Employee currentEmployee = bestMatchList.get(i).employee;
 							double abilityDivided = 0;
 							//double abilityUnder = 0;
@@ -111,12 +126,13 @@ public class Application {
 							//System.out.println("realTaskTimeMultiplier: "+abilityDivided*Math.sqrt((17.0/currentEmployee.getDepreciationLevel())));
 							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 						}
-						realTaskTime /= iteration;
-						realTaskTime /= Math.sqrt(iteration);
+						realTaskTime /= iterator;
+						realTaskTime /= Math.sqrt(iterator);
+						System.out.println("iterator: "+iterator);
 						System.out.println("realTaskTime: "+realTaskTime);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 							//int taskTime = (int) Math.ceil(realTaskTime);
@@ -153,7 +169,19 @@ public class Application {
 							
 					}else{
 						double realTaskTime = 0;
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Real task time i hesapla
+
+						int indexx = -1;
+						for(int ll=0;ll<unfinishedProjects.size();ll++){
+							if(unfinishedProjects.get(ll)==currentTask.getBelongsTo().getId()){
+								indexx = ll;
+							}
+						}
+						
+						int iterator = iteration;
+						if(indexx!=-1)
+							iterator = iteration+1;
+						
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Real task time i hesapla
 							Employee currentEmployee = bestMatchList.get(i).employee;
 							double abilityDivided = 0;
 							//double abilityUnder = 0;
@@ -172,12 +200,12 @@ public class Application {
 							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());							
 							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 						}
-						realTaskTime /= iteration;
-						realTaskTime /= Math.sqrt(iteration);
+						realTaskTime /= iterator;
+						realTaskTime /= Math.sqrt(iterator);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						taskToAdd.setWorkhaolism(workhaolismNow);
 						
-						for(int i = 0;i<iteration&&i<bestMatchList.size(); i++){//Add task to employee(s)
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Add task to employee(s)
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 							
@@ -201,6 +229,10 @@ public class Application {
 				//employees.get(j).printSchedule();
 			}
 			//Burada tÃ¼m projeler zamanÄ±nda bitiyor mu onu kontrol et
+			if(unfinishedProjects.size()!=0){
+				unfinishedProjects.clear();
+				iteration++;
+			}
 			continued = false;
 			for(int i=0; i<projects.size();i++){
 				Project currentProject = projects.get(i);
@@ -220,6 +252,7 @@ public class Application {
 								projectCompletedInTime = false;
 								e = assignedTasks.size();
 								k = currentProject.getTasks().size();
+								unfinishedProjects.add(currentProject.getId());
 							}
 						}
 					}
@@ -246,9 +279,9 @@ public class Application {
 					}*/
 				}
 			}
-			//TÃ¼m projelerin zamanÄ±nda bitiÅŸi kontrolÃ¼ sonu
+			
 		}
-		//CalendarDisplay calll = new CalendarDisplay(employees);
+		CalendarDisplay calll = new CalendarDisplay(employees);
 	}
 		
 		
@@ -271,7 +304,7 @@ public class Application {
 	        @Override
 	        public int compare(TaskSortingObject first, TaskSortingObject second)
 	        {
-	            return  Double.compare(first.importance, second.importance);
+	            return  Double.compare(second.importance, first.importance);
 	        }
 	    });
 		return queue;

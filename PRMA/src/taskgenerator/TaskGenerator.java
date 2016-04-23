@@ -53,10 +53,10 @@ public class TaskGenerator {
 			writer.println("\t\t<priority>" + (j + 1) + "</priority>");
 			writer.println("\t\t<projectStartDate></projectStartDate>");
 			
-			String date1 = "2016-05-04 09:00:00.0";
-			String date2 = "2016-11-19 09:00:00.0";
+			String date1 = "2016-04-25 10:00:00.0";
+			String date2 = "2016-04-28 09:00:00.0";
 			
-			if(j == 2)
+			if(j == 9)
 				writer.println("\t\t<dueDate>" + date1 + "</dueDate>");
 			else
 				writer.println("\t\t<dueDate>" + date2 + "</dueDate>");
