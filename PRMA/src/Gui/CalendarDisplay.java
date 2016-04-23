@@ -3,16 +3,18 @@ package Gui;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import classes.Employee;
 
 /*
  * This code is not our own work we have done for CS 461.
@@ -21,19 +23,21 @@ import javax.swing.border.EmptyBorder;
 
 public class CalendarDisplay extends JFrame {
 
-	static JLabel lblMonth, lblYear;
+	static JLabel lblMonth, lblYear, results;
     static JButton btnPrev, btnNext;
     static JTable tblCalendar;
     static JComboBox cmbYear;
     static JFrame frmMain;
     static Container pane;
     static DefaultTableModel mtblCalendar; //Table model
-    static JScrollPane stblCalendar; //The scrollpane
+    static JScrollPane stblCalendar, labelScroll; //The scrollpane
     static JPanel pnlCalendar;
     static int realYear, realMonth, realDay, currentYear, currentMonth;	
 	private JPanel contentPane;
+	private ArrayList<Employee> employees;
 
-	public CalendarDisplay() {
+	public CalendarDisplay(ArrayList<Employee> employees) {
+		this.employees = employees;
 		try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
 		catch (ClassNotFoundException e) {}
 		catch (InstantiationException e) {}
@@ -50,13 +54,45 @@ public class CalendarDisplay extends JFrame {
 		//Create controls
 		lblMonth = new JLabel ("January");
 		lblYear = new JLabel ("Change year:");
+		results = new JLabel ("Results: ");
+		results.setVerticalAlignment(SwingConstants.TOP);
 		cmbYear = new JComboBox();
 		btnPrev = new JButton ("<<");
 		btnNext = new JButton (">>");
 		mtblCalendar = new DefaultTableModel(){public boolean isCellEditable(int rowIndex, int mColIndex){return false;}};
 		tblCalendar = new JTable(mtblCalendar);
 		stblCalendar = new JScrollPane(tblCalendar);
+		labelScroll = new JScrollPane(results);
 		pnlCalendar = new JPanel(null);
+		
+		tblCalendar.addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) {
+        int row = tblCalendar.rowAtPoint(e.getPoint());
+        int column = tblCalendar.columnAtPoint(e.getPoint());
+        if(tblCalendar.getValueAt(row, column)!=null){
+        	//String[] months =  {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        	String resultString = "<html>";
+        	for(int i = 0; i<employees.size();i++){
+        		for(int j = 0; j<employees.get(i).mySchedule.size();j++){
+        			System.out.println("here");
+        			//String dateOfTask = employees.get(i).mySchedule.get(j).getTaskStart().toString();
+        			System.out.println("employees.get(i).mySchedule.get(j).getTaskStart().getYear(): "+(employees.get(i).mySchedule.get(j).getTaskStart().getYear()+1900)+ " currentYear: "+currentYear );
+        			if(employees.get(i).mySchedule.get(j).getTaskStart().getYear()+1900==currentYear&&employees.get(i).mySchedule.get(j).getTaskStart().getMonth()==currentMonth&&employees.get(i).mySchedule.get(j).getTaskStart().getDate()==Integer.parseInt(tblCalendar.getValueAt(row, column).toString())){
+        				System.out.println("here2");
+        				//System.out.println("emplooye "+this.id+" schedule "+i+"taskName: "+mySchedule.get(i).getTaskName()+": taskStart: " +mySchedule.get(i).getTaskStart()+" taskEnd: "+mySchedule.get(i).getTaskEndDate()+" taskDuration: "+mySchedule.get(i).getTaskDuration()+" taskBelongsTo: "+mySchedule.get(i).getBelongsTo().getId());
+        				resultString += "<br> employee "+employees.get(i).getId()+" taskName: "+employees.get(i).mySchedule.get(j).getTaskName()+" taskEnd: "+employees.get(i).mySchedule.get(j).getTaskEndDate()+" taskDuration: "+employees.get(i).mySchedule.get(j).getTaskDuration()+" taskBelongsTo: "+employees.get(i).mySchedule.get(j).getBelongsTo().getId();
+        			}
+        		}
+        	}
+        	//results.setText(tblCalendar.getValueAt(row, column)+"");
+        	resultString += "</html>";
+        	results.setText(resultString);
+        }
+        //results.setText("row: "+row+", column: "+column);        
+        System.out.println("row: "+row+", column: "+column);
+    }
+	});
 
 		//Set border
 		pnlCalendar.setBorder(BorderFactory.createTitledBorder("Calendar"));
@@ -69,6 +105,7 @@ public class CalendarDisplay extends JFrame {
 		//Add controls to pane
 		pane.add(pnlCalendar);
 		pnlCalendar.add(lblMonth);
+		pnlCalendar.add(labelScroll);
 		pnlCalendar.add(lblYear);
 		pnlCalendar.add(cmbYear);
 		pnlCalendar.add(btnPrev);
@@ -78,11 +115,12 @@ public class CalendarDisplay extends JFrame {
 		//Set bounds
 		pnlCalendar.setBounds(0, 0, 795, 340);
 		lblMonth.setBounds(160-lblMonth.getPreferredSize().width/2, 25, 100, 25);
-		lblYear.setBounds(10, 305, 80, 20);
+		lblYear.setBounds(72, 295, 87, 38);
 		cmbYear.setBounds(230, 305, 80, 20);
 		btnPrev.setBounds(10, 25, 50, 25);
 		btnNext.setBounds(260, 25, 50, 25);
 		stblCalendar.setBounds(10, 50, 300, 250);
+		labelScroll.setBounds(327, 50, 450, 283);
 		
 		//Make frame visible
 		frmMain.setResizable(false);
