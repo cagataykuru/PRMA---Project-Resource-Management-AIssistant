@@ -1,28 +1,28 @@
 package xmlparser_generic;
 
 
-import classes.*;
-
 import java.io.File;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 //import org.w3c.dom.Attr; IF YOU WANT ATTRIBUTES............
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import classes.Ability;
+import classes.Employee;
+import classes.Project;
+import classes.Task;
 
 public class XMLParser {
 	
@@ -237,15 +237,18 @@ public class XMLParser {
 							abilities.add(H);
 							
 							/*
-							int counter = 0;
 							for(Ability a: abilities){
 								if(a.level <= 0.0){
-									abilities.remove(counter);
+									abilities.remove(a);
 								}
-								counter++;
 							}
 							*/
 							
+							Iterator<Ability> iterateabilities = abilities.iterator();
+							while(iterateabilities.hasNext()){
+								//if(iterateabilities.next())
+							}
+					
 							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName, Integer.parseInt(taskPriority));
 							newTask.setNeededAbilities(abilities);
 							tasks.add(newTask);

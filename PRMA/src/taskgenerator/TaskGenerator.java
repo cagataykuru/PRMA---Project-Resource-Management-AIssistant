@@ -46,7 +46,7 @@ public class TaskGenerator {
 								+	"<G>" + randomGenerator.nextInt(11) + "</G>\n\t\t\t\t\t"
 								+	"<H>" + randomGenerator.nextInt(11) + "</H>\n"
 								+ "\t\t\t\t</abilities>");
-				writer.println("\t\t\t\t<taskPriority>" + priorityOfTask +  "</taskPriority>");
+				writer.println("\t\t\t\t<task-priority>" + priorityOfTask +  "</task-priority>");
 				writer.println("\t\t\t</task>");
 			}
 			writer.println("\t\t</tasks>");
