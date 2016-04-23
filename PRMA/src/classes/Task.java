@@ -13,6 +13,7 @@ public class Task {
 	private Project belongsTo;
 	private String taskName;
 	private boolean workhaolism;
+	private int priority;
 	
 	public Task(double taskDuration, Date taskStart, Project belongsTo, String taskName){
 		this.taskDuration = taskDuration;
@@ -21,12 +22,13 @@ public class Task {
 		this.taskName = taskName;
 		this.workhaolism = false;
 	}
-	public Task(int id, double taskDuration,Project belongsTo, String taskName){
+	public Task(int id, double taskDuration,Project belongsTo, String taskName, int priority){
 		this.id = id;
 		this.taskDuration = taskDuration;
 		this.setBelongsTo(belongsTo);
 		this.taskName = taskName;
 		this.workhaolism = false;
+		this.priority = priority;
 	}
 	
 	public void setWorkhaolism(boolean workhaolism){
@@ -144,5 +146,11 @@ public class Task {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getPriority() {
+		return priority;
+	}
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 }

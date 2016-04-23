@@ -189,6 +189,7 @@ public class XMLParser {
 							String taskid = eElement.getElementsByTagName("task-id").item(0).getTextContent();
 							String taskDuration = eElement.getElementsByTagName("duration").item(0).getTextContent();
 							String taskName = eElement.getElementsByTagName("name").item(0).getTextContent();
+							String taskPriority = eElement.getElementsByTagName("task-priority").item(0).getTextContent();
 							
 							ArrayList<Ability> abilities = new ArrayList<Ability>();
 							
@@ -245,7 +246,7 @@ public class XMLParser {
 							}
 							*/
 							
-							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName);
+							Task newTask = new Task(Integer.parseInt(taskid), Double.parseDouble(taskDuration), project, taskName, Integer.parseInt(taskPriority));
 							newTask.setNeededAbilities(abilities);
 							tasks.add(newTask);
 						}
