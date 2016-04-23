@@ -9,7 +9,7 @@ public class EmployeeGenerator {
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		// TODO Auto-generated method stub
-		PrintWriter writer = new PrintWriter("staff.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("src/xmlparser_generic/employee-ability.xml", "UTF-8");
 		Random randomGenerator = new Random();
 		int taskCounter = 1;
 		writer.println("<employees>");
@@ -46,14 +46,14 @@ public class EmployeeGenerator {
 				writer.println("\t\t<workaholism>false</workaholism>");
 			
 			writer.println("\t\t<abilities>\n\t\t\t"
-							+	"<A>" + randomGenerator.nextInt(11) + "</A>\n\t\t\t"
-							+	"<B>" + randomGenerator.nextInt(11) + "</B>\n\t\t\t"
-							+	"<C>" + randomGenerator.nextInt(11) + "</C>\n\t\t\t"
-							+ 	"<D>" + randomGenerator.nextInt(11) + "</D>\n\t\t\t"
-							+	"<E>" + randomGenerator.nextInt(11) + "</E>\n\t\t\t"
-							+	"<F>" + randomGenerator.nextInt(11) + "</F>\n\t\t\t"
-							+	"<G>" + randomGenerator.nextInt(11) + "</G>\n\t\t\t"
-							+	"<H>" + randomGenerator.nextInt(11) + "</H>\n"
+							+	"<A>" + (randomGenerator.nextInt(10)+1) + "</A>\n\t\t\t"
+							+	"<B>" + (randomGenerator.nextInt(10)+1) + "</B>\n\t\t\t"
+							+	"<C>" + (randomGenerator.nextInt(10)+1) + "</C>\n\t\t\t"
+							+ 	"<D>" + (randomGenerator.nextInt(10)+1) + "</D>\n\t\t\t"
+							+	"<E>" + (randomGenerator.nextInt(10)+1) + "</E>\n\t\t\t"
+							+	"<F>" + (randomGenerator.nextInt(10)+1) + "</F>\n\t\t\t"
+							+	"<G>" + (randomGenerator.nextInt(10)+1) + "</G>\n\t\t\t"
+							+	"<H>" + (randomGenerator.nextInt(10)+1) + "</H>\n"
 							+ "\t\t</abilities>");
 			writer.println("\t</employee>");
 		}

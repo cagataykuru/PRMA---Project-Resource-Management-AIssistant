@@ -25,7 +25,8 @@ public class Application {
 	
 	public static void main(String [] args) throws TransformerException{
 		
-		CalendarDisplay c = new CalendarDisplay();
+		
+		
 		//XML classsı çağır
 		parser = new XMLParser("src/xmlparser_generic/");
 		projects = parser.ReadProjectXml("tasks.xml");
@@ -57,7 +58,11 @@ public class Application {
 		}
 		*/
 		
-		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.5, now);//Sorts tasks
+		ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, 0.7, now);//Sorts tasks
+		for(int l = 0; l<sortedTasks.size();l++){
+			System.out.println("sortedTasks.importance: "+sortedTasks.get(l).importance);
+		}
+		
 		ArrayList<Task> assignedTasks = new ArrayList<Task>();
 		int treshHold = 10;
 		int iteration = 0;
@@ -102,7 +107,7 @@ public class Application {
 							}*/
 							
 							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());		
-							System.out.println("realTaskTimeMultiplier: "+abilityDivided*Math.sqrt((17.0/currentEmployee.getDepreciationLevel())));
+							//System.out.println("realTaskTimeMultiplier: "+abilityDivided*Math.sqrt((17.0/currentEmployee.getDepreciationLevel())));
 							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 						}
 						realTaskTime /= iteration;
@@ -191,7 +196,7 @@ public class Application {
 			}
 			System.out.println("assignedTasks.Length: "+assignedTasks.size());
 			for(int j = 0; j<employees.size();j++){
-				employees.get(j).printSchedule();
+				//employees.get(j).printSchedule();
 			}
 			//Burada tÃ¼m projeler zamanÄ±nda bitiyor mu onu kontrol et
 			continued = false;
@@ -231,6 +236,7 @@ public class Application {
 			}
 			//TÃ¼m projelerin zamanÄ±nda bitiÅŸi kontrolÃ¼ sonu
 		}
+		CalendarDisplay calll = new CalendarDisplay(employees);
 	}
 		
 		
@@ -253,7 +259,7 @@ public class Application {
 	        @Override
 	        public int compare(TaskSortingObject first, TaskSortingObject second)
 	        {
-	            return  Double.compare(second.importance, first.importance);
+	            return  Double.compare(first.importance, second.importance);
 	        }
 	    });
 		return queue;
