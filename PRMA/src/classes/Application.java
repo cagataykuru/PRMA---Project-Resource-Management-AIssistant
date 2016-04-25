@@ -35,7 +35,7 @@ public class Application {
 		employees = parser.ReadEmployeeXml("employee-ability.xml");
 		
 		ArrayList<Task> tasks = new ArrayList<Task>();
-		System.out.println("Number of projects: "+projects.size());
+		//System.out.println("Number of projects: "+projects.size());
 		for(int i=0;i<projects.size(); i++){
 			//System.out.println(projects.get(i).getId());
 			tasks.addAll(projects.get(i).getTasks());
@@ -70,9 +70,9 @@ public class Application {
 			//iteration++;
 			System.out.println("iteration: "+iteration);
 			ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, a, now);//Sorts tasks
-			for(int l = 0; l<sortedTasks.size();l++){
-				System.out.println("sortedTasks.importance: "+sortedTasks.get(l).importance);
-			}
+			//for(int l = 0; l<sortedTasks.size();l++){
+				//System.out.println("sortedTasks.importance: "+sortedTasks.get(l).importance);
+			//}
 			while(!sortedTasks.isEmpty()){//Scheduling starts here
 				
 				if(iteration<treshHold){//Without workhaolism
@@ -116,20 +116,13 @@ public class Application {
 								abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
 							}
 							abilityDivided /= currentTask.getNeededAbilities().size();
-							//System.out.println("abilityDivided: "+abilityDivided);
-							//int abilityOver = 0;
-							/*for(int p=0;p<currentTask.getNeededAbilities().size();p++){
-								abilityOver += currentTask.getNeededAbilities().get(p).level;
-							}*/
 							
-							//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());		
-							//System.out.println("realTaskTimeMultiplier: "+abilityDivided*Math.sqrt((17.0/currentEmployee.getDepreciationLevel())));
 							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 						}
 						realTaskTime /= iterator;
 						realTaskTime /= Math.sqrt(iterator);
-						System.out.println("iterator: "+iterator);
-						System.out.println("realTaskTime: "+realTaskTime);
+						//System.out.println("iterator: "+iterator);
+						//System.out.println("realTaskTime: "+realTaskTime);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
 						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
@@ -260,7 +253,7 @@ public class Application {
 				System.out.println("projectEndDate of "+currentProject.getId()+" is: "+projectEndDate + "projectDueDate: "+currentProject.getProjectDueDate());
 				System.out.println("projectCompletedInTime: "+projectCompletedInTime);
 				if(!projectCompletedInTime){//TÃ¼m projeler bitmiyorsa
-					System.out.println("bastırıyor");
+					//System.out.println("bastırıyor");
 					continued = true;
 					i = projects.size();
 					
@@ -328,10 +321,6 @@ public class Application {
 				}
 				abilityDivided /= currentTask.getNeededAbilities().size();
 				
-				/*int abilityUnder = 0;
-				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
-				}*/
 				
 				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
 				
