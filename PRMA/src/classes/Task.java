@@ -96,7 +96,7 @@ public class Task {
 	public Date getTaskEndDate(){
 		Date taskEnding = this.taskStart;
 		if(!this.workhaolism){
-			for(int i = 0; i<this.taskDuration; i++){
+			for(int i = 0; i<Math.ceil(this.taskDuration); i++){
 				taskEnding = getNextWorkHour(taskEnding);
 			}
 		}else{

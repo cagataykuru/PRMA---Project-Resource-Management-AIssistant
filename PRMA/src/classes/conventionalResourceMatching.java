@@ -15,7 +15,7 @@ import javax.xml.transform.TransformerException;
 import Gui.CalendarDisplay;
 import xmlparser_generic.XMLParser;
 
-public class Application {
+public class conventionalResourceMatching {
 	
 	public static ArrayList<Employee> employees;
 	public static ArrayList<Project> projects;
@@ -38,9 +38,9 @@ public class Application {
 			//System.out.println(projects.get(i).getId());
 			tasks.addAll(projects.get(i).getTasks());
 		}
-		for(int i = 0; i<tasks.size();i++){
+		//for(int i = 0; i<tasks.size();i++){
 			//System.out.println("taskName: "+tasks.get(i).getTaskName()+"taskDuration: "+tasks.get(i).getTaskDuration());
-		}
+		//}
 		
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S", Locale.ENGLISH);
 		
@@ -56,7 +56,7 @@ public class Application {
 				a=0;
 			Date now = new Date();
 			String dateToRead = "";
-			for(int z =0;z<args.length;z++){
+			for(int z =0;z<args.length;z++){//Get current date from command line arguments
 				dateToRead += args[z];
 				dateToRead += " ";
 			}
@@ -68,23 +68,27 @@ public class Application {
 				e.printStackTrace();
 			}
 
-			System.out.println("iteration: "+iteration+"now is: "+now);
-			ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, a, now);//Sorts tasks
+			System.out.println("iteration: "+iteration);
+			//ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, a, now);//Sorts tasks
+			ArrayList<Task>tasksToAssign = new ArrayList<Task>();
+			tasksToAssign.addAll(tasks);
 
-			while(!sortedTasks.isEmpty()){//Scheduling starts here
+			while(!tasksToAssign.isEmpty()){//Scheduling starts here
 				
 				if(iteration<treshHold){//Without workhaolism
-					TaskSortingObject currentSortingObject = sortedTasks.get(0);
-					Task currentTask = currentSortingObject.task;//Get the first one from the list
+					//TaskSortingObject currentSortingObject = sortedTasks.get(0);
+					//Task currentTask = currentSortingObject.task;//Get the first one from the list
+					
+					Task currentTask = tasksToAssign.get(0);//Get the first one from the list
 						
-					sortedTasks.remove(0);//Delete first one
+					tasksToAssign.remove(0);//Delete first one
 					
 					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
 					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
 						
 						now = getNextWorkHour(now);
-						sortedTasks.add(0, currentSortingObject);
+						tasksToAssign.add(0, currentTask);
 							
 					}else{
 						double realTaskTime = 0;
@@ -120,7 +124,7 @@ public class Application {
 						}*/
 						
 						realTaskTime /= iterated;
-						realTaskTime /= iterated;
+						realTaskTime /= Math.sqrt(iterated);
 						if(currentTask.getTaskName()=="Task31")
 							System.out.println("task: "+currentTask.getTaskName()+" realTaskTime: "+realTaskTime);
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
@@ -144,10 +148,12 @@ public class Application {
 						assignedTasks.add(taskToAdd);//EklenmiÅŸ taskÄ± assignedTasks'a koy
 					}
 				}else{//With workhaolism
-					TaskSortingObject currentSortingObject = sortedTasks.get(0);
-					Task currentTask = currentSortingObject.task;//Get the first one from the list
+					//TaskSortingObject currentSortingObject = sortedTasks.get(0);
+					//Task currentTask = currentSortingObject.task;//Get the first one from the list
+					
+					Task currentTask = tasksToAssign.get(0);//Get the first one from the list
 						
-					sortedTasks.remove(0);//Delete first one
+					tasksToAssign.remove(0);//Delete first one
 					ArrayList<EmployeeSortingObject> bestMatchList;
 					boolean workhaolismNow = workhaolismTime(now);
 					if(workhaolismNow)
@@ -158,7 +164,7 @@ public class Application {
 					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
 						
 						now = getNextHour(now);
-						sortedTasks.add(0, currentSortingObject);
+						tasksToAssign.add(0, currentTask);
 						continue;
 							
 					}else{
@@ -182,7 +188,6 @@ public class Application {
 							iterated++;
 							Employee currentEmployee = bestMatchList.get(i).employee;
 							double abilityDivided = 0;
-							//double abilityUnder = 0;
 							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 								double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 								double abilityOver = currentTask.getNeededAbilities().get(k).level;
@@ -194,7 +199,7 @@ public class Application {
 							realTaskTime += abilityDivided*currentTask.getTaskDuration();
 						}
 						realTaskTime /= iterated;
-						realTaskTime /= Math.sqrt(iterated);
+						realTaskTime /= iterated;
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						taskToAdd.setWorkhaolism(workhaolismNow);
 						
@@ -256,13 +261,13 @@ public class Application {
 
 			}
 			if(unfinishedProjects.size()!=0){//TÃ¼m projeler bitmiyorsa
-
 				if(iteration<=employees.size())
 					continued = true;
 				else{
 					continued = false;
 					System.out.println("All the projects cannot be completed in time. Application stopped.");
 				}
+					
 				
 				for(int e = 0; e<employees.size();e++){
 					employees.get(e).mySchedule.clear();
@@ -303,8 +308,6 @@ public class Application {
 	
 	public static ArrayList<EmployeeSortingObject> findBestMatches (int C, Task currentTask, Date inputTime){//Creates best match queue
 		
-		//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
-		
 		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
 		for(int i = 0; i<employees.size();i++){
 			Employee currentEmployee = employees.get(i);
@@ -320,11 +323,10 @@ public class Application {
 				abilityDivided /= currentTask.getNeededAbilities().size();
 				
 				
-				//double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
-				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration();
+				double differenceFromExpectance = Math.abs(abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()))-currentTask.getTaskDuration());
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
-				newSortingObject.score = employeeRealTaskTime;
+				newSortingObject.score = differenceFromExpectance;
 				newSortingObject.employee = currentEmployee;
 				
 				queue.add(newSortingObject);
@@ -363,7 +365,8 @@ public class Application {
 					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 				}
 				
-				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
+				//double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
+				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration();
 				
 				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
 				newSortingObject.score = employeeRealTaskTime;

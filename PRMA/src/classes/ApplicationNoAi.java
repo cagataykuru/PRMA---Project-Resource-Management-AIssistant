@@ -134,7 +134,7 @@ public class ApplicationNoAi {
 				//currentEmployee.getAbility(currentTask.getNeededAbilities().get(0).name);
 				boolean employeeOk = true;
 				for(int j = 0; j<neededAbilities.size(); j++){
-					if(currentEmployee.getAbility(currentTask.getNeededAbilities().get(j).name)<=1){
+					if(currentEmployee.getAbility(currentTask.getNeededAbilities().get(j).name)<=0){
 						//neededAbilities.remove(j);
 						//list.add(currentEmployee);
 						employeeOk=false;
