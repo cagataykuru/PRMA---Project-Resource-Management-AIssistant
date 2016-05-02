@@ -75,21 +75,18 @@ public class CalendarDisplay extends JFrame {
         	String resultString = "<html>";
         	for(int i = 0; i<employees.size();i++){
         		for(int j = 0; j<employees.get(i).mySchedule.size();j++){
-        			//System.out.println("here");
-        			//String dateOfTask = employees.get(i).mySchedule.get(j).getTaskStart().toString();
-        			//System.out.println("employees.get(i).mySchedule.get(j).getTaskStart().getYear(): "+(employees.get(i).mySchedule.get(j).getTaskStart().getYear()+1900)+ " currentYear: "+currentYear );
+
         			if(employees.get(i).mySchedule.get(j).getTaskStart().getYear()+1900==currentYear&&employees.get(i).mySchedule.get(j).getTaskStart().getMonth()==currentMonth&&employees.get(i).mySchedule.get(j).getTaskStart().getDate()==Integer.parseInt(tblCalendar.getValueAt(row, column).toString())){
-        				//System.out.println("here2");
-        				//System.out.println("emplooye "+this.id+" schedule "+i+"taskName: "+mySchedule.get(i).getTaskName()+": taskStart: " +mySchedule.get(i).getTaskStart()+" taskEnd: "+mySchedule.get(i).getTaskEndDate()+" taskDuration: "+mySchedule.get(i).getTaskDuration()+" taskBelongsTo: "+mySchedule.get(i).getBelongsTo().getId());
+        	
         				resultString += "<br> employee "+employees.get(i).getId()+", taskName: "+employees.get(i).mySchedule.get(j).getTaskName()+", taskEnd: "+employees.get(i).mySchedule.get(j).getTaskEndDate()+", taskDuration: "+String.format("%.1f",employees.get(i).mySchedule.get(j).getTaskDuration())+" hours, taskBelongsTo: "+employees.get(i).mySchedule.get(j).getBelongsTo().getId();
         			}
         		}
         	}
-        	//results.setText(tblCalendar.getValueAt(row, column)+"");
+
         	resultString += "</html>";
         	results.setText(resultString);
         }
-        //results.setText("row: "+row+", column: "+column);        
+      
         System.out.println("row: "+row+", column: "+column);
     }
 	});

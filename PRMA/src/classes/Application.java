@@ -32,29 +32,24 @@ public class Application {
 		Scanner in = new Scanner(System.in);
 		
 		System.out.println("Enter the starting time of the scheduling in a day: ");
-		startingTime = in.nextInt();
+		startingTime = in.nextInt();//Get the starting hour of scheduling
 		
 		System.out.println("Enter the finish time of the scheduling in a day: ");
-		endingTime = in.nextInt();
+		endingTime = in.nextInt();//Get the ending hour of scheduling
 		
-		//XML classsı çağır
+		//Read projects from xml and parse
 		parser = new XMLParser("src/xmlparser_generic/");
 		projects = parser.ReadProjectXml("tasks.xml");
 		
-		//XML classsı çağır
+		//Read resources from xml and parse
 		resources = parser.ReadEmployeeXml("employee-ability.xml");
 		
-		ArrayList<Task> tasks = new ArrayList<Task>();
-		//System.out.println("Number of projects: "+projects.size());
+		ArrayList<Task> tasks = new ArrayList<Task>();//Get all tasks into one ArrayList
 		for(int i=0;i<projects.size(); i++){
-			//System.out.println(projects.get(i).getId());
 			tasks.addAll(projects.get(i).getTasks());
 		}
-		for(int i = 0; i<tasks.size();i++){
-			//System.out.println("taskName: "+tasks.get(i).getTaskName()+"taskDuration: "+tasks.get(i).getTaskDuration());
-		}
 		
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S", Locale.ENGLISH);//Create date format for parsing
 		
 		double a = 1.1;
 		ArrayList<Task> assignedTasks = new ArrayList<Task>();
@@ -63,7 +58,7 @@ public class Application {
 		ArrayList<Integer> unfinishedProjects = new ArrayList<Integer>();
 		boolean continued = true;
 		while(continued){
-			a-=0.1;
+			a-=0.1;//Change a value in each iteration
 			if(a<0)
 				a=0;
 			Date now = new Date();
@@ -74,12 +69,12 @@ public class Application {
 			}
 			
 			try {
-				now = format.parse(dateToRead);//Burada parametre alacak date'i yukarÄ±daki formattaki gibi.
-			} catch (ParseException e) {//Å�u anki tarih girilecek
+				now = format.parse(dateToRead);//Read date from arguments
+			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(unfinishedProjects.size()!=0)
+			if(unfinishedProjects.size()!=0)//Print iteration number
 				System.out.println("iteration: "+(iteration+1));
 			else
 				System.out.println("iteration: "+iteration);
@@ -87,7 +82,7 @@ public class Application {
 
 			while(!sortedTasks.isEmpty()){//Scheduling starts here
 				
-				if(iteration<treshHold){
+				if(iteration<treshHold){//Stops if treshold is exceeded
 					TaskSortingObject currentSortingObject = sortedTasks.get(0);
 					Task currentTask = currentSortingObject.task;//Get the first one from the list
 						
@@ -95,12 +90,12 @@ public class Application {
 					
 					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
-					if(bestMatchList.size()==0){
+					if(bestMatchList.size()==0){//If there are no available resource schedule for the next hour
 						
 						now = getNextWorkHour(now);
 						sortedTasks.add(0, currentSortingObject);
 							
-					}else{
+					}else{//If there is at least one resource
 						double realTaskTime = 0;
 						
 						int indexx = -1;
@@ -110,16 +105,16 @@ public class Application {
 							}
 						}
 						
-						int iterator = iteration;
+						int iterator = iteration;//Calculate iteration number
 						if(indexx!=-1)
 							iterator = iteration+1;
 						int iterated = 0;
 
-						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Real task time i hesapla
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Calculate real task time
 							iterated++;
 							Employee currentEmployee = bestMatchList.get(i).employee;
 							double abilityDivided = 0;
-							//double abilityUnder = 0;
+
 							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 								double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 								double abilityOver = currentTask.getNeededAbilities().get(k).level;
@@ -132,10 +127,10 @@ public class Application {
 						
 						realTaskTime /= iterated;
 						realTaskTime /= iterated;
-						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
+						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());//Create the new task to add to the schedule
 						
 						
-						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Assign task to resource
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 
@@ -150,11 +145,11 @@ public class Application {
 							
 						}
 						
-						assignedTasks.add(taskToAdd);//EklenmiÅŸ taskÄ± assignedTasks'a koy
+						assignedTasks.add(taskToAdd);//Add assigned task to assigned task list
 					}
 				}
 			}
-			//Burada tÃ¼m projeler zamanÄ±nda bitiyor mu onu kontrol et
+			//Check the completion time of all the projects
 			if(unfinishedProjects.size()!=0){
 				unfinishedProjects.clear();
 				iteration++;
@@ -170,7 +165,7 @@ public class Application {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				for(int k=0;k<currentProject.getTasks().size();k++){
+				for(int k=0;k<currentProject.getTasks().size();k++){//Check each task of each project
 					for(int e = 0; e<assignedTasks.size(); e++){
 						if(currentProject.getTasks().get(k).getTaskName().compareTo(assignedTasks.get(e).getTaskName())==0){
 							
@@ -188,20 +183,21 @@ public class Application {
 						}
 					}
 				}
+				//Print completion time of projects and whether they are completed or not
 				System.out.println("projectEndDate of "+currentProject.getId()+" is: "+projectEndDate + " projectDueDate: "+currentProject.getProjectDueDate());
 				System.out.println("projectCompletedInTime: "+projectCompletedInTime);
 
 			}
-			if(unfinishedProjects.size()!=0){//TÃ¼m projeler bitmiyorsa
+			if(unfinishedProjects.size()!=0){//If all the projects are not completed
 
-				if(iteration<=resources.size()&&iteration<=11)
+				if(iteration<=resources.size()&&iteration<=11)//Generate another schedule
 					continued = true;
-				else{
+				else{//If the scheduling cannot be any better stop application
 					continued = false;
 					System.out.println("All the projects cannot be completed in time. Application stopped.");
 				}
 				
-				for(int e = 0; e<resources.size();e++){
+				for(int e = 0; e<resources.size();e++){//Clear schedules of resources
 					resources.get(e).mySchedule.clear();
 				}
 				assignedTasks.clear();
@@ -273,38 +269,6 @@ public class Application {
 	    });
 		return queue;
 	}
-	/*public static Date getNextWorkHour(Date now){
-		Calendar cal = Calendar.getInstance(); // creates calendar
-		cal.setTime(now);
-		if(now.getDay()==5&&now.getHours()>=17){//Jump to monday
-		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday
-		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
-		    return cal.getTime(); //now
-		}else if(now.getHours()>=17){//Jump to next day
-		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
-		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
-		    return cal.getTime(); //now
-		}else{//Add one hour
-		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
-		    return cal.getTime(); //now++
-		}
-	}
-	public static Date getNextHour(Date now){
-		Calendar cal = Calendar.getInstance(); // creates calendar
-		cal.setTime(now);
-		if(now.getDay()==5){//Jump to monday
-		    cal.add(Calendar.DAY_OF_MONTH, 3); // jumps to monday
-		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
-		    return cal.getTime(); //now
-		}else if(now.getHours()>=20){//Jump to next day
-		    cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
-		    cal.set(Calendar.HOUR_OF_DAY, 9); //set starting hour
-		    return cal.getTime(); //now
-		}else{//Add one hour
-		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
-		    return cal.getTime(); //now++
-		}
-	}*/
 	
 	public static Date getNextWorkHour(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar
@@ -320,13 +284,5 @@ public class Application {
 		}
 
 		
-	}
-	public static boolean workhaolismTime(Date now){
-		Calendar cal = Calendar.getInstance(); // creates calendar
-		cal.setTime(now);
-		if(now.getHours()>=17){
-		    return true;
-		}else
-			return false;
 	}
 }
