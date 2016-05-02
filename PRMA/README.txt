@@ -1,0 +1,2 @@
+In order to run the applications(both PRMA and CMR) give starting date of the scheduling in the following format "yyyy-MM-dd HH:mm:ss.S"
+The calendar.java class is taken from: http://www.dreamincode.net/forums/topic/25042-creating-a-calendar-viewer-application/
