@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.Random;
 
 public class TaskGenerator {
+	final static int PROJECT_NUM = 15;
+	final static int PROJECT_TASK_NUM = 30;
+	
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter("src/xmlparser_generic/tasks.xml", "UTF-8");
@@ -15,20 +18,20 @@ public class TaskGenerator {
 		int taskCounter = 1;
 		ArrayList<Integer> priorityList = new ArrayList<Integer>();
 		writer.println("<projects>");
-		for(int j = 0 ; j < 15; j++)
+		for(int j = 0 ; j < PROJECT_NUM; j++)
 		{
 			writer.println("\t<project>");
 			writer.println("\t\t<project-id>" + (j + 1) + "</project-id>");
 			writer.println("\t\t<tasks>");
-			for(int i = 0; i < 30; i++){
+			for(int i = 0; i < PROJECT_TASK_NUM; i++){
 				priorityList.add(i + 1);
 			}
-			for(int i = 0; i < 30; i++)
+			for(int i = 0; i < PROJECT_TASK_NUM; i++)
 			{
 				long seed = System.nanoTime();
 				Collections.shuffle(priorityList, new Random(seed));
-				int priorityOfTask = priorityList.get(29 - i);
-				priorityList.remove(29 - i);
+				int priorityOfTask = priorityList.get(PROJECT_TASK_NUM-1 - i);
+				priorityList.remove(PROJECT_TASK_NUM-1 - i);
 				writer.println("\t\t\t<task>");
 				writer.println("\t\t\t\t<task-id>"+(taskCounter)+"</task-id>");
 				writer.println("\t\t\t\t<name>" + "Task " + taskCounter + "</name>");
@@ -53,10 +56,10 @@ public class TaskGenerator {
 			writer.println("\t\t<priority>" + (j + 1) + "</priority>");
 			writer.println("\t\t<projectStartDate></projectStartDate>");
 			
-			String date1 = "2016-04-30 09:00:00.0";
-			String date2 = "2016-05-14 09:00:00.0";
+			String date1 = "2016-04-25 09:00:00.0";
+			String date2 = "2016-05-2 18:00:00.0";
 			
-			if(j == 14)
+			if(j == 1)
 				writer.println("\t\t<dueDate>" + date1 + "</dueDate>");
 			else
 				writer.println("\t\t<dueDate>" + date2 + "</dueDate>");

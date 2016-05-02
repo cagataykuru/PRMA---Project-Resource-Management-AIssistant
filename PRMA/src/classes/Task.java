@@ -95,18 +95,12 @@ public class Task {
 	}
 	public Date getTaskEndDate(){
 		Date taskEnding = this.taskStart;
-		if(!this.workhaolism){
-			for(int i = 0; i<Math.ceil(this.taskDuration); i++){
+		for(int i = 0; i<Math.ceil(this.taskDuration); i++){
 				taskEnding = getNextWorkHour(taskEnding);
-			}
-		}else{
-			for(int i = 0; i<this.taskDuration; i++){
-				taskEnding = getNextHour(taskEnding);
-			}
 		}
 		return taskEnding;
 	}
-	public static Date getNextWorkHour(Date now){
+	/*public static Date getNextWorkHour(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar
 		//System.out.println(now);
 		cal.setTime(now);
@@ -138,6 +132,31 @@ public class Task {
 		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
 		    return cal.getTime(); //now++
 		}
+	}*/
+	public static Date getNextWorkHour(Date now){
+		Calendar cal = Calendar.getInstance(); // creates calendar
+		cal.setTime(now);
+		if(conventionalResourceMatching.startingTime != 0){
+			//System.out.println("hereeee");
+			if(now.getHours()>=conventionalResourceMatching.endingTime){//Jump to next day
+				cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+			    cal.set(Calendar.HOUR_OF_DAY, conventionalResourceMatching.startingTime); //set starting hour
+			    return cal.getTime(); //now
+			}else{//Add one hour
+			    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+			    return cal.getTime(); //now++
+			}
+		}else{
+			if(now.getHours()>=Application.endingTime){//Jump to next day
+				cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+			    cal.set(Calendar.HOUR_OF_DAY, Application.startingTime); //set starting hour
+			    return cal.getTime(); //now
+			}else{//Add one hour
+			    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+			    return cal.getTime(); //now++
+			}
+		}
+		
 	}
 
 	public int getId() {

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Scanner;
 
 import javax.xml.transform.TransformerException;
 
@@ -17,30 +18,39 @@ import xmlparser_generic.XMLParser;
 
 public class conventionalResourceMatching {
 	
-	public static ArrayList<Employee> employees;
+	public static ArrayList<Employee> resources;
 	public static ArrayList<Project> projects;
 	public static XMLParser parser;
 	
 	public static int iteration = 0;
 	
+	public static int startingTime;
+	public static int endingTime;
+	
+	
 	public static void main(String [] args) throws TransformerException{
 		
-		//XML classsı çağır
+		Scanner in = new Scanner(System.in);
+		
+		System.out.println("Enter the starting time of the scheduling in a day: ");
+		startingTime = in.nextInt();
+		
+		System.out.println("Enter the finish time of the scheduling in a day: ");
+		endingTime = in.nextInt();
+		
+
 		parser = new XMLParser("src/xmlparser_generic/");
 		projects = parser.ReadProjectXml("tasks.xml");
 		
-		//XML classsı çağır
-		employees = parser.ReadEmployeeXml("employee-ability.xml");
+
+		resources = parser.ReadEmployeeXml("employee-ability.xml");
 		
 		ArrayList<Task> tasks = new ArrayList<Task>();
-		//System.out.println("Number of projects: "+projects.size());
+
 		for(int i=0;i<projects.size(); i++){
-			//System.out.println(projects.get(i).getId());
 			tasks.addAll(projects.get(i).getTasks());
 		}
-		//for(int i = 0; i<tasks.size();i++){
-			//System.out.println("taskName: "+tasks.get(i).getTaskName()+"taskDuration: "+tasks.get(i).getTaskDuration());
-		//}
+
 		
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S", Locale.ENGLISH);
 		
@@ -62,22 +72,23 @@ public class conventionalResourceMatching {
 			}
 			
 			try {
-				now = format.parse(dateToRead);//Burada parametre alacak date'i yukarÄ±daki formattaki gibi.
-			} catch (ParseException e) {//Å�u anki tarih girilecek
+				now = format.parse(dateToRead);
+			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			System.out.println("iteration: "+iteration);
-			//ArrayList<TaskSortingObject> sortedTasks = sortTasks(tasks, a, now);//Sorts tasks
+			if(unfinishedProjects.size()!=0)
+				System.out.println("iteration: "+(iteration+1));
+			else
+				System.out.println("iteration: "+iteration);
+			
 			ArrayList<Task>tasksToAssign = new ArrayList<Task>();
 			tasksToAssign.addAll(tasks);
 
 			while(!tasksToAssign.isEmpty()){//Scheduling starts here
 				
 				if(iteration<treshHold){//Without workhaolism
-					//TaskSortingObject currentSortingObject = sortedTasks.get(0);
-					//Task currentTask = currentSortingObject.task;//Get the first one from the list
 					
 					Task currentTask = tasksToAssign.get(0);//Get the first one from the list
 						
@@ -85,7 +96,7 @@ public class conventionalResourceMatching {
 					
 					ArrayList<EmployeeSortingObject> bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
 					
-					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
+					if(bestMatchList.size()==0){
 						
 						now = getNextWorkHour(now);
 						tasksToAssign.add(0, currentTask);
@@ -105,11 +116,10 @@ public class conventionalResourceMatching {
 							iterator = iteration+1;
 						int iterated = 0;
 
-						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Real task time i hesapla
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){
 							iterated++;
 							Employee currentEmployee = bestMatchList.get(i).employee;
 							double abilityDivided = 0;
-							//double abilityUnder = 0;
 							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 								double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 								double abilityOver = currentTask.getNeededAbilities().get(k).level;
@@ -117,11 +127,8 @@ public class conventionalResourceMatching {
 							}
 							abilityDivided /= currentTask.getNeededAbilities().size();
 							
-							realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
+							realTaskTime += abilityDivided*currentTask.getTaskDuration();
 						}
-						/*if(iterated>1){
-							System.out.println("iterated: "+iterated+"belongsTo: "+currentTask.getBelongsTo().getId());
-						}*/
 						
 						realTaskTime /= iterated;
 						realTaskTime /= Math.sqrt(iterated);
@@ -130,99 +137,25 @@ public class conventionalResourceMatching {
 						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
 						
 						
-						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//TaskÄ± employeeye ata
+						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){
 							Employee currentEmployee = bestMatchList.get(0).employee;
 							bestMatchList.remove(0);
 
 							int index = -1;
-							for(int j = 0;j<employees.size();j++){
-								if(employees.get(j).getId() == currentEmployee.getId()){
+							for(int j = 0;j<resources.size();j++){
+								if(resources.get(j).getId() == currentEmployee.getId()){
 									index = j;
-									j = employees.size();
+									j = resources.size();
 								}
 							}
-							employees.get(index).addTask(taskToAdd);	
+							resources.get(index).addTask(taskToAdd);	
 							
 						}
 						
-						assignedTasks.add(taskToAdd);//EklenmiÅŸ taskÄ± assignedTasks'a koy
-					}
-				}else{//With workhaolism
-					//TaskSortingObject currentSortingObject = sortedTasks.get(0);
-					//Task currentTask = currentSortingObject.task;//Get the first one from the list
-					
-					Task currentTask = tasksToAssign.get(0);//Get the first one from the list
-						
-					tasksToAssign.remove(0);//Delete first one
-					ArrayList<EmployeeSortingObject> bestMatchList;
-					boolean workhaolismNow = workhaolismTime(now);
-					if(workhaolismNow)
-						bestMatchList = findBestMatchesWithWorkhaolism(0, currentTask, now);//Get best match list with respect to current task
-					else
-						bestMatchList = findBestMatches(0, currentTask, now);//Get best match list with respect to current task
-					
-					if(bestMatchList.size()==0){//Time'Ä± arttÄ±rma kÄ±smÄ±
-						
-						now = getNextHour(now);
-						tasksToAssign.add(0, currentTask);
-						continue;
-							
-					}else{
-						double realTaskTime = 0;
-
-						int indexx = -1;
-						for(int ll=0;ll<unfinishedProjects.size();ll++){
-							if(unfinishedProjects.get(ll)==currentTask.getBelongsTo().getId()){
-								indexx = ll;
-							}
-						}
-						
-						int iterator = iteration;
-						if(indexx!=-1)
-							iterator = iteration+1;
-						int iterated = 0;
-						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Real task time i hesapla
-							if(iterator>bestMatchList.size()){
-								System.out.println("here!!!!");
-							}
-							iterated++;
-							Employee currentEmployee = bestMatchList.get(i).employee;
-							double abilityDivided = 0;
-							for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-								double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
-								double abilityOver = currentTask.getNeededAbilities().get(k).level;
-								abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
-							}
-							abilityDivided /= currentTask.getNeededAbilities().size();
-							
-							//realTaskTime += abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
-							realTaskTime += abilityDivided*currentTask.getTaskDuration();
-						}
-						realTaskTime /= iterated;
-						realTaskTime /= iterated;
-						Task taskToAdd = new Task(realTaskTime, now, currentTask.getBelongsTo(), currentTask.getTaskName());
-						taskToAdd.setWorkhaolism(workhaolismNow);
-						
-						for(int i = 0;i<iterator&&i<bestMatchList.size(); i++){//Add task to employee(s)
-							Employee currentEmployee = bestMatchList.get(0).employee;
-							bestMatchList.remove(0);
-							
-							int index = -1;
-							for(int j = 0;j<employees.size();j++){
-								if(employees.get(j).getId() == currentEmployee.getId()){
-									index = j;
-									j = employees.size();
-								}
-							}
-							employees.get(index).addTask(taskToAdd);	
-							
-						}
-						//System.out.println("taskToAdd: "+taskToAdd.getTaskStart());
 						assignedTasks.add(taskToAdd);
 					}
 				}
 			}
-			//Burada tÃ¼m projeler zamanÄ±nda bitiyor mu onu kontrol et
 			if(unfinishedProjects.size()!=0){
 				unfinishedProjects.clear();
 				iteration++;
@@ -260,24 +193,20 @@ public class conventionalResourceMatching {
 				System.out.println("projectCompletedInTime: "+projectCompletedInTime);
 
 			}
-			if(unfinishedProjects.size()!=0){//TÃ¼m projeler bitmiyorsa
-				if(iteration<=employees.size())
-					continued = true;
-				else{
-					continued = false;
-					System.out.println("All the projects cannot be completed in time. Application stopped.");
-				}
-					
+			if(unfinishedProjects.size()!=0){
+				continued = false;
+				System.out.println("All the projects cannot be completed in time. Application stopped.");
 				
-				for(int e = 0; e<employees.size();e++){
-					employees.get(e).mySchedule.clear();
+				for(int e = 0; e<resources.size();e++){
+					resources.get(e).mySchedule.clear();
 				}
 				assignedTasks.clear();
 				
 			}
+			continued = false;
 			
 		}
-		CalendarDisplay calll = new CalendarDisplay(employees);
+		CalendarDisplay calll = new CalendarDisplay(resources);
 	}
 		
 		
@@ -309,8 +238,8 @@ public class conventionalResourceMatching {
 	public static ArrayList<EmployeeSortingObject> findBestMatches (int C, Task currentTask, Date inputTime){//Creates best match queue
 		
 		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
-		for(int i = 0; i<employees.size();i++){
-			Employee currentEmployee = employees.get(i);
+		for(int i = 0; i<resources.size();i++){
+			Employee currentEmployee = resources.get(i);
 			if(!currentEmployee.isFullAt(inputTime)){
 				
 				double abilityDivided = 0;
@@ -318,7 +247,7 @@ public class conventionalResourceMatching {
 				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
 					double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
 					double abilityOver = currentTask.getNeededAbilities().get(k).level;
-					abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
+					abilityDivided += abilityOver/abilityUnder;
 				}
 				abilityDivided /= currentTask.getNeededAbilities().size();
 				
@@ -342,49 +271,7 @@ public class conventionalResourceMatching {
 		return queue;
 	}
 	
-	public static ArrayList<EmployeeSortingObject> findBestMatchesWithWorkhaolism (int C, Task currentTask, Date inputTime){//Creates best match queue with workhaolism
-		
-		//int abilityOver = (int) Math.pow(10,currentTask.getNeededAbilities().size());
-		
-		ArrayList<EmployeeSortingObject> queue = new ArrayList<EmployeeSortingObject>();
-		for(int i = 0; i<employees.size();i++){
-			Employee currentEmployee = employees.get(i);
-			if(currentEmployee.isWorkaholism()&&!currentEmployee.isFullAt(inputTime)){
-				
-				double abilityDivided = 0;
-				//double abilityUnder = 0;
-				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-					double abilityUnder = currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
-					double abilityOver = currentTask.getNeededAbilities().get(k).level;
-					abilityDivided += Math.sqrt(abilityOver)/Math.sqrt(abilityUnder);
-				}
-				abilityDivided /= currentTask.getNeededAbilities().size();
-				
-				int abilityUnder = 0;
-				for(int k=0; k<currentTask.getNeededAbilities().size(); k++){
-					abilityUnder *= currentEmployee.getAbility(currentTask.getNeededAbilities().get(k).name);
-				}
-				
-				//double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration()*Math.sqrt((17.0/currentEmployee.getDepreciationLevel()));
-				double employeeRealTaskTime = abilityDivided*currentTask.getTaskDuration();
-				
-				EmployeeSortingObject newSortingObject = new EmployeeSortingObject();
-				newSortingObject.score = employeeRealTaskTime;
-				newSortingObject.employee = currentEmployee;
-				
-				queue.add(newSortingObject);
-			}
-		}
-		Collections.sort(queue, new Comparator<EmployeeSortingObject>() {
-	        @Override
-	        public int compare(EmployeeSortingObject first, EmployeeSortingObject second)
-	        {
-	            return  Double.compare(first.score, second.score);
-	        }
-	    });
-		return queue;
-	}
-	public static Date getNextWorkHour(Date now){
+	/*public static Date getNextWorkHour(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar
 		cal.setTime(now);
 		if(now.getDay()==5&&now.getHours()>=17){//Jump to monday
@@ -415,6 +302,22 @@ public class conventionalResourceMatching {
 		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
 		    return cal.getTime(); //now++
 		}
+	}*/
+	
+	public static Date getNextWorkHour(Date now){
+		Calendar cal = Calendar.getInstance(); // creates calendar
+		cal.setTime(now);
+
+		if(now.getHours()>=endingTime){//Jump to next day
+			cal.add(Calendar.DAY_OF_MONTH, 1); // jump to next day
+		    cal.set(Calendar.HOUR_OF_DAY, startingTime); //set starting hour
+		    return cal.getTime(); //now
+		}else{//Add one hour
+		    cal.add(Calendar.HOUR_OF_DAY, 1); // adds one hour
+		    return cal.getTime(); //now++
+		}
+
+		
 	}
 	public static boolean workhaolismTime(Date now){
 		Calendar cal = Calendar.getInstance(); // creates calendar

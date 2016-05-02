@@ -8,7 +8,6 @@ public class Employee {
 	private boolean Workaholism;
 	private ArrayList<Ability> abilities;
 	private double DepreciationLevel;
-	//private Schedule mySchedule;
 	private String name;
 	private String lastName;
 	private int id;
@@ -23,10 +22,6 @@ public class Employee {
 		this.id = id;
 		mySchedule = new ArrayList<Task>();
 	}
-	/*public Employee(ArrayList<Ability> abilities, boolean Workhaolism){
-		this.setWorkaholism(Workhaolism);
-		Collections.copy(this.abilities, abilities);
-	}*/
 	
 	public void printSchedule(){
 		for(int i=0;i<mySchedule.size();i++){
@@ -108,44 +103,23 @@ public class Employee {
 		}
 	}
 	
-	public void addTask(Task task){		//Yeniden task olu�turmaya gerek yok
-		double increaseInAbilities = task.getTaskDuration()/1000;//Buradaki 1000 katsayısı değiştirilebilir
-		for(int i=0;i<task.getNeededAbilities().size();i++){
-			this.increaseAbility(task.getNeededAbilities().get(i).name, increaseInAbilities);
-		}
-		for(int i=0;i<abilities.size();i++){
-			this.decreaseAbility(abilities.get(i).name, task.getTaskDuration()/100000);//Bu katsayı değişebilir
-		}
+	public void addTask(Task task){
+
 		Date taskEnd = task.getTaskEndDate();
 		int depreciationDecrease = taskEnd.getHours()%17;
 		
 		this.changeDepreciationLevel(17-depreciationDecrease);
-		//return mySchedule.addTask(task);
 		mySchedule.add(task);
 	}
 	
 	public void removeTask(){
-		double decreaseInAbilities = mySchedule.get(mySchedule.size()-1).getTaskDuration()/1000;//Buradaki 1000 katsayısı değiştirilebilir
-		for(int i=0;i<mySchedule.get(mySchedule.size()-1).getNeededAbilities().size();i++){
-			this.decreaseAbility(mySchedule.get(mySchedule.size()-1).getNeededAbilities().get(i).name, decreaseInAbilities);
-		}
-		for(int i=0;i<abilities.size();i++){
-			this.increaseAbility(abilities.get(i).name, mySchedule.get(mySchedule.size()-1).getTaskDuration()/100000);//Bu katsayı değişebilir
-		}
+
 		Date taskEnd = mySchedule.get(mySchedule.size()-1).getTaskEndDate();
 		int depreciationDecrease = taskEnd.getHours()%17;
 		
 		this.changeDepreciationLevel(17-depreciationDecrease);
 	}
-	/*public Task iterateOverSchedule(){
-		return mySchedule.iterateOverSchedule();
-	}*/
-	/*public void resetIterator(){
-		mySchedule.resetIterator();
-	}*/
-	public boolean isWorkaholism() {
-		return Workaholism;
-	}
+
 	public void setWorkaholism(boolean workaholism) {
 		Workaholism = workaholism;
 	}
@@ -160,7 +134,7 @@ public class Employee {
 		this.name = name;
 	}
 	
-	public boolean isFullAt(Date check){//surayı değiştiricez
+	public boolean isFullAt(Date check){
 		for(int i=0; i<mySchedule.size();i++){
 			if(mySchedule.get(i).getTaskStart().compareTo(check) == 0)
 				return true;
